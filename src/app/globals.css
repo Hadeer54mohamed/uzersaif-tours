@@ -1,26 +1,459 @@
 @import "tailwindcss";
+@import "../styles/cosmic-theme.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #070A13;
+  --foreground: #F5F7FA;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-cairo);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  /* Cosmic Desert Colors */
+  --color-space-black: #070A13;
+  --color-galaxy-navy: #0D1324;
+  --color-cosmic-blue: #1B2A4A;
+  --color-nebula-purple: #2A1F3F;
+  --color-midnight-indigo: #151B3A;
+  
+  --color-star-white: #F4F7FF;
+  --color-soft-starlight: #C9D6FF;
+  
+  --color-desert-fire: #F47A1F;
+  --color-burnt-sunset: #D9641E;
+  --color-golden-ember: #FFB85C;
+  --color-desert-sand: #D8C39A;
+  --color-soft-dune: #BFA77A;
+  --color-oasis-clay: #8C6A4A;
+  
+  /* Border, Input, Ring colors */
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  /* Card colors */
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  
+  /* Muted colors */
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  
+  /* Secondary colors */
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  
+  /* Accent colors */
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  
+  /* Destructive colors */
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cairo', Arial, Helvetica, sans-serif;
+}
+
+/* ===== Cosmic Desert Theme System ===== */
+/* 
+  🌌🪐 Cosmic Desert – Farafra Oasis
+  نجوم وفضاء لا نهائي فوق…
+  ورمل دافي ونار صحرا تحت 🌠🔥
+*/
+
+@layer base {
+  :root {
+    /* Galaxy / Space Colors */
+    --space-black: 220 35% 4%;           /* #070A13 */
+    --galaxy-navy: 222 38% 10%;          /* #0D1324 */
+    --cosmic-blue: 221 45% 20%;          /* #1B2A4A */
+    --nebula-purple: 260 33% 18%;        /* #2A1F3F */
+    --midnight-indigo: 230 43% 16%;      /* #151B3A */
+    
+    /* Stars / Glow */
+    --star-white: 225 73% 97%;           /* #F4F7FF */
+    --soft-starlight: 223 62% 90%;       /* #C9D6FF */
+    
+    /* Desert / Fire */
+    --desert-fire: 24 91% 54%;           /* #F47A1F */
+    --burnt-sunset: 24 77% 48%;          /* #D9641E */
+    --golden-ember: 36 100% 68%;         /* #FFB85C */
+    
+    /* Desert / Sand */
+    --desert-sand: 42 46% 72%;           /* #D8C39A */
+    --soft-dune: 38 39% 61%;             /* #BFA77A */
+    --oasis-clay: 28 31% 42%;            /* #8C6A4A */
+    
+    /* Text Colors */
+    --text-primary: 218 33% 97%;         /* #F5F7FA */
+    --text-secondary: 226 22% 78%;       /* #B6BDD6 */
+    --text-muted: 226 13% 60%;           /* #8A91A8 */
+    
+    /* System Colors */
+    --background: 220 35% 4%;
+    --foreground: 218 33% 97%;
+    
+    --card: 222 38% 10%;
+    --card-foreground: 218 33% 97%;
+
+    --popover: 222 38% 10%;
+    --popover-foreground: 218 33% 97%;
+
+    --primary: 24 91% 54%;
+    --primary-foreground: 218 33% 97%;
+    
+    --primary-dark: 24 77% 48%;
+
+    --secondary: 221 45% 20%;
+    --secondary-foreground: 218 33% 97%;
+
+    --muted: 260 33% 18%;
+    --muted-foreground: 226 22% 78%;
+
+    --accent: 36 100% 68%;
+    --accent-foreground: 220 35% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 218 33% 97%;
+
+    --border: 221 45% 20%;
+    --input: 221 45% 20%;
+    --ring: 24 91% 54%;
+
+    --radius: 0.75rem;
+    
+    /* Gradients */
+    --gradient-hero: radial-gradient(circle at top, #1B2A4A, #070A13);
+    --gradient-cosmic-overlay: linear-gradient(180deg, rgba(42,31,63,0.6), rgba(7,10,19,0.9));
+    --gradient-cta: linear-gradient(135deg, #F47A1F, #FFB85C);
+    --gradient-galaxy-sand: linear-gradient(180deg, #070A13 0%, #0D1324 30%, #1B2A4A 50%, #8C6A4A 80%, #D8C39A 100%);
+    
+    --shadow-elegant: 0 10px 40px -10px rgba(244, 122, 31, 0.3);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --shadow-glow-orange: 0 0 30px rgba(244, 122, 31, 0.4);
+    --shadow-glow-starlight: 0 0 30px rgba(201, 214, 255, 0.2);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 222 38% 10%;
+    --sidebar-foreground: 218 33% 97%;
+    --sidebar-primary: 24 91% 54%;
+    --sidebar-primary-foreground: 218 33% 97%;
+    --sidebar-accent: 36 100% 68%;
+    --sidebar-accent-foreground: 220 35% 4%;
+    --sidebar-border: 221 45% 20%;
+    --sidebar-ring: 24 91% 54%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem; 
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--text-primary));
+    font-weight: 700;
+  }
+}
+
+@layer utilities {
+  /* ===== Hero Backgrounds ===== */
+  .bg-hero-cosmic {
+    background: radial-gradient(circle at top, #1B2A4A, #070A13);
+  }
+  
+  .bg-hero-cosmic-overlay {
+    background: linear-gradient(180deg, rgba(42,31,63,0.6), rgba(7,10,19,0.9));
+  }
+  
+  /* ===== Section Backgrounds ===== */
+  .bg-space-black {
+    background-color: #070A13;
+  }
+  
+  .bg-galaxy-navy {
+    background-color: #0D1324;
+  }
+  
+  .bg-cosmic-blue {
+    background-color: #1B2A4A;
+  }
+  
+  .bg-nebula-purple {
+    background-color: #2A1F3F;
+  }
+  
+  /* Dark section with galaxy gradient */
+  .bg-section-galaxy {
+    background: linear-gradient(180deg, 
+      #070A13 0%, 
+      #0D1324 30%, 
+      #1B2A4A 60%, 
+      #2A1F3F 100%
+    );
+  }
+  
+  /* Light section with sand gradient */
+  .bg-section-sand {
+    background: linear-gradient(180deg, 
+      #D8C39A 0%, 
+      #BFA77A 50%, 
+      #8C6A4A 100%
+    );
+  }
+  
+  /* Galaxy to Sand transition */
+  .bg-section-transition {
+    background: linear-gradient(180deg, 
+      #070A13 0%, 
+      #0D1324 20%, 
+      #1B2A4A 40%, 
+      #8C6A4A 70%, 
+      #D8C39A 100%
+    );
+  }
+  
+  /* ===== CTA Button Gradient ===== */
+  .bg-cta-fire {
+    background: linear-gradient(135deg, #F47A1F, #FFB85C);
+  }
+  
+  .bg-cta-fire:hover {
+    background: linear-gradient(135deg, #D9641E, #F47A1F);
+  }
+  
+  /* ===== Card Styles ===== */
+  .card-galaxy {
+    background: linear-gradient(135deg, 
+      rgba(13, 19, 36, 0.8) 0%, 
+      rgba(27, 42, 74, 0.6) 50%, 
+      rgba(42, 31, 63, 0.4) 100%
+    );
+    border: 1px solid rgba(244, 122, 31, 0.3);
+    backdrop-filter: blur(12px);
+  }
+  
+  .card-galaxy:hover {
+    border-color: rgba(244, 122, 31, 0.5);
+    box-shadow: 0 0 30px rgba(244, 122, 31, 0.2);
+  }
+  
+  .card-sand {
+    background: linear-gradient(135deg, 
+      rgba(216, 195, 154, 0.9) 0%, 
+      rgba(191, 167, 122, 0.8) 50%, 
+      rgba(140, 106, 74, 0.7) 100%
+    );
+    border: 1px solid rgba(244, 122, 31, 0.2);
+  }
+  
+  /* ===== Text Gradients ===== */
+  .text-gradient-fire {
+    background: linear-gradient(135deg, #F47A1F, #FFB85C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-starlight {
+    background: linear-gradient(135deg, #F4F7FF, #C9D6FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* ===== Glow Effects ===== */
+  .glow-fire {
+    box-shadow: 0 0 30px rgba(244, 122, 31, 0.4);
+  }
+  
+  .glow-ember {
+    box-shadow: 0 0 30px rgba(255, 184, 92, 0.3);
+  }
+  
+  .glow-starlight {
+    box-shadow: 0 0 30px rgba(201, 214, 255, 0.2);
+  }
+  
+  /* ===== Shadows ===== */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  /* ===== Animations ===== */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+  
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(244, 122, 31, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(244, 122, 31, 0.6);
+    }
+  }
+  
+  /* Space/Star Animations */
+  .animate-stars {
+    animation: stars 2s ease-out infinite;
+  }
+  
+  .animate-warp-speed {
+    animation: warpSpeed 3s linear infinite;
+  }
+  
+  .animate-spaceship-landing {
+    animation: spaceshipLanding 2s ease-out forwards;
+  }
+  
+  @keyframes stars {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes warpSpeed {
+    0% {
+      transform: translateZ(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(1000px) scale(3);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes spaceshipLanding {
+    0% {
+      transform: translateY(-100vh) scale(0.5);
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes section-title-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-section-title {
+  animation: section-title-appear .7s cubic-bezier(.25,.1,.25,1) both;
 }
