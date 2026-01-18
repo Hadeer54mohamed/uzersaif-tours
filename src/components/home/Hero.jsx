@@ -6,8 +6,6 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
-  StarParticle,
-  ShootingStar,
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
@@ -59,6 +57,12 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
+  const [brightStars, setBrightStars] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => y.set(window.scrollY / 3);
@@ -74,36 +78,125 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    setStars(generateStars(100));
-    setMeteors(generateMeteors(6, { delayMultiplier: 3, baseRepeatDelay: 8 }));
-  }, []);
+    if (!isMounted) return;
+    
+    // نجوم أكتر للموبايل والديسكتوب
+    const starCount = isMobile ? 80 : 150;
+    setStars(generateStars(starCount));
+    setMeteors(generateMeteors(isMobile ? 4 : 8, {
+      delayMultiplier: 2,
+      baseRepeatDelay: 5,
+      repeatDelayRange: 8
+    }));
+    
+    // توليد النجوم اللامعة
+    const brightCount = isMobile ? 8 : 15;
+    const generatedBrightStars = [...Array(brightCount)].map((_, i) => ({
+      id: `bright-${i}`,
+      posX: Math.random() * 100,
+      posY: Math.random() * 100,
+      duration: 5 + Math.random() * 5,
+    }));
+    setBrightStars(generatedBrightStars);
+  }, [isMobile, isMounted]);
 
   return (
     <section
       ref={heroRef}
       className="relative flex flex-col items-center justify-start overflow-hidden min-h-[85vh] md:min-h-[90vh] pb-8 md:pb-12"
     >
-      {/* ✨ طبقة النجوم */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
+      {/* ✨ طبقة النجوم - متحركة يمين وشمال */}
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
+          {stars.map((star) => (
+            <motion.div
+              key={star.id}
+              className="absolute rounded-full"
+              style={{
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+                width: isMobile ? star.size * 2 : star.size * 1.5,
+                height: isMobile ? star.size * 2 : star.size * 1.5,
+                backgroundColor: star.color,
+                boxShadow: `0 0 ${star.size * 6}px ${star.glow}, 0 0 ${star.size * 12}px ${star.glow}80, 0 0 ${star.size * 20}px ${star.glow}40`,
+              }}
+              animate={{
+                opacity: [0.5, 1, 0.5],
+                scale: [0.9, 1.4, 0.9],
+                x: [0, star.moveX || 0, 0, -(star.moveX || 0), 0],
+                y: [0, star.moveY || 0, 0, -(star.moveY || 0), 0],
+              }}
+              transition={{
+                duration: star.duration + 2,
+                repeat: Infinity,
+                delay: star.delay,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+      )}
 
-      {/* ☄️ طبقة الشهب */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[6]">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
+      {/* ☄️ الشهب - أبطأ وأندر عشان تجذب العين لما تظهر */}
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[6]">
+          {meteors.map((meteor) => (
+            <motion.div
+              key={meteor.id}
+              className="absolute"
+              style={{
+                left: `${meteor.startX}%`,
+                top: `${meteor.startY}%`,
+                width: isMobile ? 60 : 100,
+                height: 1.5,
+                borderRadius: "50%",
+                transform: `rotate(${meteor.angle}deg)`,
+                background: `linear-gradient(90deg, transparent, #FFE4A0, #FFFFFF)`,
+              }}
+              initial={{ opacity: 0, x: 0, y: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                x: [0, 400],
+                y: [0, meteor.yMove || 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                delay: meteor.delay,
+                repeatDelay: meteor.repeatDelay || 15,
+                ease: "linear",
+              }}
+            />
+          ))}
+        </div>
+      )}
 
-      {/* توهج في الزوايا */}
-      <div className="absolute inset-0 pointer-events-none z-[4]">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-15 glow-purple" />
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full blur-3xl opacity-10 glow-fire" />
-
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl opacity-10 glow-blue" />
-      </div>
+      {/* 🌟 النجوم اللامعة اللي بتتحرك - تم تقليل العدد وزيادة الجمالية */}
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[4]">
+          {brightStars.map((star) => (
+            <motion.div
+              key={star.id}
+              className="absolute"
+              style={{ left: `${star.posX}%`, top: `${star.posY}%`, width: 2, height: 2 }}
+              animate={{
+                opacity: [0.4, 1, 0.4],
+                scale: [1, 2, 1],
+              }}
+              transition={{
+                duration: star.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <div className="absolute inset-0 bg-white rounded-full shadow-[0_0_15px_2px_rgba(255,255,255,0.8)]" />
+              {/* لمعة الصليب (+) خفيفة جداً */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-8 bg-white/20" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-[1px] bg-white/20" />
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       {/* Background with Parallax */}
       <motion.div
@@ -147,7 +240,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center space-y-4 text-center"
         >
-     
+
           <h1
             className="text-[clamp(1.5rem,4vw,3.2rem)] font-bold mb-2 drop-shadow-lg text-white leading-tight"
             dir="rtl"
@@ -156,7 +249,7 @@ const Hero = () => {
             في قلب <span className="text-gradient-fire">الصحراء البيضاء</span>
           </h1>
 
-         
+
           <div className="max-w-3xl space-y-3 px-4">
             <h2
               dir="rtl"
@@ -200,22 +293,10 @@ const Hero = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-5 md:mb-6">
-          <motion.a
-            href="/Trips"
-            whileHover={{ scale: 1.06, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block"
-          >
-            <Button
-              size="lg"
-              className="font-bold px-10 py-5 rounded-2xl shadow-xl transition-all btn-fire"
-            >
-              استكشف الرحلات
-            </Button>
-          </motion.a>
+         
 
           <motion.a
-            href="/contact"
+            href="#booking"
             whileHover={{ scale: 1.06, y: -2 }}
             whileTap={{ scale: 0.95 }}
           >

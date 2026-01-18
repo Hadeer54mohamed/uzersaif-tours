@@ -131,7 +131,7 @@ export default function Guarantee() {
           </p>
 
           <motion.a
-            href="/contact"
+            href="#booking"
             whileHover={{ scale: 1.06, y: -2 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block"

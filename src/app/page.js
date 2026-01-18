@@ -24,7 +24,9 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import AboutBedouin from "@/components/home/AboutBedouin";
 import DesertTrip from "@/components/home/DesertTrip";
 import MediaSwiper from "@/components/MediaSwiper";
-import { homeGallery, mountainGallery } from "@/data/mediaSwiperData";
+import { homeGallery, mountainGallery, afterHeroVideo } from "@/data/mediaSwiperData";
+import ReviewsVideos from "@/components/home/ReviewsVideos";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -93,20 +95,29 @@ const Home = () => {
         >
           <Hero />
         </motion.div>
+        <MediaSwiper 
+          customMedia={afterHeroVideo}
+          height="h-[600px]"
+          className="container mx-auto px-4 my-12"
+        /> 
+        <SectionDivider />
+     <Experiences />
         <SectionDivider />
         <MediaSwiper 
           customMedia={homeGallery}
           height="h-[600px]"
           className="container mx-auto px-4 my-12"
         />
-
+    
         <SectionDivider />
-        <WhyChooseUs />
+        <WhyChooseUs /> 
+        <SectionDivider />
         <MediaSwiper 
           customMedia={mountainGallery}
           height="h-[600px]"
           className="container mx-auto px-4 my-12"
         />
+        <SectionDivider />
         <AboutBedouin />
         <SectionDivider />
         <MediaSwiper 
@@ -116,12 +127,9 @@ const Home = () => {
         /> 
          <SectionDivider />
         <DesertTrip />
-        <Guarantee />
         <SectionDivider />
-        <Experiences />
-      
-        <SectionDivider />
-        <BeforeBooking />
+        <ReviewsVideos />
+
         <SectionDivider />
         <FAQ />
         <SectionDivider />
@@ -129,6 +137,9 @@ const Home = () => {
         <SectionDivider />
         <Footer />
       </div>
+
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
     </>
   );
 };

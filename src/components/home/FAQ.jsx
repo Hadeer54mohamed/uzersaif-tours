@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircle, ChevronDown } from "lucide-react";
+import { HelpCircle, ChevronDown, Toilet } from "lucide-react";
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
@@ -9,6 +9,7 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
+import BeforeBookingSlider from "./BeforeBookingSlider";
 
 const faqData = [
   {
@@ -38,8 +39,9 @@ const faqData = [
   },
   {
     id: "faq-6",
+    icon: Toilet,
     question: "في حمّام؟ ولا الموضوع هيبقى صعب؟",
-    answer: "في كامب الفرافرة حمّام وكهرباء. وفي التخييم تجهيزات مناسبة للصحراء تحافظ على راحتك واحترام المكان، مش تجربة عشوائية ولا إحراج.",
+    answer: "في كامب الفرافرة حمام وكهرباء. وفي التخييم تجهيزات مناسبة للصحراء تحافظ على راحتك واحترام المكان، مش تجربة عشوائية ولا إحراج.",
   },
   {
     id: "faq-7",
@@ -122,7 +124,6 @@ const FAQ = () => {
             إجابات على أكثر الأسئلة شيوعاً التي يطرحها عملاؤنا
           </p>
         </div>
-
         {/* FAQ Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           {faqData.map((faq, index) => {
@@ -138,7 +139,7 @@ const FAQ = () => {
                   aria-expanded={isOpen}
                   className="w-full flex justify-center items-center gap-2 text-lg sm:text-xl font-bold transition-colors faq-question"
                 >
-                  {faq.question}
+                  {faq.icon && <faq.icon className="w-8 h-8 shrink-0 text-white" />} {faq.question}
                   <ChevronDown
                     className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
@@ -160,22 +161,8 @@ const FAQ = () => {
             );
           })}
         </div>
+        <BeforeBookingSlider />
 
-        {/* Contact CTA */}
-        <div
-          className="text-center mt-6 sm:mt-8 animate-fade-in-up"
-          style={{ animationDelay: "600ms" }}
-        >
-          <p className="mb-3 text-secondary">
-            لم تجد إجابة سؤالك؟
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all btn-fire"
-          >
-            تواصل معنا
-          </a>
-        </div>
       </div>
     </section>
   );

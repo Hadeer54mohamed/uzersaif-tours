@@ -6,8 +6,8 @@ import Image from "next/image";
 
 const stats = [
   { label: "سنة خبرة", value: "26+", icon: <History className="w-5 h-5 text-orange-500" /> },
-  { label: "رحلة ناجحة", value: "10,000+", icon: <Map className="w-5 h-5 text-orange-500" /> },
-  { label: "ثقافات عالمية", value: "50+", icon: <Users className="w-5 h-5 text-orange-500" /> },
+  { label: "رحلة ناجحة", value: "1,000+", icon: <Map className="w-5 h-5 text-orange-500" /> },
+  { label: "عميل", value: "10,000+", icon: <Users className="w-5 h-5 text-orange-500" /> },
   { label: "أمان ومسؤولية", value: "100%", icon: <ShieldCheck className="w-5 h-5 text-orange-500" /> },
 ];
 
@@ -32,7 +32,7 @@ const AboutBedouin = () => {
             <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5]">
               <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent z-10" />
               <Image 
-                src="/hero.jpg" 
+                src="/teamuzer.jpg" 
                 alt="بدو الفرافرة" 
                 fill
                 className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"

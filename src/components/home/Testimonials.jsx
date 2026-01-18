@@ -18,27 +18,11 @@ const Testimonials = () => {
   const [meteors, setMeteors] = useState([]);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
 
   useEffect(() => {
     setStars(generateStars(60));
     setMeteors(generateMeteors(3, { delayMultiplier: 6, baseRepeatDelay: 15 }));
   }, []);
-
-  const currentTestimonials = testimonials.slice(
-    currentPage * itemsPerPage,
-    (currentPage + 1) * itemsPerPage
-  );
-
-  const nextPage = () => {
-    setCurrentPage((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
-    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
-  };
 
   const openModal = (testimonial) => {
     setSelectedTestimonial(testimonial);
@@ -79,20 +63,11 @@ const Testimonials = () => {
       
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-primary">آراء عملائنا</h2>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto text-secondary">استمع إلى تجارب عملائنا السعداء</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-primary">عملائنا قالو اي عن رحلة الصحراء البيضاء ؟  </h2>
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-          >
-            {currentTestimonials.map((testimonial, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {testimonials.map((testimonial, index) => {
               const hasImages = testimonial.images && testimonial.images.length > 0;
               return (
                 <motion.div
@@ -102,7 +77,7 @@ const Testimonials = () => {
                   onClick={() => openModal(testimonial)}
                   className="cursor-pointer"
                 >
-                  <Card className="hover:shadow-xl transition-all duration-300 backdrop-blur-sm card-cosmic overflow-hidden flex flex-col" style={{ minHeight: hasImages ? '280px' : '200px' }}>
+                  <Card className="hover:shadow-xl transition-all duration-300 text-center backdrop-blur-sm card-cosmic overflow-hidden flex flex-col" style={{ minHeight: hasImages ? '280px' : '200px' }}>
                     {hasImages && (
                       <div className="relative h-32 w-full overflow-hidden flex-shrink-0">
                         <div className="flex h-full">
@@ -120,7 +95,7 @@ const Testimonials = () => {
                     )}
 
                     <CardContent className="p-4 flex flex-col flex-1">
-                      <div className="flex mb-2">
+                      <div className="flex mb-2 justify-center">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star key={i} className="w-4 h-4 fill-current star-rating" />
                         ))}
@@ -128,7 +103,7 @@ const Testimonials = () => {
                       <p className="text-secondary leading-relaxed mb-3 text-xs flex-1 line-clamp-4">
                         "{testimonial.comment}"
                       </p>
-                      <div className="flex items-center gap-2 pt-2 border-t border-fire-light">
+                      <div className="flex items-center gap-2 pt-2 border-t border-fire-light justify-center">
                         <h4 className="font-bold text-sm text-primary">{testimonial.name}</h4>
                       </div>
                     </CardContent>
@@ -136,43 +111,7 @@ const Testimonials = () => {
                 </motion.div>
               );
             })}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* أزرار التنقل */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={prevPage}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1B2A4A]/60 border border-[#F47A1F]/30 text-white hover:bg-[#F47A1F]/20 transition-all"
-            >
-              <ChevronRight className="w-5 h-5" />
-              <span className="font-bold text-sm">السابق</span>
-            </motion.button>
-
-            <div className="flex items-center gap-2">
-              {[...Array(totalPages)].map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentPage(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentPage ? 'bg-[#F47A1F] w-6' : 'bg-white/30 hover:bg-white/50'}`}
-                />
-              ))}
-            </div>
-
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={nextPage}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1B2A4A]/60 border border-[#F47A1F]/30 text-white hover:bg-[#F47A1F]/20 transition-all"
-            >
-              <span className="font-bold text-sm">التالي</span>
-              <ChevronLeft className="w-5 h-5" />
-            </motion.button>
-          </div>
-        )}
+        </div>
       </div>
 
       {/* Modal */}
@@ -233,18 +172,18 @@ const Testimonials = () => {
 
               {/* المحتوى */}
               <div className="p-5">
-                <div className="flex mb-3">
+                <div className="flex mb-3 justify-center">
                   {[...Array(selectedTestimonial.rating)].map((_, i) => (
                     <Star key={i} className="w-5 h-5 fill-[#FFB85C] text-[#FFB85C]" />
                   ))}
                 </div>
 
                 <Quote className="w-8 h-8 text-[#F47A1F]/30 mb-2" />
-                <p className="text-[#B6BDD6] leading-relaxed mb-4">{selectedTestimonial.comment}</p>
+                <p className="text-[#B6BDD6] leading-relaxed mb-4 text-center text-lg">{selectedTestimonial.comment}</p>
 
-                <div className="flex items-center gap-3 pt-3 border-t border-[#F47A1F]/20">
+                <div className="flex items-center gap-3 pt-3 border-t border-[#F47A1F]/20 justify-center">
                   <div>
-                    <h4 className="font-bold text-[#F5F7FA]">{selectedTestimonial.name}</h4>
+                    <h4 className="font-bold text-primary text-xl">{selectedTestimonial.name}</h4>
                   </div>
                 </div>
               </div>

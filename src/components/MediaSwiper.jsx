@@ -94,15 +94,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-          {item.caption && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent"
-            >
-              <p className="text-white text-lg font-medium">{item.caption}</p>
-            </motion.div>
-          )}
+        
         </div>
       );
     }
@@ -236,16 +228,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
           {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
         </motion.button>
 
-        {/* Caption */}
-        {item.caption && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent"
-          >
-            <p className="text-white text-lg font-medium">{item.caption}</p>
-          </motion.div>
-        )}
+       
       </div>
     );
   }
@@ -258,7 +241,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
         animate={{ scale: 1 }}
         transition={{ duration: 0.8 }}
         src={getImageUrl(item.image)}
-        alt={item.alt || item.caption || "Gallery image"}
+        alt={item.alt || "Gallery image"}
         className="w-full h-full object-cover"
         onError={(e) => {
           console.error("Image failed to load:", item.image);
@@ -276,16 +259,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
         صورة
       </motion.div>
 
-      {/* Caption */}
-      {item.caption && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent"
-        >
-          <p className="text-white text-lg font-medium">{item.caption}</p>
-        </motion.div>
-      )}
+    
     </div>
   );
 };
@@ -307,8 +281,6 @@ const MediaSwiper = ({
       return { media: customMedia, autoPlay: autoPlayDefault, autoPlayInterval: intervalDefault };
     }
     return { 
-      title: customMedia.title,
-      description: customMedia.description,
       media: customMedia.media, 
       autoPlay: autoPlayDefault, 
       autoPlayInterval: intervalDefault 
@@ -414,22 +386,7 @@ const MediaSwiper = ({
 
   return (
     <div className={`${className}`}>
-      {/* عنوان ووصف المعرض */}
-      {(gallery?.title || gallery?.description) && (
-        <div className="text-center mb-6">
-          {gallery?.title && (
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-              {gallery.title}
-            </h2>
-          )}
-          {gallery?.description && (
-            <p className="inline-block text-orange-500 font-bold tracking-widest text-lg px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-              {gallery.description}
-            </p>
-          )}
-        </div>
-      )}
-
+      
       {/* المعرض */}
       <div 
         className={`relative ${height} rounded-3xl overflow-hidden 
@@ -464,57 +421,61 @@ const MediaSwiper = ({
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
-      <motion.button
-        whileHover={{ scale: 1.1, x: -3 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={goToPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </motion.button>
-
-      <motion.button
-        whileHover={{ scale: 1.1, x: 3 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </motion.button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
-        {gallery.media.map((_, index) => (
+      {/* Navigation Arrows - تظهر فقط إذا كان هناك أكثر من عنصر */}
+      {gallery.media.length > 1 && (
+        <>
           <motion.button
-            key={index}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.8 }}
-            onClick={() => goToIndex(index)}
-            className={`transition-all duration-300 rounded-full ${index === currentIndex ? 'w-8 h-3 bg-[#F47A1F]' : 'w-3 h-3 bg-white/40 hover:bg-white/60'}`}
-          />
-        ))}
-      </div>
+            whileHover={{ scale: 1.1, x: -3 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={goToPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </motion.button>
 
-      {/* Play/Pause Button */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsPaused(!isPaused)}
-        className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
-      >
-        {isPaused ? <Play className="w-4 h-4 ml-0.5" /> : <Pause className="w-4 h-4" />}
-      </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1, x: 3 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </motion.button>
 
-      {/* Counter Badge */}
-      <div className="absolute bottom-6 right-6 z-20 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
-        <span className="text-[#F47A1F]">{currentIndex + 1}</span>
-        <span className="mx-1">/</span>
-        <span>{gallery.media.length}</span>
-      </div>
+          {/* Dots Indicator */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
+            {gallery.media.map((_, index) => (
+              <motion.button
+                key={index}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.8 }}
+                onClick={() => goToIndex(index)}
+                className={`transition-all duration-300 rounded-full ${index === currentIndex ? 'w-8 h-3 bg-[#F47A1F]' : 'w-3 h-3 bg-white/40 hover:bg-white/60'}`}
+              />
+            ))}
+          </div>
 
-      {/* Progress Bar */}
-      {shouldAutoPlay && !isPaused && (
+          {/* Play/Pause Button */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsPaused(!isPaused)}
+            className="absolute top-4 left-4 z-20 w-10 h-10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-[#F47A1F]/60 transition-all duration-300"
+          >
+            {isPaused ? <Play className="w-4 h-4 ml-0.5" /> : <Pause className="w-4 h-4" />}
+          </motion.button>
+
+          {/* Counter Badge */}
+          <div className="absolute bottom-6 right-6 z-20 px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 text-white text-sm font-medium">
+            <span className="text-[#F47A1F]">{currentIndex + 1}</span>
+            <span className="mx-1">/</span>
+            <span>{gallery.media.length}</span>
+          </div>
+        </>
+      )}
+
+      {/* Progress Bar - يظهر فقط إذا كان هناك أكثر من عنصر */}
+      {gallery.media.length > 1 && shouldAutoPlay && !isPaused && (
         <motion.div
           key={currentIndex}
           initial={{ scaleX: 0 }}

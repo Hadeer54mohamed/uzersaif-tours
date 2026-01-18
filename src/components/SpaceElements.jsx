@@ -81,6 +81,9 @@ export const generateStars = (count = 70) => {
       maxOpacity: 0.7 + Math.random() * 0.3,
       duration: 2 + Math.random() * 4,
       delay: Math.random() * 5,
+      // للحركة في Hero
+      moveX: (Math.random() - 0.5) * 30,
+      moveY: (Math.random() - 0.5) * 15,
     };
   });
 };
@@ -93,17 +96,22 @@ export const generateMeteors = (count = 4, options = {}) => {
     repeatDelayRange = 15,
   } = options;
 
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    startX: Math.random() * 80 + 10,
-    startY: Math.random() * 40,
-    length: 60 + Math.random() * 80,
-    angle: 30 + Math.random() * 30,
-    distance: 200 + Math.random() * 300,
-    speed: 0.8 + Math.random() * 0.8,
-    delay: i * delayMultiplier + Math.random() * 5,
-    repeatDelay: baseRepeatDelay + Math.random() * repeatDelayRange,
-  }));
+  return Array.from({ length: count }, (_, i) => {
+    const angle = 30 + Math.random() * 30;
+    return {
+      id: i,
+      startX: Math.random() * 80 + 10,
+      startY: Math.random() * 40,
+      length: 60 + Math.random() * 80,
+      angle,
+      distance: 200 + Math.random() * 300,
+      speed: 0.8 + Math.random() * 0.8,
+      delay: i * delayMultiplier + Math.random() * 5,
+      repeatDelay: baseRepeatDelay + Math.random() * repeatDelayRange,
+      // للحركة في Hero
+      yMove: 400 * Math.tan((angle * Math.PI) / 180),
+    };
+  });
 };
 
 // 🌌 مكون طبقة النجوم الجاهز

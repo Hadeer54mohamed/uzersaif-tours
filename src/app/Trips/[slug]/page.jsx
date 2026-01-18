@@ -177,7 +177,7 @@ export default function TripDetails() {
                 </div>
 
                 <motion.a
-                  href="/contact"
+                    href="#booking"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="block w-full py-3 rounded-xl text-center font-bold transition-all btn-fire text-primary"

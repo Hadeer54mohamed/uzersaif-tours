@@ -62,9 +62,9 @@ const Navbar = ({ transparent = false }) => {
             </NavLink>
           ))}
 
-          <Button className="px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all font-bold btn-fire">
+          <a href="#booking" className="px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all font-bold btn-fire">
             احجز الآن
-          </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -101,9 +101,9 @@ const Navbar = ({ transparent = false }) => {
             </NavLink>
           ))}
 
-          <Button className="w-full py-3 rounded-xl shadow-md font-bold transition-all btn-fire">
+          <a href="#booking" onClick={() => setIsMobileMenuOpen(false)} className="block w-full py-3 rounded-xl shadow-md font-bold transition-all btn-fire text-center">
             احجز الآن
-          </Button>
+          </a>
         </div>
       </div>
     </nav>
