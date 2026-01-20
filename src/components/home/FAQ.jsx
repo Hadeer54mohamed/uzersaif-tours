@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircle, ChevronDown, Toilet } from "lucide-react";
+import { HelpCircle, ChevronDown, X, ZoomIn } from "lucide-react";
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,70 +10,40 @@ import {
   generateMeteors,
 } from "@/components/SpaceElements";
 import BeforeBookingSlider from "./BeforeBookingSlider";
-
-const faqData = [
-  {
-    id: "faq-1",
-    question: "لمين رحلة الصحراء البيضاء؟",
-    answer: "الرحلة معمولة للي تعبان من الزحمة والضغط، وعايز تجربة مختلفة جدا عن أي حاجة شافها قبل كده، مش للّي بيدوّر على أرخص سعر أو فسحة سريعة. لو بتقدّر الهدوء، التنظيم، والمغامرة الحقيقية … يبقي دي رحلتك.",
-  },
-  {
-    id: "faq-2",
-    question: "هل الرحلة مناسبة ليا حتى لو أول مرة أطلع صحراء؟",
-    answer: "أيوه. الرحلة مصممة للمبتدئين اللي أول مرة تطلع صحراء أو للمغامرين جرّبت قبل كده. البرنامج متدرّج ومُجهز يخليك تستمتع وانت مطمّن، من غير خبرة سابقة.",
-  },
-  {
-    id: "faq-3",
-    question: "هل الرحلة مغامرة صعبة؟",
-    answer: "دي مغامرة محسوبة مش اختبار تحمّل. في كامب مجهز، تخييم مدروس، وفندق بدوي، علشان ترتاح في كل خطوة ليك من غير بهدلة أو ضغط.",
-  },
-  {
-    id: "faq-4",
-    question: "هل النوم والتجهيزات مريحة فعلًا؟",
-    answer: "أيوه. احنا بنستخدم أفضل أنواع الخيم، المراتب، Sleeping Bags والبطاطين المناسبة لبرودة الصحراء، واللي تخليك نايم وانت مدفي ومرتاح في وسط الصحراء. مع ضمان بدو واحة الفرافرة في حلول فورية لو احتجت أي حاجة، الهدف إنك تعيش أفضل تجربة للصحراء البيضاء وانت مرتاح.",
-  },
-  {
-    id: "faq-5",
-    question: "هل الرحلة آمنة ومنظمة؟",
-    answer: "الرحلة بينفذها بدو واحة الفرافرة بخبرة أكتر من 26 سنة، وتنظيم أكثر من 1000 رحلة بنفس الشكل، مع Guides ملازمين للمجموعة طول الوقت، وبرنامج واضح تفاصيله خطوة بخطوة.",
-  },
-  {
-    id: "faq-6",
-    icon: Toilet,
-    question: "في حمّام؟ ولا الموضوع هيبقى صعب؟",
-    answer: "في كامب الفرافرة حمام وكهرباء. وفي التخييم تجهيزات مناسبة للصحراء تحافظ على راحتك واحترام المكان، مش تجربة عشوائية ولا إحراج.",
-  },
-  {
-    id: "faq-7",
-    question: "والأكل؟ أخباره إيه؟",
-    answer: "الأكل جزء أساسي من التجربة مش إضافة. 7 وجبات كاملة، أكل طازة وOrganic، كفاية ومظبوط في مواعيده، مع شاي زردا ومشروبات ساخنة طول اليوم.",
-  },
-  {
-    id: "faq-8",
-    question: "هل الناس اللي معايا في الرحلة هتكون مناسبة ليّ؟",
-    answer: "الرحلة بعدد محدود ومش معمولة للكل. أغلب المشاركين مغامرين بيحبو الهدوء والتجارب المختلفة، ومش بتدور على زحمة أو رحلة عادية.",
-  },
-  {
-    id: "faq-9",
-    question: "هل في أي مصاريف تانية غير اللي مكتوب؟",
-    answer: "لا. كل حاجة محسوبة داخل السعر: تنقلات، سفاري، تخييم، فندق، أكل، أنشطة، ورسوم محمية. كلها داخل السعر، بدون مصاريف إضافية خفية. الحاجة الوحيدة اللي هتعمل حسابك فيها هي المصاريف الشخصية فقط أو الهدايا.",
-  },
-  {
-    id: "faq-10",
-    question: "هل في شبكة موبايل؟ وهل ده هيأثر عليّ؟",
-    answer: "الشبكة ضعيفة في التخييم (مكالمات فقط)، وده مقصود علشان تفصل فعلًا من زحمة الشغل والحياة. في الفندق الشبكة أفضل نسبيًا (4G). لو مش جاهز تفصل شوية، الرحلة دي ممكن ما تكونش ليك.",
-  },
-  {
-    id: "faq-11",
-    question: "إزاي أعرف إن الرحلة دي اختيار صح؟",
-    answer: "لو عايز تجربة مختلفة، محسوبة، ومش عايز تطلع قلقان أو ترجع ندمان… الرحلة دي معمولة ليك. ولو بتدور على أرخص أو أسرع أو أسهل فسحة، الأفضل تختار حاجة تانية.",
-  },
-];
+import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const FAQ = () => {
+  const t = useTranslations("faq");
+  
+  const faqData = [
+    {
+      id: "faq-1",
+      questionKey: "firstTime",
+    },
+    {
+      id: "faq-2",
+      questionKey: "comfortable",
+    },
+    {
+      id: "faq-3",
+      questionKey: "food",
+    },
+  
+    {
+      id: "faq-4",
+      questionKey: "hiddenCosts",
+    },
+    {
+      id: "faq-5",
+      questionKey: "bathroom",
+      image: "/wc.jpg",
+    },
+  ];
   const [openItem, setOpenItem] = useState(null);
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   const toggleItem = useCallback((id) => {
     setOpenItem((prev) => (prev === id ? null : id));
@@ -85,29 +55,9 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 overflow-hidden">
-      {/* 🌌 خلفية فضائية غامقة */}
-      <div className="absolute inset-0 bg-cosmic-space" />
+    <section className="relative overflow-hidden">
+    
 
-      {/* ✨ طبقة النجوم */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-
-      {/* ☄️ طبقة الشهب */}
-      <div className="absolute inset-0 pointer-events-none">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
-
-      {/* توهج في الزوايا */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 right-20 w-56 h-56 rounded-full blur-3xl opacity-20 glow-purple" />
-        <div className="absolute bottom-20 left-20 w-64 h-64 rounded-full blur-3xl opacity-15 glow-fire" />
-      </div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4">
         {/* Section Header */}
@@ -118,16 +68,18 @@ const FAQ = () => {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-2 sm:mb-3 text-primary">
-            الأسئلة الشائعة
+            {t("title")}
           </h2>
           <p className="text-base sm:text-lg max-w-2xl mx-auto text-secondary">
-            إجابات على أكثر الأسئلة شيوعاً التي يطرحها عملاؤنا
+            {t("subtitle")}
           </p>
         </div>
         {/* FAQ Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           {faqData.map((faq, index) => {
             const isOpen = openItem === faq.id;
+            const question = t(`questions.${faq.questionKey}.question`);
+            const answer = t(`questions.${faq.questionKey}.answer`);
             return (
               <div
                 key={faq.id}
@@ -139,7 +91,7 @@ const FAQ = () => {
                   aria-expanded={isOpen}
                   className="w-full flex justify-center items-center gap-2 text-lg sm:text-xl font-bold transition-colors faq-question"
                 >
-                  {faq.icon && <faq.icon className="w-8 h-8 shrink-0 text-white" />} {faq.question}
+                  {question}
                   <ChevronDown
                     className={`w-5 h-5 shrink-0 transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
@@ -152,9 +104,32 @@ const FAQ = () => {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-base leading-relaxed faq-answer">
-                      {faq.answer}
-                    </p>
+                    <div className={`${faq.image ? "flex flex-col sm:flex-row-reverse gap-4 items-start" : ""}`}>
+                      {faq.image && (
+                        <div className="flex-shrink-0 flex justify-center w-full sm:w-auto mb-3 sm:mb-0">
+                          <div 
+                            className="relative group cursor-pointer"
+                            onClick={() => setLightboxImage(faq.image)}
+                          >
+                            <div className="relative rounded-lg overflow-hidden border-2 border-[#F47A1F]/50 shadow-lg shadow-[#F47A1F]/20">
+                              <Image 
+                                src={faq.image} 
+                                alt={question} 
+                                width={150} 
+                                height={150}
+                                className="object-cover rounded-lg hover:scale-105 transition-transform duration-300 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px]"
+                              />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <ZoomIn className="w-8 h-8 text-white" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      <p className={`text-base leading-relaxed faq-answer flex-1 whitespace-pre-line ${faq.image ? "text-right" : ""}`}>
+                        {answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -164,6 +139,40 @@ const FAQ = () => {
         <BeforeBookingSlider />
 
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          >
+            <X className="w-8 h-8 text-white" />
+          </button>
+          
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", damping: 25 }}
+            className="relative max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden border-2 border-[#F47A1F]/50 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxImage}
+              alt="صورة مكبرة"
+              width={800}
+              height={600}
+              className="object-contain max-h-[85vh] w-auto"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };

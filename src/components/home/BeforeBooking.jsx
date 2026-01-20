@@ -15,35 +15,17 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
-
-const notes = [
-  {
-    icon: WifiOff,
-    title: "الشبكة ضعيفة أثناء التخييم",
-    desc: "وده جزء مقصود من التجربة علشان تفصل عن الدنيا وتعيش الهدوء الحقيقي.",
-    desc2: "✔ في الكامب والفندق الشبكة أفضل نسبيًا",
-  },
-  {
-    icon: ThermometerSnowflake,
-    title: "الجو خفيف نهارًا وبارد ليلًا",
-    desc: "التجهيزات محسوبة للبرد، ومعاك إرشادات واضحة قبل الرحلة علشان تيجي جاهز ومطمّن.",
-    desc2: "✔ مع بطانيات في الكامب لضمان راحتك",
-  },
-  {
-    icon: Backpack,
-    title: "المطلوب منك بسيط جدًا",
-    desc: "ملابسك، حاجاتك الشخصية، والالتزام بتعليمات الرحلة.",
-    desc2: "✔ وإحنا علينا باقي التفاصيل والتجهيزات",
-  },
-  {
-    icon: RefreshCcw,
-    title: "البرنامج مرن للسلامة",
-    desc: "ممكن يتغيّر ترتيب بعض النقاط حسب الظروف الجوية أو الأمنية، وده علشان نضمن تجربة آمنة ومريحة.",
-    desc2: "✔ كل التعديلات بتكون لصالح راحتك وسلامتك من غير ما نضيّع روح التجربة أو قيمتها",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function BeforeBooking() {
+  const t = useTranslations("beforeBooking");
+
+  const notes = [
+    { icon: WifiOff, key: "network" },
+    { icon: ThermometerSnowflake, key: "weather" },
+    { icon: Backpack, key: "requirements" },
+    { icon: RefreshCcw, key: "flexibility" },
+  ];
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
 
@@ -54,28 +36,7 @@ export default function BeforeBooking() {
 
   return (
     <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden">
-      {/* 🌌 خلفية فضائية غامقة */}
-      <div className="absolute inset-0 bg-cosmic-space" />
-
-      {/* ✨ طبقة النجوم */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-
-      {/* ☄️ طبقة الشهب */}
-      <div className="absolute inset-0 pointer-events-none">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
-
-      {/* توهج في الزوايا */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-24 left-16 w-56 h-56 rounded-full blur-3xl opacity-20 glow-purple" />
-        <div className="absolute bottom-24 right-16 w-64 h-64 rounded-full blur-3xl opacity-15 glow-fire" />
-      </div>
+  
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         {/* Heading */}
@@ -89,11 +50,11 @@ export default function BeforeBooking() {
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 sm:mb-3">
             <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 icon-fire" />
             <h2 className="text-[clamp(1.75rem,5vw,3.2rem)] font-bold leading-tight text-primary">
-              قبل ما تحجز
+              {t("title")}
             </h2>
           </div>
           <p className="text-[clamp(0.95rem,2.2vw,1.15rem)] leading-relaxed px-2 text-secondary">
-            ملاحظات مهمة علشان التجربة تبقى مريحة من أولها.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -116,13 +77,13 @@ export default function BeforeBooking() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-[clamp(0.95rem,2.5vw,1.1rem)] font-bold mb-0.5 leading-snug text-primary">
-                      {item.title}
+                      {t(`notes.${item.key}.title`)}
                     </h3>
                     <p className="text-[clamp(0.75rem,1.8vw,0.85rem)] leading-relaxed mb-1 text-secondary">
-                      {item.desc}
+                      {t(`notes.${item.key}.desc`)}
                     </p>
                     <p className="text-[clamp(0.7rem,1.7vw,0.8rem)] leading-relaxed font-medium pt-1 text-fire border-t border-white/10">
-                      {item.desc2}
+                      {t(`notes.${item.key}.desc2`)}
                     </p>
                   </div>
                 </div>

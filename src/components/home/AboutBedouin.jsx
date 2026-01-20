@@ -3,17 +3,19 @@
 import { motion } from "framer-motion";
 import { History, ShieldCheck, Users, Map } from "lucide-react";
 import Image from "next/image";
-
-const stats = [
-  { label: "سنة خبرة", value: "26+", icon: <History className="w-5 h-5 text-orange-500" /> },
-  { label: "رحلة ناجحة", value: "1,000+", icon: <Map className="w-5 h-5 text-orange-500" /> },
-  { label: "عميل", value: "10,000+", icon: <Users className="w-5 h-5 text-orange-500" /> },
-  { label: "أمان ومسؤولية", value: "100%", icon: <ShieldCheck className="w-5 h-5 text-orange-500" /> },
-];
+import { useTranslations } from "next-intl";
 
 const AboutBedouin = () => {
+  const t = useTranslations("aboutBedouin");
+
+  const stats = [
+    { label: t("stats.experience"), value: "26+", icon: <History className="w-5 h-5 text-orange-500" /> },
+    { label: t("stats.trips"), value: "1,000+", icon: <Map className="w-5 h-5 text-orange-500" /> },
+    { label: t("stats.clients"), value: "10,000+", icon: <Users className="w-5 h-5 text-orange-500" /> },
+    { label: t("stats.safety"), value: "100%", icon: <ShieldCheck className="w-5 h-5 text-orange-500" /> },
+  ];
   return (
-    <section className="relative pb-5 bg-[#030712] overflow-hidden py-8">
+    <section className="relative pb-5 bg-black overflow-hidden py-8">
       {/* توهج خلفي */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-900/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-900/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
@@ -30,7 +32,7 @@ const AboutBedouin = () => {
             className="lg:col-span-5 relative group order-2 lg:order-1"
           >
             <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5]">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
               <Image 
                 src="/teamuzer.jpg" 
                 alt="بدو الفرافرة" 
@@ -48,7 +50,7 @@ const AboutBedouin = () => {
               className="absolute -bottom-5 -right-5 bg-gradient-to-br from-orange-600 to-orange-700 p-5 rounded-2xl shadow-2xl z-20 hidden md:block"
             >
               <p className="text-4xl font-black text-white">26</p>
-              <p className="text-white/90 text-sm font-bold">عاماً من الخبرة<br/>في قلب الصحراء</p>
+              <p className="text-white/90 text-sm font-bold">{t("stats.experienceDesc")}<br/>{t("stats.experienceDesc2")}</p>
             </motion.div>
           </motion.div>
 
@@ -61,21 +63,21 @@ const AboutBedouin = () => {
               transition={{ duration: 0.5 }}
             >
               <span className="inline-block text-orange-500 font-bold tracking-widest uppercase text-sm mb-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                إرث واحة الفرافرة
+                {t("badge")}
               </span>
               
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                إحنا مش مجرد منظمين، <br className="hidden md:block"/> 
-                <span className="text-orange-500">إحنا أصحاب المكان</span>
+                {t("title")} <br className="hidden md:block"/> 
+                <span className="text-orange-500">{t("titleHighlight")}</span>
               </h2>
               
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
-                إحنا بدو واحة الفرافرة، أهل الصحراء البيضاء وحراسها. بنقدّم تجربة طالعة من قلب المكان نفسه. التخييم عندنا حياة كاملة مش مجرد إقامة، فيها بساطة وراحة ومغامرة حقيقية وسط طبيعة بنحترمها وبنحافظ عليها.
+                {t("description")}
               </p>
               
               <div className="relative pr-6 mb-6 border-r-4 border-orange-600/80 rounded-sm">
                 <p className="text-gray-400 leading-relaxed italic text-sm md:text-base">
-                  خبرتنا في الصحراء البيضاء بقالها أكتر من 26 سنة، نعرف طرقها ومواسمها وتقلباتها وكل تفصيلة فيها. نفّذنا نفس البرامج آلاف المرات مع ناس من حول العالم، ودايمًا كان الأمان والمسؤولية هما الأساس.
+                  {t("quote")}
                 </p>
               </div>
             </motion.div>
@@ -110,11 +112,11 @@ const AboutBedouin = () => {
               <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-600 to-amber-400 rounded-full group-hover:shadow-[0_0_15px_rgba(234,88,12,0.4)] transition-shadow duration-500" />
               <div className="pr-6">
                 <h3 className="text-white font-bold text-lg md:text-xl mb-2 group-hover:text-orange-400 transition-colors">
-                  فريقنا في UzerSaif
+                  {t("teamTitle")}
                 </h3>
                 <p className="text-gray-400 leading-relaxed text-sm md:text-base">
-                  فريق محترف، فاهم طبيعة الصحراء وبيقدّم تجربة صادقة ودافئة. ملتزمين بقوانين المحمية، وحريصين على البيئة، 
-                  <span className="text-orange-400 font-medium"> ومع أي موقف بنلاقي حل فوري.</span>
+                  {t("teamDescription")}
+                  <span className="text-orange-400 font-medium"> {t("teamHighlight")}</span>
                 </p>
               </div>
             </motion.div>
@@ -127,8 +129,8 @@ const AboutBedouin = () => {
               transition={{ delay: 0.4 }}
               className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-colors duration-500"
             >
-              <p className="text-white text-lg md:text-xl font-medium mb-1">بنوعدك بتجربة مختلفة...</p>
-              <p className="text-orange-400 text-base md:text-lg">مش عشان بنبيع رحلة، إحنا بنشاركك جزء من حياتنا.</p>
+              <p className="text-white text-lg md:text-xl font-medium mb-1">{t("promise")}</p>
+              <p className="text-orange-400 text-base md:text-lg">{t("promiseHighlight")}</p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="h-px flex-1 bg-gradient-to-l from-orange-600 to-transparent" />
                 <span className="text-white/60 text-lg md:text-xl font-medium">UzerSaif Team</span>

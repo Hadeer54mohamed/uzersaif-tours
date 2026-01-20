@@ -59,30 +59,6 @@ export default function AssuranceSection() {
 
   return (
     <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden">
-      {/* 🌌 خلفية فضائية غامقة */}
-      <div className="absolute inset-0 bg-cosmic-space" />
-
-      {/* ✨ طبقة النجوم */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-
-      {/* ☄️ طبقة الشهب */}
-      <div className="absolute inset-0 pointer-events-none">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
-
-      {/* توهج في الزوايا */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-48 h-48 rounded-full blur-3xl opacity-20 glow-purple" />
-        <div className="absolute bottom-20 right-10 w-56 h-56 rounded-full blur-3xl opacity-15 glow-fire" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-3xl opacity-10 glow-purple" />
-      </div>
-
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         {/* Heading */}
         <motion.div

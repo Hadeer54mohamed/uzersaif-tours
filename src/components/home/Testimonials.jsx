@@ -5,19 +5,29 @@ import { Card, CardContent } from "../ui/card";
 import { Star, Quote, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { testimonials } from "@/data/testimonialsData";
+import { testimonials as testimonialsOriginal } from "@/data/testimonialsData";
 import {
   StarParticle,
   ShootingStar,
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
+import { useTranslations } from "next-intl";
 
 const Testimonials = () => {
+  const t = useTranslations("testimonials");
+  const tData = useTranslations("testimonialsData");
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Get translated testimonials
+  const testimonials = testimonialsOriginal.map((item, index) => ({
+    ...item,
+    name: tData(`items.${index}.name`),
+    comment: tData(`items.${index}.comment`),
+  }));
 
   useEffect(() => {
     setStars(generateStars(60));
@@ -48,7 +58,7 @@ const Testimonials = () => {
 
 
   return (
-    <section className="relative py-8 sm:py-10 md:py-12 overflow-hidden">
+    <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden">
       <div className="absolute inset-0 bg-cosmic-space" />
       <div className="absolute inset-0 pointer-events-none">
         {stars.map((star) => (<StarParticle key={star.id} star={star} />))}
@@ -56,14 +66,10 @@ const Testimonials = () => {
       <div className="absolute inset-0 pointer-events-none">
         {meteors.map((meteor) => (<ShootingStar key={meteor.id} meteor={meteor} />))}
       </div>
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-64 h-64 rounded-full blur-3xl opacity-15 glow-purple" />
-        <div className="absolute bottom-10 right-10 w-56 h-56 rounded-full blur-3xl opacity-15 glow-fire" />
-      </div>
       
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-primary">عملائنا قالو اي عن رحلة الصحراء البيضاء ؟  </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-primary">{t("title")}</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -87,9 +93,9 @@ const Testimonials = () => {
                             </div>
                           ))}
                         </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#070A13] to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
                         <div className="absolute bottom-2 right-2 px-2 py-1 rounded-full text-xs font-bold bg-[#F47A1F] text-white">
-                          {testimonial.images.length} صور
+                          {testimonial.images.length} {t("photos")}
                         </div>
                       </div>
                     )}
@@ -129,7 +135,7 @@ const Testimonials = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl bg-gradient-to-br from-[#0D1324] to-[#1B2A4A] rounded-2xl overflow-hidden border border-[#F47A1F]/30"
+              className="relative w-full max-w-2xl bg-black rounded-2xl overflow-hidden border border-[#F47A1F]/30"
             >
               {/* زر الإغلاق */}
               <button onClick={closeModal} className="absolute top-3 left-3 z-20 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-[#F47A1F] transition-all">
@@ -145,7 +151,7 @@ const Testimonials = () => {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0D1324] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
                   
                   {selectedTestimonial.images.length > 1 && (
                     <>

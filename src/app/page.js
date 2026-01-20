@@ -24,7 +24,7 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import AboutBedouin from "@/components/home/AboutBedouin";
 import DesertTrip from "@/components/home/DesertTrip";
 import MediaSwiper from "@/components/MediaSwiper";
-import { homeGallery, mountainGallery, afterHeroVideo } from "@/data/mediaSwiperData";
+import { homeGallery, mountainGallery, afterHeroVideo, hotelGallery } from "@/data/mediaSwiperData";
 import ReviewsVideos from "@/components/home/ReviewsVideos";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 
@@ -76,12 +76,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* توهج في الزوايا */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <div className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full blur-3xl opacity-20 glow-purple" />
-        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full blur-3xl opacity-15 glow-fire" />
-        <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] rounded-full blur-3xl opacity-10 glow-blue" />
-      </div>
 
       <div className="min-h-screen relative z-10">
         <Navbar transparent />
@@ -95,11 +89,7 @@ const Home = () => {
         >
           <Hero />
         </motion.div>
-        <MediaSwiper 
-          customMedia={afterHeroVideo}
-          height="h-[600px]"
-          className="container mx-auto px-4 my-12"
-        /> 
+       
         <SectionDivider />
      <Experiences />
         <SectionDivider />
@@ -133,12 +123,18 @@ const Home = () => {
         <SectionDivider />
         <FAQ />
         <SectionDivider />
+        <MediaSwiper 
+          customMedia={hotelGallery}
+          height="h-[600px]"
+          className="container mx-auto px-4 my-12"
+          objectFit="contain"
+        /> 
+         <SectionDivider />
         <Testimonials />
         <SectionDivider />
         <Footer />
       </div>
 
-      {/* Exit Intent Popup */}
       <ExitIntentPopup />
     </>
   );

@@ -2,50 +2,55 @@
    🌌🪐 Cosmic Desert Theme - Uzer Saif Tours
  ====================== CSS Variables ====================== */
 :root {
-  /* Galaxy / Space Colors */
-  --galaxy-space: #070A13;
-  --galaxy-navy: #0D1324;
-  --galaxy-blue: #1B2A4A;
-  --galaxy-purple: #2A1F3F;
+  /* Galaxy / Space Colors - Pure Black */
+  --galaxy-space: #000000;
+  --galaxy-navy: #000000;
+  --galaxy-blue: #111111;
+  --galaxy-purple: #0a0a0a;
   
   /* Stars / Glow */
-  --stars-white: #F4F7FF;
-  --stars-glow: #C9D6FF;
+  --stars-white: #FFFFFF;
+  --stars-glow: #E5E5E5;
   --stars-yellow: #FFE4A0;
   
-  /* Desert / Fire */
+  /* Desert / Fire - Orange Accent */
   --desert-fire: #F47A1F;
   --desert-sunset: #D9641E;
   --desert-ember: #FFB85C;
   
-  /* Text Colors */
-  --text-primary: #F5F7FA;
-  --text-secondary: #B6BDD6;
-  --text-muted: #8A91A8;
+  /* CTA Green */
+  --cta-green: #22c55e;
+  --cta-green-dark: #16a34a;
+  --cta-green-light: #4ade80;
+  
+  /* Text Colors - White */
+  --text-primary: #FFFFFF;
+  --text-secondary: #BFBFBF;
+  --text-muted: #8C8C8C;
 }
 
 /* ====================== Background Utilities ====================== */
 
-/* Cosmic Space Backgrounds */
+/* Cosmic Space Backgrounds - Pure Black */
 .bg-cosmic-space {
-  background: radial-gradient(ellipse at top, var(--galaxy-blue) 0%, var(--galaxy-navy) 40%, var(--galaxy-space) 100%);
+  background: #000000;
 }
 
 .bg-cosmic-space-bottom {
-  background: radial-gradient(ellipse at bottom, var(--galaxy-blue) 0%, var(--galaxy-navy) 40%, var(--galaxy-space) 100%);
+  background: #000000;
 }
 
 .bg-galaxy-navy {
-  background-color: var(--galaxy-navy);
+  background-color: #000000;
 }
 
 .bg-galaxy-space {
-  background-color: var(--galaxy-space);
+  background-color: #000000;
 }
 
 /* Overlay Gradients */
 .overlay-cosmic {
-  background: linear-gradient(180deg, rgba(7, 10, 19, 0.6) 0%, rgba(13, 19, 36, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.9) 100%);
 }
 
 /* overlay-hero */
@@ -64,20 +69,16 @@
 
 
 .overlay-bottom {
-  background: linear-gradient(180deg, transparent 50%, rgba(7, 10, 19, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /* ====================== Card Backgrounds ====================== */
 
 .card-cosmic {
-  background: linear-gradient(135deg, 
-    rgba(13, 19, 36, 0.9) 0%, 
-    rgba(27, 42, 74, 0.8) 50%, 
-    rgba(42, 31, 63, 0.6) 100%
-  );
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(244, 122, 31, 0.35);
   backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(7, 10, 19, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .card-cosmic-hover:hover {
@@ -87,22 +88,19 @@
 }
 
 .card-cosmic-light {
-  background: linear-gradient(135deg, 
-    rgba(13, 19, 36, 0.8) 0%, 
-    rgba(27, 42, 74, 0.65) 100%
-  );
+  background: rgba(15, 15, 15, 0.8);
   border: 1px solid rgba(244, 122, 31, 0.3);
 }
 
 /* Form Card */
 .card-form {
-  background: linear-gradient(135deg, rgba(13, 19, 36, 0.9) 0%, rgba(27, 42, 74, 0.8) 100%);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(244, 122, 31, 0.3);
 }
 
 /* CTA Card */
 .card-cta {
-  background: linear-gradient(135deg, rgba(42, 31, 63, 0.5) 0%, rgba(13, 19, 36, 0.8) 100%);
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(244, 122, 31, 0.3);
 }
 
@@ -152,34 +150,35 @@
 
 /* ====================== Buttons ====================== */
 
+/* Green CTA Buttons for Booking/Contact */
 .btn-fire {
-  background: linear-gradient(135deg, var(--desert-fire), var(--desert-ember));
-  color: var(--text-primary);
-  box-shadow: 0 10px 30px rgba(244, 122, 31, 0.4);
+  background: linear-gradient(135deg, var(--cta-green), var(--cta-green-light));
+  color: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
 }
 
 .btn-fire:hover {
-  box-shadow: 0 15px 35px rgba(244, 122, 31, 0.5);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.5);
   transform: scale(1.05) translateY(-2px);
 }
 
 .btn-outline-fire {
   background-color: transparent;
-  border: 2px solid rgba(244, 122, 31, 0.6);
+  border: 2px solid rgba(34, 197, 94, 0.6);
   color: var(--text-primary);
   backdrop-filter: blur(8px);
 }
 
 .btn-outline-fire:hover {
-  background-color: rgba(244, 122, 31, 0.1);
-  border-color: var(--desert-fire);
+  background-color: rgba(34, 197, 94, 0.1);
+  border-color: var(--cta-green);
 }
 
 /* ====================== Navbar  ====================== */
 
 .navbar-scrolled {
-  background-color: var(--galaxy-navy);
-  box-shadow: 0 4px 20px rgba(7, 10, 19, 0.5);
+  background-color: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
 }
 
@@ -205,14 +204,14 @@
 }
 
 .mobile-menu {
-  background-color: var(--galaxy-navy);
-  box-shadow: 0 10px 30px rgba(7, 10, 19, 0.5);
+  background-color: #000000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* ====================== Form Inputs ====================== */
 
 .input-cosmic {
-  background-color: rgba(7, 10, 19, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(244, 122, 31, 0.3);
   color: var(--text-primary);
 }
@@ -267,13 +266,13 @@
 /* ====================== Footer Specific ====================== */
 
 .footer-bg {
-  background: radial-gradient(ellipse at bottom, var(--galaxy-blue) 0%, var(--galaxy-navy) 40%, var(--galaxy-space) 100%);
+  background: #000000;
 }
 
 /* ====================== Rating Badge ====================== */
 
 .rating-badge {
-  background-color: rgba(13, 19, 36, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(244, 122, 31, 0.4);
   backdrop-filter: blur(8px);
 }
@@ -293,7 +292,7 @@
 /* ====================== Social Icons ====================== */
 
 .social-icon {
-  background-color: rgba(27, 42, 74, 0.5);
+  background-color: rgba(20, 20, 20, 0.5);
   color: var(--text-secondary);
 }
 
@@ -324,7 +323,7 @@
 /* ====================== Contact Info ====================== */
 
 .contact-card {
-  background: linear-gradient(135deg, rgba(13, 19, 36, 0.8) 0%, rgba(27, 42, 74, 0.6) 100%);
+  background: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(244, 122, 31, 0.2);
 }
 
@@ -353,7 +352,7 @@
 
 /* Shadows */
 .shadow-cosmic {
-  box-shadow: 0 10px 30px rgba(7, 10, 19, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .shadow-fire {
@@ -368,20 +367,20 @@
 /* ====================== Sidebar  ====================== */
 
 .sidebar-cosmic {
-  background-color: rgba(13, 19, 36, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(244, 122, 31, 0.125);
   border-right: 1px solid rgba(244, 122, 31, 0.125);
 }
 
 .sidebar-item {
-  background-color: rgba(27, 42, 74, 0.4);
+  background-color: rgba(20, 20, 20, 0.4);
   border: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 .sidebar-item-active {
-  background: linear-gradient(135deg, rgba(244, 122, 31, 0.15) 0%, rgba(27, 42, 74, 0.4) 100%);
+  background: rgba(244, 122, 31, 0.15);
   border-color: rgba(244, 122, 31, 0.3);
 }
 
@@ -410,76 +409,76 @@
 /* ====================== Trip Cards ====================== */
 
 .trip-card {
-  background: linear-gradient(135deg, rgba(13, 19, 36, 0.9) 0%, rgba(27, 42, 74, 0.8) 100%);
+  background: rgba(10, 10, 10, 0.9);
   border: 1px solid rgba(244, 122, 31, 0.15);
 }
 
 .trip-card-prices {
-  background: linear-gradient(135deg, rgba(244, 122, 31, 0.1) 0%, rgba(27, 42, 74, 0.4) 100%);
+  background: rgba(244, 122, 31, 0.1);
   border: 1px solid rgba(244, 122, 31, 0.2);
 }
 
 .trip-card-notes {
-  background: linear-gradient(135deg, rgba(255, 184, 92, 0.06) 0%, rgba(27, 42, 74, 0.4) 100%);
+  background: rgba(255, 184, 92, 0.06);
   border: 1px solid rgba(255, 184, 92, 0.2);
 }
 
 .trip-card-permits {
-  background: linear-gradient(135deg, rgba(244, 122, 31, 0.1) 0%, rgba(27, 42, 74, 0.4) 100%);
+  background: rgba(244, 122, 31, 0.1);
   border: 1px solid rgba(244, 122, 31, 0.2);
 }
 
 /* ====================== Accordion  ====================== */
 
 .accordion-trigger-cosmic {
-  background: linear-gradient(135deg, rgba(244, 122, 31, 0.125) 0%, rgba(27, 42, 74, 0.4) 100%);
+  background: rgba(244, 122, 31, 0.125);
   border: 1px solid rgba(244, 122, 31, 0.2);
   color: var(--desert-fire);
 }
 
 .accordion-content-cosmic {
-  background-color: rgba(13, 19, 36, 0.8);
+  background-color: rgba(10, 10, 10, 0.8);
   border: 1px solid rgba(244, 122, 31, 0.1);
 }
 
 .accordion-activity {
-  background-color: rgba(27, 42, 74, 0.375);
+  background-color: rgba(20, 20, 20, 0.375);
   border: 1px solid rgba(244, 122, 31, 0.06);
 }
 
 /* ====================== Badge  ====================== */
 
 .badge-cosmic {
-  background-color: rgba(13, 19, 36, 0.5);
+  background-color: rgba(10, 10, 10, 0.5);
   border: 1px solid rgba(244, 122, 31, 0.2);
 }
 
 .badge-info {
-  background-color: rgba(27, 42, 74, 0.375);
+  background-color: rgba(20, 20, 20, 0.375);
 }
 
 /* ====================== Price List ====================== */
 
 .price-row {
-  background-color: rgba(13, 19, 36, 0.375);
+  background-color: rgba(10, 10, 10, 0.375);
 }
 
 .payment-method {
-  background-color: rgba(27, 42, 74, 0.3);
+  background-color: rgba(20, 20, 20, 0.3);
 }
 
 /* ====================== Background Variants ====================== */
 
 .bg-cosmic-vertical {
-  background: linear-gradient(180deg, var(--galaxy-space) 0%, var(--galaxy-navy) 50%, var(--galaxy-blue) 100%);
+  background: #000000;
 }
 
 .bg-gradient-hero-overlay {
-  background: linear-gradient(180deg, transparent 30%, rgba(7, 10, 19, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .bg-gradient-image-overlay {
-  background: linear-gradient(180deg, transparent 50%, rgba(7, 10, 19, 0.8) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 /* ====================== Border Utilities ====================== */
@@ -511,13 +510,13 @@
 /* ====================== CTA Button Large ====================== */
 
 .btn-fire-lg {
-  background: linear-gradient(135deg, var(--desert-fire), var(--desert-ember));
-  color: var(--text-primary);
-  box-shadow: 0 20px 40px rgba(244, 122, 31, 0.4);
+  background: linear-gradient(135deg, var(--cta-green), var(--cta-green-light));
+  color: #FFFFFF;
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.4);
 }
 
 .btn-fire-lg:hover {
-  box-shadow: 0 25px 50px rgba(244, 122, 31, 0.5);
+  box-shadow: 0 25px 50px rgba(34, 197, 94, 0.5);
 }
 
 /* ====================== Decorative Elements ====================== */
@@ -538,7 +537,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.7);
-  background: rgba(13, 19, 36, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(244, 122, 31, 0.3);
   border-radius: 9999px;

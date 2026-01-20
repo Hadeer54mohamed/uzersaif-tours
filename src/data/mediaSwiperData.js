@@ -61,3 +61,20 @@ export const afterHeroVideo = {
     },
   ],
 };
+
+export const hotelGallery = {
+  media: [
+    {
+      type: "image",
+      image: "/hotel1.jpg",
+    },
+    {
+      type: "image",
+      image: "/hotel2.jpg",
+    },
+    {
+      type: "image",
+      image: "/hotel3.jpg",
+    },
+  ],
+};

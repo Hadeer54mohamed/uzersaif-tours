@@ -15,12 +15,12 @@ import {
   Sparkles
 } from "lucide-react";
 import { homeGallery } from "@/data/mediaSwiperData";
-
+import { useTranslations } from "next-intl";
 // Media Item Component for individual items
-const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
+const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectFit = "cover" }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-
+  const t = useTranslations("mediaSwiper");
   // Get image URL helper 
   const getImageUrl = (image) => {
     if (!image) return "/trip.jpg";
@@ -215,7 +215,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
           className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-[#F47A1F]/80 backdrop-blur-sm flex items-center gap-2 text-white text-sm font-medium"
         >
           <Video className="w-4 h-4" />
-          فيديو
+          {t("video")}
         </motion.div>
 
         {/* Mute Button */}
@@ -242,7 +242,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
         transition={{ duration: 0.8 }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
-        className="w-full h-full object-cover"
+        className={`w-full h-full object-${objectFit}`}
         onError={(e) => {
           console.error("Image failed to load:", item.image);
           e.target.src = "/trip.jpg";
@@ -253,10 +253,10 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-[#1B2A4A]/80 backdrop-blur-sm flex items-center gap-2 text-white text-sm font-medium border border-[#F47A1F]/30"
+        className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-sm flex items-center gap-2 text-white text-sm font-medium border border-[#F47A1F]/30"
       >
         <ImageIcon className="w-4 h-4" />
-        صورة
+        {t("image")}
       </motion.div>
 
     
@@ -272,7 +272,8 @@ const MediaSwiper = ({
   className = "",
   height = "h-[500px]",
   autoPlayDefault = true,
-  intervalDefault = 5
+  intervalDefault = 5,
+  objectFit = "cover"
 }) => {
   // تحويل البيانات مباشرة
   const getGalleryData = () => {
@@ -374,7 +375,7 @@ const MediaSwiper = ({
   if (!gallery?.media?.length) {
     return (
       <div className={`${height} ${className} flex items-center justify-center 
-                      bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70 rounded-3xl
+                      bg-black/90 rounded-3xl
                       border border-[#F47A1F]/20`}>
         <div className="text-center space-y-4">
           <ImageIcon className="w-16 h-16 mx-auto text-[#8A91A8]" />
@@ -391,7 +392,7 @@ const MediaSwiper = ({
       <div 
         className={`relative ${height} rounded-3xl overflow-hidden 
                     border border-[#F47A1F]/20 shadow-2xl shadow-[#F47A1F]/10
-                    bg-gradient-to-br from-[#0D1324] to-[#1B2A4A]`}
+                    bg-black`}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -417,11 +418,12 @@ const MediaSwiper = ({
             isActive={true}
             isMuted={isMuted}
             toggleMute={() => setIsMuted(!isMuted)}
+            objectFit={objectFit}
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows - تظهر فقط إذا كان هناك أكثر من عنصر */}
+      {/* Navigation Arrows */}
       {gallery.media.length > 1 && (
         <>
           <motion.button
@@ -474,7 +476,7 @@ const MediaSwiper = ({
         </>
       )}
 
-      {/* Progress Bar - يظهر فقط إذا كان هناك أكثر من عنصر */}
+      {/* Progress Bar */}
       {gallery.media.length > 1 && shouldAutoPlay && !isPaused && (
         <motion.div
           key={currentIndex}

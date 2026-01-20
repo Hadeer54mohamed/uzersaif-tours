@@ -3,26 +3,28 @@
 import { useEffect, useState, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Rocket } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-// ألوان موحدة مع ثيم المشروع (Cosmic Desert Theme)
+// ألوان موحدة مع ثيم المشروع (Pure Black Theme)
 const INTRO_COLORS = {
   galaxy: {
-    space: "#060812",
-    navy: "#0B1022",
-    blue: "#16203A",
-    purple: "#251C3A",
+    space: "#000000",
+    navy: "#000000",
+    blue: "#111111",
+    purple: "#0a0a0a",
   },
   desert: {
-    fire: "#E57C1F",   // أهدى وأنعم
-    ember: "#FFD08A",  // ذهبي
+    fire: "#F47A1F",   // برتقالي
+    ember: "#FFB85C",  // ذهبي
   },
   stars: {
-    white: "#F2F5FF",
-    glow: "#B6C5FF",
+    white: "#FFFFFF",
+    glow: "#E5E5E5",
   }
 };
 
 const SpaceshipIntro = ({ onComplete }) => {
+  const t = useTranslations("spaceshipIntro");
   const [stage, setStage] = useState("countdown");
   const [countdown, setCountdown] = useState(3);
   const [stars, setStars] = useState([]);
@@ -156,7 +158,7 @@ const SpaceshipIntro = ({ onComplete }) => {
 
         {/* زر التخطي - ظاهر من الأول */}
         <button onClick={safeComplete} className="btn-skip-intro">
-          SKIP
+          {t("skip")}
         </button>
 
         {/* نجوم الخلفية */}
@@ -230,7 +232,7 @@ const SpaceshipIntro = ({ onComplete }) => {
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 1.5, repeat: reduceMotion ? 0 : Infinity }}
               >
-                جاري الإقلاع...
+                {t("launching")}
               </motion.p>
             </div>
           </motion.div>
@@ -291,7 +293,7 @@ const SpaceshipIntro = ({ onComplete }) => {
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 1.5, repeat: reduceMotion ? 0 : Infinity }}
                 >
-                  عبور الفضاء...
+                  {t("crossingSpace")}
                 </motion.p>
               </motion.div>
             </div>
@@ -381,7 +383,7 @@ const SpaceshipIntro = ({ onComplete }) => {
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 1.5, repeat: reduceMotion ? 0 : 2 }}
               >
-                رحلة فائقة السرعة 🚀
+                {t("hyperSpeed")}
               </motion.p>
             </motion.div>
           </div>
@@ -459,10 +461,10 @@ const SpaceshipIntro = ({ onComplete }) => {
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: reduceMotion ? 0 : 1 }}
                 >
-                  الهبوط على الصحراء البيضاء
+                  {t("landingTitle")}
                 </motion.h2>
                 <p className="text-2xl md:text-3xl drop-shadow-lg leading-tight tracking-tight">
-                  <span className="text-white">مرحباً بك في كوكب </span>
+                  <span className="text-white">{t("welcomeText")} </span>
                   <span 
                     style={{
                       background: `linear-gradient(90deg, ${INTRO_COLORS.desert.fire}, ${INTRO_COLORS.desert.ember})`,

@@ -23,8 +23,10 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations("about");
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
   const statsRef = useRef(null);
@@ -36,52 +38,28 @@ const About = () => {
   }, []);
 
   const values = [
-    {
-      icon: Target,
-      title: "رؤيتنا",
-      description:
-        "أن نكون الوجهة الأولى التي يثق بها المسافرون العرب للحصول على تجارب سفر فريدة ومصممة بعناية.",
-      gradient: "from-[#F47A1F] to-[#FFB85C]"
-    },
-    {
-      icon: Heart,
-      title: "مهمتنا",
-      description:
-        "نقدّم رحلات تُصنع بالحب والإتقان، وتهدف لخلق لحظات لا تُنسى وتفاصيل تجعل كل رحلة مختلفة.",
-      gradient: "from-[#ec4899] to-[#f472b6]"
-    },
-    {
-      icon: Globe,
-      title: "قيمنا",
-      description:
-        "الاحترافية، الجودة، الشفافية، الالتزام، وخدمة تتجاوز التوقعات في كل خطوة.",
-      gradient: "from-[#06b6d4] to-[#22d3ee]"
-    },
-    {
-      icon: Users,
-      title: "فريقنا",
-      description:
-        "فريق من خبراء السياحة المتخصصين بشغف في تنظيم المغامرات وتقديم تجارب متكاملة.",
-      gradient: "from-[#8b5cf6] to-[#a78bfa]"
-    }
+    { icon: Target, key: "vision", gradient: "from-[#F47A1F] to-[#FFB85C]" },
+    { icon: Heart, key: "mission", gradient: "from-[#ec4899] to-[#f472b6]" },
+    { icon: Globe, key: "ourValues", gradient: "from-[#06b6d4] to-[#22d3ee]" },
+    { icon: Users, key: "team", gradient: "from-[#8b5cf6] to-[#a78bfa]" }
   ];
 
   const stats = [
-    { value: "50+", label: "وجهة سياحية", icon: Compass },
-    { value: "200+", label: "رحلة سنويًا", icon: Mountain },
-    { value: "5000+", label: "عميل سعيد", icon: Users },
-    { value: "98%", label: "نسبة رضا العملاء", icon: Star },
+    { value: "50+", labelKey: "destinations", icon: Compass },
+    { value: "200+", labelKey: "tripsPerYear", icon: Mountain },
+    { value: "5000+", labelKey: "happyClients", icon: Users },
+    { value: "98%", labelKey: "satisfaction", icon: Star },
   ];
 
   const features = [
-    { icon: Shield, text: "نحن بدو واحة الفرافرة الأصليين، حياتنا كلها في الصحراء البيضاء وعارفين أسرارها، مش مجرد منظمين." },
-    { icon: Award, text: "خبرة أكتر من 26 سنة في الصحراء البيضاء تحديدًا، ومعرفتنا دقيقة بكل مسار وتكوين ومكان تخييم آمن في كل موسم." },
-    { icon: Star, text: "البرنامج الحالي اتنفّذ اكتر من 1000 مرة بنفس التفاصيل قبل كده ونجح مع مجموعات مختلفة." },
-    { icon: Users, text: "القرار دايمًا في إيد guide أمين من بدو الفرافرة، ملازم للمجموعة طوال الرحلة." },
-    { icon: Heart, text: "الفريق متعوّد يتعامل مع أنواع مختلفة من الضيوف مع احترام الاختلافات واحتياجات كل شخص." },
-    { icon: Shield, text: "إدارة الرحلة مبنية على المسؤولية قبل المتعة. لو حد تعب الحل بيكون فوري." },
-    { icon: Globe, text: "سمعتنا مبنية على سنين تنفيذ حقيقي، مش حملة تسويقية أو وعود على السوشيال." },
-    { icon: Target, text: "التزام كامل بقوانين محمية الصحراء البيضاء حفاظًا على الأمان والطبيعة." },
+    { icon: Shield, key: "1" },
+    { icon: Award, key: "2" },
+    { icon: Star, key: "3" },
+    { icon: Users, key: "4" },
+    { icon: Heart, key: "5" },
+    { icon: Shield, key: "6" },
+    { icon: Globe, key: "7" },
+    { icon: Target, key: "8" },
   ];
 
   // Animation variants
@@ -121,12 +99,6 @@ const About = () => {
         ))}
       </div>
 
-      {/* توهج في الزوايا */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 bg-[#2A1F3F]" />
-        <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full blur-[100px] opacity-12 bg-[#F47A1F]" />
-        <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] rounded-full blur-[100px] opacity-8 bg-[#1B2A4A]" />
-      </div>
 
       <Navbar transparent />
 
@@ -141,7 +113,7 @@ const About = () => {
             playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070A13]/40 via-[#0D1324]/70 to-[#070A13]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
 
         {/* Floating elements */}
@@ -174,24 +146,24 @@ const About = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
           >
             <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-            <span className="text-sm text-[#B6BDD6]">26 سنة من الخبرة</span>
+            <span className="text-sm text-[#B6BDD6]">{t("badge")}</span>
           </motion.div>
           
           <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-black mb-4 leading-tight">
-            <span className="text-gradient-fire">من</span>
-            <span className="text-[#F5F7FA]"> نحن</span>
+            <span className="text-gradient-fire">{t("title")}</span>
+            <span className="text-[#F5F7FA]"> {t("titleHighlight")}</span>
           </h1>
           
           <p className="text-[clamp(1rem,2.5vw,1.35rem)] text-[#B6BDD6] leading-relaxed max-w-xl mx-auto">
-            لأن خبرتنا 26 سنة… 
-            <span className="text-[#FFB85C] font-semibold"> وكلمتنا كلمة شرف</span>
+            {t("subtitle")}
+            <span className="text-[#FFB85C] font-semibold"> {t("subtitleHighlight")}</span>
           </p>
         </motion.div>
       </section>
 
       <SectionDivider />
       
-      {/* About Content - محسّن */}
+      {/* About Content */}
       <section className="relative z-10 ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           
@@ -203,10 +175,10 @@ const About = () => {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F7FA] mb-3">
-              قصتنا مع <span className="text-gradient-fire">الصحراء</span>
+              {t("storyTitle")} <span className="text-gradient-fire">{t("storyHighlight")}</span>
             </h2>
             <p className="text-[#B6BDD6] max-w-lg mx-auto">
-              من بدو واحة الفرافرة الأصليين، نقدم لكم تجربة حقيقية
+              {t("storySubtitle")}
             </p>
           </motion.div>
 
@@ -226,7 +198,7 @@ const About = () => {
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, x: -5 }}
                   className="group flex items-start gap-4 p-5 rounded-2xl backdrop-blur-md transition-all duration-300
-                             bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/60
+                             bg-black/90
                              border border-[#F47A1F]/15 hover:border-[#F47A1F]/40
                              hover:shadow-[0_0_30px_rgba(244,122,31,0.1)]"
                 >
@@ -236,7 +208,7 @@ const About = () => {
                     <Icon className="w-5 h-5 text-[#F47A1F]" />
                   </div>
                   <p className="text-[#B6BDD6] leading-relaxed text-sm sm:text-base">
-                    {feature.text}
+                    {t(`features.${feature.key}`)}
                   </p>
                 </motion.div>
               );
@@ -251,7 +223,7 @@ const About = () => {
             className="max-w-3xl mx-auto mb-16"
           >
             <div className="relative rounded-3xl p-8 text-center overflow-hidden
-                           bg-gradient-to-br from-[#F47A1F]/10 via-[#0D1324]/80 to-[#2A1F3F]/30
+                           bg-[#F47A1F]/10
                            border border-[#F47A1F]/30">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#F47A1F]/20 to-transparent rounded-bl-full" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#FFB85C]/10 to-transparent rounded-tr-full" />
@@ -265,15 +237,15 @@ const About = () => {
               </motion.div>
               
               <p className="text-xl sm:text-2xl font-bold text-[#F5F7FA] mb-2">
-                نفضّل نخسر حجز…
+                {t("highlightTitle")}
               </p>
               <p className="text-lg sm:text-xl text-[#FFB85C] font-semibold">
-                ولا نخسر ثقة أو نبوّظ تجربة باقي الضيوف
+                {t("highlightSubtitle")}
               </p>
             </div>
           </motion.div>
 
-          {/* Values Section - محسّن */}
+          {/* Values Section*/}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -281,7 +253,7 @@ const About = () => {
             className="text-center mb-10"
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F7FA] mb-3">
-              ما يميزنا
+              {t("valuesTitle")}
             </h2>
           </motion.div>
 
@@ -297,7 +269,7 @@ const About = () => {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -8, scale: 1.02 }}
                   className="group rounded-2xl p-6 backdrop-blur-md shadow-xl transition-all duration-300
-                             bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70
+                             bg-black/90
                              border border-[#F47A1F]/20 hover:border-[#F47A1F]/50
                              hover:shadow-[0_20px_50px_rgba(244,122,31,0.15)]"
                 >
@@ -310,11 +282,11 @@ const About = () => {
                   </div>
 
                   <h3 className="text-lg font-bold mb-3 text-center text-[#F5F7FA] group-hover:text-[#FFB85C] transition-colors">
-                    {value.title}
+                    {t(`values.${value.key}.title`)}
                   </h3>
 
                   <p className="text-sm leading-relaxed text-center text-[#B6BDD6]">
-                    {value.description}
+                    {t(`values.${value.key}.description`)}
                   </p>
                 </motion.div>
               );
@@ -327,7 +299,7 @@ const About = () => {
       <section ref={statsRef} className="relative z-10 py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
           <div className="rounded-3xl p-8 sm:p-12 backdrop-blur-md
-                         bg-gradient-to-br from-[#0D1324]/80 to-[#1B2A4A]/60
+                         bg-black/80
                          border border-[#F47A1F]/20 shadow-2xl">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               {stats.map((stat, index) => {
@@ -358,7 +330,7 @@ const About = () => {
                       {stat.value}
                     </motion.h3>
                     <p className="text-sm sm:text-base font-medium text-[#B6BDD6]">
-                      {stat.label}
+                      {t(`stats.${stat.labelKey}`)}
                     </p>
                   </motion.div>
                 );
@@ -376,7 +348,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center rounded-3xl p-8 sm:p-10 relative overflow-hidden
-                       bg-gradient-to-br from-[#2A1F3F]/50 via-[#0D1324]/80 to-[#1B2A4A]/50
+                       bg-black/80
                        border border-[#F47A1F]/25 backdrop-blur-md shadow-2xl"
           >
             <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#F47A1F]/15 to-transparent rounded-br-full" />
@@ -391,10 +363,10 @@ const About = () => {
               </motion.div>
               
               <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#F5F7FA]">
-                جاهز تبدأ <span className="text-gradient-fire">مغامرتك</span>؟
+                {t("cta.title")} <span className="text-gradient-fire">{t("cta.titleHighlight")}</span>؟
               </h2>
               <p className="text-[#B6BDD6] mb-8 max-w-lg mx-auto">
-                انضم إلى آلاف المغامرين الذين وثقوا فينا
+                {t("cta.subtitle")}
               </p>
               
               <motion.a
@@ -407,7 +379,7 @@ const About = () => {
                            transition-all duration-300"
               >
                 <Sparkles className="w-5 h-5 ml-2" />
-                اكتشف رحلاتنا
+                {t("cta.button")}
               </motion.a>
             </div>
           </motion.div>

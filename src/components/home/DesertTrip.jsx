@@ -10,26 +10,27 @@ import {
 } from "@/components/ui/accordion";
 import { dummyTrips } from "@/lib/dummyTrips";
 import { Users, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const BookingCard = ({ selectedTrip }) => {
-  const phoneNumber = "201011879549";
-  const message = `أهلاً ساهر، حابب أحجز مكاني في "${selectedTrip.title}". ممكن تفاصيل ؟`;
+const BookingCard = ({ selectedTrip, t, tripTitle }) => {
+  const phoneNumber = "201069836767";
+  const message = t("whatsappMessage", { title: tripTitle });
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   const remainingSeats = 4;
 
   return (
-    <div className="bg-gradient-to-br from-[#F47A1F]/10 to-[#1B2A4A]/60 backdrop-blur-md border border-[#F47A1F]/30 rounded-2xl p-6 flex flex-col justify-center relative overflow-hidden">
+    <div className="bg-[#F47A1F]/10 backdrop-blur-md border border-[#F47A1F]/30 rounded-2xl p-6 flex flex-col justify-center relative overflow-hidden">
 
       {/*  Counter */}
       <div className="flex items-center justify-between mb-4 bg-black/20 p-3 rounded-xl border border-white/5">
         <div className="flex items-center gap-2">
           <Users className="text-orange-500 w-5 h-5" />
-          <span className="text-sm text-gray-300 font-bold">الأماكن المتبقية:</span>
+          <span className="text-sm text-gray-300 font-bold">{t("remainingSeats")}</span>
         </div>
         <div className="flex items-center gap-1">
           <span className="text-xl font-black text-orange-500">{remainingSeats}</span>
-          <span className="text-xs text-gray-500">من 14</span>
+          <span className="text-xs text-gray-500">{t("of")} 14</span>
         </div>
       </div>
 
@@ -63,17 +64,17 @@ const BookingCard = ({ selectedTrip }) => {
   "
       >
         <MessageCircle size={24} />
-        احجز مكانك الآن
+        {t("bookNow")}
       </motion.a>
 
 
       <div className="mt-4 flex flex-col gap-1 text-center">
         <p className="text-xs text-[#8A91A8] font-bold">
-          يتم تأكيد الحجز عند دفع العربون {selectedTrip.bookingSteps?.deposit}
+          {t("bookingConfirm")} {selectedTrip.bookingSteps?.deposit}
         </p>
         <div className="flex items-center justify-center gap-1">
           <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-          <p className="text-[10px] text-emerald-500/80 font-medium">متاح الحجز الآن - رد فوري</p>
+          <p className="text-[10px] text-emerald-500/80 font-medium">{t("availableNow")}</p>
         </div>
       </div>
 
@@ -83,56 +84,98 @@ const BookingCard = ({ selectedTrip }) => {
 };
 
 const DesertTrip = () => {
-  const [trips, setTrips] = useState([]);
-  const [selectedTrip, setSelectedTrip] = useState(null);
+  const t = useTranslations("desertTrip");
+  const [selectedTripId, setSelectedTripId] = useState(dummyTrips[0]?._id);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Helper function to get translated trip data
+  const getTripData = (trip) => {
+    const key = trip.translationKey;
+    return {
+      ...trip,
+      title: t(`trips.${key}.title`),
+      location: t(`trips.${key}.location`),
+      duration: t(`trips.${key}.duration`),
+      discountAmount: t(`trips.${key}.discountAmount`),
+      gathering: trip.gatheringIcons.map((icon, i) => ({
+        icon,
+        text: t(`trips.${key}.gathering.${i}`),
+      })),
+      itinerary: [
+        {
+          day: t(`trips.${key}.itinerary.day1.title`),
+          activities: trip.itineraryIcons.day1.map((icon, i) => ({
+            icon,
+            text: t(`trips.${key}.itinerary.day1.activities.${i}`),
+          })),
+        },
+        {
+          day: t(`trips.${key}.itinerary.day2.title`),
+          activities: trip.itineraryIcons.day2.map((icon, i) => ({
+            icon,
+            text: t(`trips.${key}.itinerary.day2.activities.${i}`),
+          })),
+        },
+        {
+          day: t(`trips.${key}.itinerary.day3.title`),
+          activities: trip.itineraryIcons.day3.map((icon, i) => ({
+            icon,
+            text: t(`trips.${key}.itinerary.day3.activities.${i}`),
+          })),
+        },
+      ],
+      guarantees: [
+        {
+          title: t(`trips.${key}.guarantees.food.title`),
+          items: [
+            t(`trips.${key}.guarantees.food.items.0`),
+            t(`trips.${key}.guarantees.food.items.1`),
+          ],
+        },
+        {
+          title: t(`trips.${key}.guarantees.sleep.title`),
+          items: [
+            t(`trips.${key}.guarantees.sleep.items.0`),
+            t(`trips.${key}.guarantees.sleep.items.1`),
+          ],
+        },
+        {
+          title: t(`trips.${key}.guarantees.cancellation.title`),
+          items: [
+            t(`trips.${key}.guarantees.cancellation.items.0`),
+            t(`trips.${key}.guarantees.cancellation.items.1`),
+          ],
+        },
+        {
+          title: t(`trips.${key}.guarantees.safety.title`),
+          items: [
+            t(`trips.${key}.guarantees.safety.items.0`),
+            t(`trips.${key}.guarantees.safety.items.1`),
+          ],
+        },
+      ],
+    };
+  };
+
+  // Get translated trips (recalculated when t changes - i.e., when language changes)
+  const trips = dummyTrips.map(getTripData);
+  const selectedTrip = trips.find(trip => trip._id === selectedTripId) || trips[0];
+
   useEffect(() => {
-    setTrips(dummyTrips);
-    setSelectedTrip(dummyTrips[0]);
     setIsLoading(false);
   }, []);
 
-  if (isLoading) return <LoadingSkeleton />;
+  if (isLoading) return <LoadingSkeleton t={t} />;
 
   return (
     <div className="py-8 relative" dir="rtl">
-      {/* توهجات فضائية */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 right-10 w-[400px] h-[400px] rounded-full blur-[120px] opacity-10 bg-[#F47A1F]" />
-        <div className="absolute bottom-40 left-10 w-[300px] h-[300px] rounded-full blur-[100px] opacity-10 bg-purple-600" />
-      </div>
-
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
-        {/* Header */}
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-          <h2 className="text-3xl md:text-5xl font-black text-[#F5F7FA] mb-3">
-            استكشف <span className="text-[#F47A1F]">مغامراتنا</span>
-          </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] mx-auto rounded-full" />
-        </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-6">
-          {trips.map((trip) => (
-            <motion.button
-              key={trip._id}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedTrip(trip)}
-              className={`px-6 py-2 rounded-xl font-bold transition-all border-2 backdrop-blur-sm text-sm ${selectedTrip?._id === trip._id
-                ? "bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] border-[#F47A1F] text-white shadow-lg shadow-[#F47A1F]/30"
-                : "bg-[#0D1324]/60 border-[#F47A1F]/20 text-[#B6BDD6] hover:border-[#F47A1F]/50"
-                }`}
-            >
-              {trip.title}
-            </motion.button>
-          ))}
-        </div>
 
         <AnimatePresence mode="wait">
           {selectedTrip && (
             <motion.div
-              key={selectedTrip._id}
+              key={selectedTripId}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
@@ -141,7 +184,7 @@ const DesertTrip = () => {
               {/* Hero Image */}
               <div className="relative h-[280px] md:h-[400px] rounded-2xl overflow-hidden border border-[#F47A1F]/20 shadow-xl shadow-[#F47A1F]/10">
                 <img src={selectedTrip.image} className="w-full h-full object-cover" alt={selectedTrip.title} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070A13] via-[#070A13]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                 <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#F47A1F]/30 rounded-tl-2xl" />
                 <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#F47A1F]/30 rounded-tr-2xl" />
                 <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#F47A1F]/30 rounded-bl-2xl" />
@@ -149,7 +192,7 @@ const DesertTrip = () => {
                 <div className="absolute bottom-6 right-6 left-6 text-white">
                   <div className="flex gap-2 mb-2">
                     <span className="px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-[#F47A1F] to-[#FFB85C]">{selectedTrip.duration}</span>
-                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#0D1324]/60 backdrop-blur-md border border-[#F47A1F]/30">{selectedTrip.location}</span>
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-black/60 backdrop-blur-md border border-[#F47A1F]/30">{selectedTrip.location}</span>
                   </div>
                   <h1 className="text-2xl md:text-4xl font-black text-[#F5F7FA]">{selectedTrip.title}</h1>
                 </div>
@@ -157,11 +200,11 @@ const DesertTrip = () => {
 
               {/* البرنامج + التجمع */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
-                  <h3 className="text-xl font-black text-[#F5F7FA] mb-4">نقاط التجمع</h3>
+                <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
+                  <h3 className="text-xl font-black text-[#F5F7FA] mb-4">{t("gatheringPoints")}</h3>
                   <div className="space-y-2">
                     {selectedTrip.gathering?.map((item, i) => (
-                      <div key={i} className="flex gap-3 items-start p-3 bg-[#1B2A4A]/40 rounded-lg border border-[#F47A1F]/10">
+                      <div key={i} className="flex gap-3 items-start p-3 bg-white/5 rounded-lg border border-[#F47A1F]/10">
                         <div className="w-2 h-2 rounded-full bg-[#F47A1F] mt-1.5 flex-shrink-0"></div>
                         <p className="text-[#B6BDD6] font-bold text-sm leading-relaxed">{item.text}</p>
                       </div>
@@ -169,10 +212,10 @@ const DesertTrip = () => {
                   </div>
                 </div>
                 <div className="space-y-3">
-                  <h3 className="text-xl font-black text-[#F5F7FA]">برنامج الرحلة</h3>
+                  <h3 className="text-xl font-black text-[#F5F7FA]">{t("tripProgram")}</h3>
                   <Accordion type="single" collapsible className="space-y-2">
                     {selectedTrip.itinerary?.map((day, idx) => (
-                      <AccordionItem key={idx} value={`day-${idx}`} className="border-[#F47A1F]/10 bg-gradient-to-br from-[#0D1324]/80 to-[#1B2A4A]/50 rounded-xl px-3 backdrop-blur-sm">
+                      <AccordionItem key={idx} value={`day-${idx}`} className="border-[#F47A1F]/10 bg-black/80 rounded-xl px-3 backdrop-blur-sm">
                         <AccordionTrigger className="text-[#F5F7FA] hover:no-underline font-black text-sm hover:text-[#F47A1F] py-3">
                           {day.day}
                         </AccordionTrigger>
@@ -194,9 +237,9 @@ const DesertTrip = () => {
 
               {/* Booking + Price */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4" id="booking">
-                <BookingCard selectedTrip={selectedTrip} />
+                <BookingCard selectedTrip={selectedTrip} t={t} tripTitle={selectedTrip.title} />
 
-                <div className="bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5 relative overflow-hidden flex flex-col justify-center">
+                <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5 relative overflow-hidden flex flex-col justify-center">
 
                   {/* glow */}
                   <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#F47A1F]/10 blur-[60px]" />
@@ -204,29 +247,38 @@ const DesertTrip = () => {
                   <div className="relative z-10 text-center space-y-4">
 
                     {/* discount amount (top like image) */}
-                    <div className="inline-block mx-auto px-6 py-2 border border-[#F47A1F]/40 rounded-full text-[#F5F7FA] font-black text-2xl">
-                      خصم {selectedTrip.discountAmount}
+                    <div className="
+  inline-block mx-auto
+  px-6 py-2
+  border border-[#F5F7FA]/30
+  rounded-full
+  text-2xl font-black
+  bg-gradient-to-r from-[#F47A1F] via-[#FFB85C] to-[#F47A1F]
+  bg-clip-text text-transparent
+  drop-shadow-[0_0_12px_rgba(255,184,92,0.35)]
+">
+                      {t("discount")} {selectedTrip.discountAmount}
                     </div>
 
                     {/* coupon code */}
                     <p className="text-[#F47A1F] font-black text-lg">
-                      استخدم كود <span className="underline">{selectedTrip.discountCode}</span>
+                      {t("useCode")} <span className="underline">{selectedTrip.discountCode}</span>
                     </p>
 
                     {/* small note */}
                     <p className="text-sm font-bold text-[#8A91A8]">
-                      سعر الرحلة بعد الخصم
+                      {t("priceAfterDiscount")}
                     </p>
 
                     {/* price */}
                     <div className="text-5xl font-black text-[#F5F7FA]">
                       {selectedTrip.price}
-                      <span className="text-xl font-bold text-[#F47A1F] mr-2">جنيه</span>
+                      <span className="text-xl font-bold text-[#F47A1F] mr-2">{t("currency")}</span>
                     </div>
 
                     {/* old price */}
                     <div className="text-xl font-black text-[#8A91A8] line-through">
-                      بدلاً من {selectedTrip.originalPrice} جنيه
+                      {t("insteadOf")} {selectedTrip.originalPrice} {t("currency")}
                     </div>
 
                   </div>
@@ -236,29 +288,57 @@ const DesertTrip = () => {
 
               {/* طريقة الحجز */}
               {selectedTrip.bookingSteps && (
-                <div className="bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
-                  <h3 className="text-xl font-black text-[#F5F7FA] mb-4">طريقة الحجز والدفع</h3>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                    <div className="p-7 bg-[#1B2A4A]/50 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">العربون</span>
+                <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
+                  <h3 className="text-xl font-black text-[#F5F7FA] mb-4">{t("bookingMethod")}</h3>
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 pb-5">
+                    <div className="p-7 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
+                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">{t("deposit")}</span>
                       <span className="text-xl font-black text-[#F47A1F] text-xl">{selectedTrip.bookingSteps.deposit}</span>
                     </div>
-                    <div className="p-3 bg-[#1B2A4A]/50 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">الدفع</span>
+                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
+                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">{t("payment")}</span>
                       <span className="font-black text-[#F5F7FA] text-xl">{selectedTrip.bookingSteps.method}</span>
                     </div>
-                    <div className="p-3 bg-[#1B2A4A]/50 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">الرقم</span>
+                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
+                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">{t("number")}</span>
                       <span className="font-black text-[#F47A1F] text-xl">{selectedTrip.bookingSteps.number}</span>
                     </div>
-                    <div className="p-3 bg-[#1B2A4A]/50 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">الحساب</span>
+                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
+                      <span className="text-[#8A91A8] font-bold text-xl block mb-1">{t("account")}</span>
                       <span className="font-black text-[#F5F7FA] text-xl">{selectedTrip.bookingSteps.accountName}</span>
                     </div>
                   </div>
+                  {/* ملاحظة */}
+                  <div className="
+  py-5 px-4
+  bg-gradient-to-r from-[#FFB85C]/15 to-[#F47A1F]/15
+  border border-[#FFB85C]/30
+  rounded-xl
+  backdrop-blur-sm
+  text-center
+  space-y-1.5
+  cursor-pointer
+  transition-all duration-300
+  hover:scale-[1.03]
+  hover:shadow-[0_0_25px_rgba(255,184,92,0.25)]
+">
+                    <span className="
+    block
+    text-white
+    font-extrabold
+    text-base
+  ">
+                      {t("subscribeNow")}
+                    </span>
+
+                    <p className="text-[#FFB85C] font-semibold text-xs">
+                      {t("importantNote")}
+                    </p>
+                  </div>
+
                   {/* زر الواتساب */}
                   <motion.a
-                    href={`https://wa.me/201011879549?text=${encodeURIComponent(`أهلاً ساهر، حابب أحجز مكاني في "${selectedTrip.title}". ممكن تفاصيل ؟`)}`}
+                    href={`https://wa.me/201069836767?text=${encodeURIComponent(t("whatsappMessage", { title: selectedTrip.title }))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.02, y: -2 }}
@@ -266,7 +346,7 @@ const DesertTrip = () => {
                     className="w-full mt-4 bg-gradient-to-r from-emerald-500 to-emerald-400 text-white font-black py-4 px-8 rounded-xl shadow-lg shadow-emerald-500/40 text-lg flex items-center justify-center gap-3 transition-all hover:shadow-emerald-500/60 hover:brightness-110"
                   >
                     <MessageCircle size={24} />
-                    احجز مكانك الآن
+                    {t("bookNow")}
                   </motion.a>
                 </div>
               )}
@@ -277,16 +357,11 @@ const DesertTrip = () => {
               {selectedTrip.guarantees && (
                 <div>
                   <h2 className="text-[clamp(1.8rem,4vw,3.5rem)] font-bold mb-6 text-primary text-center">
-                    ضــمـان بدو واحة الفرافرة
+                    {t("guaranteeTitle")}
                   </h2>
 
-                  <div className="bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/70 backdrop-blur-sm rounded-2xl p-6 border border-[#F47A1F]/20">
+                  <div className="bg-black/90 backdrop-blur-sm rounded-2xl p-6 border border-[#F47A1F]/20">
                     <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
-                    <div className="col-span-2 lg:col-span-1 bg-emerald-500/50 backdrop-blur-lg rounded-xl p-5 border border-white/20 flex items-center justify-center transition-transform hover:scale-105 shadow-xl">                        <p className="text-white font-bold text-sm text-center leading-relaxed">
-                          التخييم عندنا مش فندق… لكن إحنا بدو، وكلمتنا شرف.
-                        </p>
-                      </div>
-
                       {/* بقية الضمانات */}
                       {selectedTrip.guarantees.map((g, i) => (
                         <div key={i} className="transition-transform hover:scale-105">
@@ -304,17 +379,17 @@ const DesertTrip = () => {
                           </ul>
                         </div>
                       ))}
+                      <div className="col-span-2 lg:col-span-1 bg-emerald-500/50 backdrop-blur-lg rounded-xl p-5 border border-white/20 flex items-center justify-center transition-transform hover:scale-105 shadow-xl">
+                        <p className="text-white font-bold text-sm text-center leading-relaxed">
+                          {t("guaranteeNote")}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* ملاحظة */}
-              <div className="p-4 bg-gradient-to-r from-[#FFB85C]/10 to-[#F47A1F]/10 border border-[#FFB85C]/30 rounded-xl backdrop-blur-sm">
-                <p className="text-[#FFB85C] font-bold text-sm text-center">
-                  يرجى إرسال صورة البطاقة الشخصية وصورة التحويل لحجز الفندق واستخراج التصاريح الأمنية
-                </p>
-              </div>
+
             </motion.div>
           )}
         </AnimatePresence>
@@ -323,14 +398,14 @@ const DesertTrip = () => {
   );
 };
 
-const LoadingSkeleton = () => (
+const LoadingSkeleton = ({ t }) => (
   <div className="min-h-[40vh] flex items-center justify-center" dir="rtl">
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center">
       <motion.div animate={{ rotate: 360 }} transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }} className="relative w-16 h-16 mx-auto mb-4">
         <div className="absolute inset-0 rounded-full border-4 border-[#F47A1F]/20" />
         <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#F47A1F]" />
       </motion.div>
-      <p className="text-lg font-bold text-[#F5F7FA]">جاري التحميل...</p>
+      <p className="text-lg font-bold text-[#F5F7FA]">{t ? t("loading") : "جاري التحميل..."}</p>
     </motion.div>
   </div>
 );

@@ -2,11 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react";
 import { NavLink } from "../NavLink";
 import { Button } from "../ui/button";
+import { useTranslations, useLocale } from "next-intl";
 
 const Navbar = ({ transparent = false }) => {
+  const t = useTranslations("nav");
+  const locale = useLocale();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -18,11 +21,16 @@ const Navbar = ({ transparent = false }) => {
     }
   }, []);
 
+  const switchLocale = (newLocale) => {
+    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
+    window.location.reload();
+  };
+
   const navLinks = [
-    { href: "/", label: "الرئيسية" },
-    { href: "/Trips", label: "الرحلات" },
-    { href: "/about", label: "من نحن" },
-    { href: "/contact", label: "تواصل معنا" },
+    { href: "/", label: t("home") },
+    { href: "/Trips", label: t("trips") },
+    { href: "/about", label: t("about") },
+    { href: "/contact", label: t("contact") },
   ];
 
   return (
@@ -62,8 +70,18 @@ const Navbar = ({ transparent = false }) => {
             </NavLink>
           ))}
 
+          {/* Language Switcher */}
+          <button
+            onClick={() => switchLocale(locale === 'ar' ? 'en' : 'ar')}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all text-primary hover:bg-white/10"
+            title={locale === 'ar' ? 'Switch to English' : 'التبديل للعربية'}
+          >
+            <Globe size={18} />
+            <span className="text-sm font-medium">{locale === 'ar' ? 'EN' : 'ع'}</span>
+          </button>
+
           <a href="#booking" className="px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all font-bold btn-fire">
-            احجز الآن
+            {t("bookNow")}
           </a>
         </div>
 
@@ -101,8 +119,17 @@ const Navbar = ({ transparent = false }) => {
             </NavLink>
           ))}
 
+          {/* Mobile Language Switcher */}
+          <button
+            onClick={() => switchLocale(locale === 'ar' ? 'en' : 'ar')}
+            className="flex items-center justify-center gap-2 w-full py-2 rounded-lg transition-all text-primary bg-white/5 hover:bg-white/10"
+          >
+            <Globe size={18} />
+            <span className="font-medium">{locale === 'ar' ? 'English' : 'العربية'}</span>
+          </button>
+
           <a href="#booking" onClick={() => setIsMobileMenuOpen(false)} className="block w-full py-3 rounded-xl shadow-md font-bold transition-all btn-fire text-center">
-            احجز الآن
+            {t("bookNow")}
           </a>
         </div>
       </div>

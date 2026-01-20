@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 const videosData = [
   {
@@ -35,45 +36,29 @@ const videosData = [
   },
 ];
 
-// Skeleton Component
-const VideoSkeleton = () => (
-  <div className="w-full aspect-video rounded-xl overflow-hidden bg-white/5 animate-pulse">
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10" />
-    </div>
-  </div>
-);
-
 // Video Card Component
-const VideoCard = ({ video, onClick, index }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
-  const [videoTitle, setVideoTitle] = useState(video.title || "");
-
-  useEffect(() => {
-    if (video.type === "youtube" && !video.title) {
-      fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${video.id}&format=json`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.title) {
-            setVideoTitle(data.title);
-          }
-        })
-        .catch(() => {
-          setVideoTitle("فيديو YouTube");
-        });
+const VideoCard = ({ video, onClick, index, t }) => {
+  // Get title from translations
+  const getTitle = () => {
+    if (video.type === "facebook") {
+      return t("videos.facebook");
     }
-  }, [video.id, video.type, video.title]);
+    // Try to get translated title for YouTube videos
+    const translatedTitle = t(`videos.${video.id}`, { defaultValue: "" });
+    if (translatedTitle && translatedTitle !== `videos.${video.id}`) {
+      return translatedTitle;
+    }
+    return t("watchVideo");
+  };
 
+  // Get YouTube thumbnail URL
   const getThumbnail = () => {
     if (video.thumbnail) return video.thumbnail;
     if (video.type === "youtube") {
-      return `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+      return `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
     }
-    return video.thumbnail || "/hero.jpg";
+    return "/hero.jpg";
   };
-
-  const fallbackImage = "/hero.jpg";
 
   const handleClick = () => {
     if (video.type === "facebook") {
@@ -94,25 +79,10 @@ const VideoCard = ({ video, onClick, index }) => {
       onClick={handleClick}
       className="group w-full rounded-xl overflow-hidden relative card-cosmic"
     >
-      {/* Skeleton while loading */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-white/5 animate-pulse flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-white/10" />
-        </div>
-      )}
-
-      {/* Thumbnail */}
-      <img
-        src={imageError ? fallbackImage : getThumbnail()}
-        alt={videoTitle}
-        onLoad={() => setImageLoaded(true)}
-        onError={() => {
-          setImageError(true);
-          setImageLoaded(true);
-        }}
-        className={`w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500 ${
-          imageLoaded ? "opacity-100" : "opacity-0"
-        }`}
+      {/* Thumbnail with background */}
+      <div 
+        className="w-full aspect-video bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+        style={{ backgroundImage: `url(${getThumbnail()})` }}
       />
 
       {/* Gradient Overlay */}
@@ -125,26 +95,31 @@ const VideoCard = ({ video, onClick, index }) => {
         </div>
       )}
 
+      {/* YouTube Badge */}
+      {video.type === "youtube" && (
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-red-600/90 text-white text-[10px] sm:text-xs font-medium">
+          YouTube
+        </div>
+      )}
+
       {/* Play Button */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           whileHover={{ scale: 1.1 }}
-          className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full backdrop-blur-sm flex items-center justify-center shadow-lg transition-colors duration-300 ${
+          className={`w-12 h-12 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full backdrop-blur-sm flex items-center justify-center shadow-lg transition-colors duration-300 ${
             video.type === "facebook"
               ? "bg-blue-600/90 shadow-blue-600/30 group-hover:bg-blue-600"
-              : "bg-[#F47A1F]/90 shadow-[#F47A1F]/30 group-hover:bg-[#F47A1F]"
+              : "bg-red-600/90 shadow-red-600/30 group-hover:bg-red-600"
           }`}
         >
-          <Play className="w-4 h-4 sm:w-6 sm:h-6 md:w-7 md:h-7 text-white fill-white ml-0.5" />
+          <Play className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white fill-white ml-0.5" />
         </motion.div>
       </div>
 
       {/* Title */}
       <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3">
         <h3 className="text-white font-semibold text-[10px] sm:text-xs md:text-sm line-clamp-2 text-right leading-tight">
-          {videoTitle || (
-            <span className="inline-block w-20 sm:w-32 h-3 sm:h-4 bg-white/20 rounded animate-pulse" />
-          )}
+          {getTitle()}
         </h3>
       </div>
     </motion.button>
@@ -152,6 +127,7 @@ const VideoCard = ({ video, onClick, index }) => {
 };
 
 export default function ReviewsVideos() {
+  const t = useTranslations("reviewsVideos");
   const [activeVideo, setActiveVideo] = useState(null);
   const sliderRef = useRef(null);
 
@@ -180,7 +156,7 @@ export default function ReviewsVideos() {
         className="container mx-auto px-3 sm:px-6 text-center mb-4 sm:mb-8"
       >
         <h2 className="text-[clamp(1.25rem,4vw,2.5rem)] font-bold leading-tight text-primary">
-          شوف تجارب اللي سافروا معانا
+          {t("title")}
         </h2>
       </motion.div>
 
@@ -193,6 +169,7 @@ export default function ReviewsVideos() {
               video={video}
               index={index}
               onClick={() => setActiveVideo(video.id)}
+              t={t}
             />
           ))}
         </div>
@@ -240,7 +217,7 @@ export default function ReviewsVideos() {
 
             {/* Click outside hint */}
             <p className="absolute bottom-4 text-white/50 text-sm">
-              اضغط في أي مكان للإغلاق
+              {t("clickToClose")}
             </p>
           </motion.div>
         )}

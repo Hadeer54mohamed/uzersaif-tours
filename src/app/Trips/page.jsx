@@ -14,8 +14,10 @@ import {
 } from "@/components/SpaceElements";
 import { Sparkles, Compass, Map } from "lucide-react";
 import { useViewportScroll } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const TripsPage = () => {
+  const t = useTranslations("trips");
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
 
@@ -30,29 +32,7 @@ const TripsPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden pt-18 bg-black">
-      {/* 🌌 خلفية فضائية ثابتة */}
-      <div className="fixed inset-0 z-0 bg-cosmic-space" />
-
-      {/* ✨ طبقة النجوم */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-
-      {/* ☄️ طبقة الشهب */}
-      <div className="fixed inset-0 pointer-events-none z-[2]">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
-
-      {/* توهج في الزوايا */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 bg-[#2A1F3F]" />
-        <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full blur-[100px] opacity-12 bg-[#F47A1F]" />
-      </div>
-
+     
       <Navbar transparent />
 
       {/* Hero Section */}
@@ -90,17 +70,17 @@ const TripsPage = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6 cursor-pointer hover:scale-105 transition-transform"
           >
             <Sparkles className="w-4 h-4 text-[#FFB85C]" aria-label="نجوم" />
-            <span className="text-sm text-[#B6BDD6]">اكتشف مغامراتنا</span>
+            <span className="text-sm text-[#B6BDD6]">{t("badge")}</span>
           </motion.div>
 
           <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-black mb-4 leading-tight">
-            <span className="text-gradient-fire">رحلاتنا</span>
-            <span className="text-[#F5F7FA]"> المميزة</span>
+            <span className="text-gradient-fire">{t("title")}</span>
+            <span className="text-[#F5F7FA]"> {t("titleHighlight")}</span>
           </h1>
           
           <p className="text-[clamp(1rem,2.5vw,1.35rem)] text-[#B6BDD6] leading-relaxed max-w-xl mx-auto">
-            اختر رحلتك المثالية واستعد لمغامرة{" "}
-            <span className="text-[#FFB85C]">لا تُنسى</span>
+            {t("subtitle")}{" "}
+            <span className="text-[#FFB85C]">{t("subtitleHighlight")}</span>
           </p>
         </motion.div>
       </section>

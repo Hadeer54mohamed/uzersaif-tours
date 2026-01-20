@@ -29,8 +29,10 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
+import { useTranslations } from "next-intl";
 
 const Contact = () => {
+  const t = useTranslations("contact");
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
@@ -73,31 +75,25 @@ const Contact = () => {
   const contactInfo = [
     { 
       icon: Phone, 
-      title: "اتصل بنا", 
+      key: "phone",
       content: "+20 123 456 7890", 
-      link: "tel:+201234567890",
-      description: "متاحين من 9 صباحاً - 6 مساءً"
+      link: "tel:+201234567890"
     },
     { 
       icon: Mail, 
-      title: "البريد الإلكتروني", 
+      key: "email",
       content: "info@uzersaif.com", 
-      link: "mailto:info@uzersaif.com",
-      description: "نرد خلال 24 ساعة"
+      link: "mailto:info@uzersaif.com"
     },
     { 
       icon: MapPin, 
-      title: "العنوان", 
-      content: "القاهرة، مصر", 
-      link: "#map",
-      description: "مقرنا الرئيسي"
+      key: "address",
+      link: "#map"
     },
     { 
       icon: Clock, 
-      title: "ساعات العمل", 
-      content: "السبت - الخميس", 
-      link: "#",
-      description: "9 صباحاً - 6 مساءً"
+      key: "hours",
+      link: "#"
     },
   ];
 
@@ -147,12 +143,6 @@ const Contact = () => {
         ))}
       </div>
 
-      {/* توهج في الزوايا */}
-      <div className="fixed inset-0 pointer-events-none z-[1]">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full blur-[120px] opacity-15 bg-[#2A1F3F]" />
-        <div className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full blur-[100px] opacity-12 bg-[#F47A1F]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] opacity-5 bg-[#1B2A4A]" />
-      </div>
 
       <Navbar transparent />
 
@@ -167,7 +157,7 @@ const Contact = () => {
             playsInline
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#070A13]/40 via-[#0D1324]/70 to-[#070A13]/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
 
         {/* Floating elements */}
@@ -200,18 +190,18 @@ const Contact = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
           >
             <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-            <span className="text-sm text-[#B6BDD6]">نحن هنا لمساعدتك</span>
+            <span className="text-sm text-[#B6BDD6]">{t("badge")}</span>
           </motion.div>
           
           <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-black mb-4 leading-tight">
-            <span className="text-gradient-fire">تواصل</span>
-            <span className="text-[#F5F7FA]"> معنا</span>
+            <span className="text-gradient-fire">{t("title")}</span>
+            <span className="text-[#F5F7FA]"> {t("titleHighlight")}</span>
           </h1>
           
           <p className="text-[clamp(1rem,2.5vw,1.35rem)] text-[#B6BDD6] leading-relaxed max-w-xl mx-auto">
-            يسعدنا دائماً أن نكون جزءًا من رحلتك القادمة
+            {t("subtitle")}
             <br />
-            <span className="text-[#FFB85C]">ابدأ مغامرتك الآن!</span>
+            <span className="text-[#FFB85C]">{t("subtitleHighlight")}</span>
           </p>
         </motion.div>
       </section>
@@ -230,16 +220,16 @@ const Contact = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F7FA] mb-3">
-              كيف يمكننا مساعدتك؟
+              {t("sectionTitle")}
             </h2>
             <p className="text-[#B6BDD6] max-w-lg mx-auto">
-              اختر الطريقة المناسبة للتواصل معنا وسنكون سعداء بخدمتك
+              {t("sectionSubtitle")}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
 
-            {/* Contact Info Cards - الجهة اليمنى */}
+            {/* Contact Info Cards */}
             <motion.div 
               variants={containerVariants}
               initial="hidden"
@@ -256,7 +246,7 @@ const Contact = () => {
                     variants={itemVariants}
                     whileHover={{ scale: 1.02, x: -5 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group block rounded-2xl p-5 backdrop-blur-md transition-all duration-300 bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/60 border border-[#F47A1F]/15 hover:border-[#F47A1F]/40 hover:shadow-[0_0_30px_rgba(244,122,31,0.15)]"
+                    className="group block rounded-2xl p-5 backdrop-blur-md transition-all duration-300 bg-black/90 border border-[#F47A1F]/15 hover:border-[#F47A1F]/40 hover:shadow-[0_0_30px_rgba(244,122,31,0.15)]"
                   >
                     <div className="flex items-center gap-4">
                       <div className="relative">
@@ -268,12 +258,12 @@ const Contact = () => {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-bold text-[#F5F7FA] mb-0.5 group-hover:text-[#FFB85C] transition-colors">
-                          {info.title}
+                          {t(`info.${info.key}.title`)}
                         </h3>
                         <p className="text-[#F47A1F] font-semibold text-sm" dir={info.link.startsWith("tel") ? "ltr" : "rtl"}>
-                          {info.content}
+                          {info.content || t(`info.${info.key}.content`)}
                         </p>
-                        <p className="text-[#8A91A8] text-xs mt-1">{info.description}</p>
+                        <p className="text-[#8A91A8] text-xs mt-1">{t(`info.${info.key}.description`)}</p>
                       </div>
                       <div className="text-[#F47A1F]/30 group-hover:text-[#F47A1F]/60 transition-colors">
                         <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -290,7 +280,7 @@ const Contact = () => {
                 variants={itemVariants}
                 className="pt-4"
               >
-                <p className="text-[#8A91A8] text-sm mb-4">تابعنا على</p>
+                <p className="text-[#8A91A8] text-sm mb-4">{t("followUs")}</p>
                 <div className="flex gap-3">
                   {socialLinks.map((social, index) => {
                     const SocialIcon = social.icon;
@@ -300,7 +290,7 @@ const Contact = () => {
                         href={social.href}
                         whileHover={{ scale: 1.15, y: -3 }}
                         whileTap={{ scale: 0.95 }}
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center bg-[#1B2A4A]/50 border border-[#F47A1F]/20 text-[#B6BDD6] ${social.color} hover:border-[#F47A1F]/40 hover:bg-[#1B2A4A]/80 transition-all duration-300`}
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center bg-black/50 border border-[#F47A1F]/20 text-[#B6BDD6] ${social.color} hover:border-[#F47A1F]/40 hover:bg-black/80 transition-all duration-300`}
                         aria-label={social.label}
                       >
                         <SocialIcon className="w-5 h-5" />
@@ -311,17 +301,17 @@ const Contact = () => {
               </motion.div>
             </motion.div>
 
-            {/* Form Card - الجهة اليسرى */}
+            {/* Form Card */}
             <motion.div
               ref={formRef}
               initial={{ opacity: 0, x: 30, scale: 0.98 }}
               animate={isFormInView ? { opacity: 1, x: 0, scale: 1 } : {}}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-3 rounded-3xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden bg-gradient-to-br from-[#0D1324]/95 to-[#1B2A4A]/80 border border-[#F47A1F]/25 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+              className="lg:col-span-3 rounded-3xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden bg-black/95 border border-[#F47A1F]/25 shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
             >
               {/* Decorative corner */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#F47A1F]/10 to-transparent rounded-bl-full" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#2A1F3F]/30 to-transparent rounded-tr-full" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-black/30 to-transparent rounded-tr-full" />
               
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-8">
@@ -330,9 +320,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-[#F5F7FA]">
-                      أرسل لنا رسالة
+                      {t("form.title")}
                     </h2>
-                    <p className="text-[#8A91A8] text-sm">سنرد عليك في أقرب وقت</p>
+                    <p className="text-[#8A91A8] text-sm">{t("form.subtitle")}</p>
                   </div>
                 </div>
 
@@ -341,29 +331,29 @@ const Contact = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-[#B6BDD6] block">
-                        الاسم الكامل <span className="text-[#F47A1F]">*</span>
+                        {t("form.name")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="أدخل اسمك" 
+                        placeholder={t("form.namePlaceholder")} 
                         required 
-                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-[#070A13]/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
+                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-black/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-[#B6BDD6] block">
-                        البريد الإلكتروني <span className="text-[#F47A1F]">*</span>
+                        {t("form.email")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
                         type="email" 
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="example@email.com" 
+                        placeholder={t("form.emailPlaceholder")} 
                         required 
-                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-[#070A13]/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all"
+                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-black/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all"
                         dir="ltr"
                       />
                     </div>
@@ -373,29 +363,29 @@ const Contact = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-[#B6BDD6] block">
-                        رقم الهاتف <span className="text-[#F47A1F]">*</span>
+                        {t("form.phone")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
                         type="tel" 
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+20 123 456 7890" 
+                        placeholder={t("form.phonePlaceholder")} 
                         required 
-                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-[#070A13]/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
+                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-black/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
                         dir="ltr" 
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-[#B6BDD6] block">
-                        الموضوع
+                        {t("form.subject")}
                       </label>
                       <Input 
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="عن ماذا تريد الاستفسار؟" 
-                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-[#070A13]/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
+                        placeholder={t("form.subjectPlaceholder")} 
+                        className="h-12 rounded-xl border-[#F47A1F]/20 bg-black/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 transition-all" 
                       />
                     </div>
                   </div>
@@ -403,22 +393,22 @@ const Contact = () => {
                   {/* Message */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-[#B6BDD6] block">
-                      الرسالة <span className="text-[#F47A1F]">*</span>
+                      {t("form.message")} <span className="text-[#F47A1F]">*</span>
                     </label>
                     <Textarea 
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="اكتب رسالتك هنا... نحن نقدر وقتك ونعدك بالرد السريع" 
+                      placeholder={t("form.messagePlaceholder")} 
                       required 
-                      className="min-h-32 rounded-xl border-[#F47A1F]/20 bg-[#070A13]/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 resize-none transition-all" 
+                      className="min-h-32 rounded-xl border-[#F47A1F]/20 bg-black/60 focus:border-[#F47A1F] focus:ring-2 focus:ring-[#F47A1F]/20 text-[#F5F7FA] placeholder:text-[#8A91A8]/50 resize-none transition-all" 
                     />
                   </div>
 
                   {/* Submit Button */}
                   <div className="flex items-center justify-between pt-2">
                     <p className="text-xs text-[#8A91A8]">
-                      <span className="text-[#F47A1F]">*</span> حقول مطلوبة
+                      <span className="text-[#F47A1F]">*</span> {t("form.required")}
                     </p>
                     <motion.button
                       type="submit"
@@ -430,12 +420,12 @@ const Contact = () => {
                       {isSubmitting ? (
                         <>
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          جاري الإرسال...
+                          {t("form.sending")}
                         </>
                       ) : (
                         <>
                           <Send className="w-4 h-4" />
-                          إرسال الرسالة
+                          {t("form.submit")}
                         </>
                       )}
                     </motion.button>
@@ -454,7 +444,7 @@ const Contact = () => {
                                  flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500/90 to-emerald-600/90 text-white shadow-lg shadow-emerald-500/30 backdrop-blur-sm"
                     >
                       <CheckCircle2 className="w-5 h-5" />
-                      <span className="font-medium">تم إرسال رسالتك بنجاح! ✨</span>
+                      <span className="font-medium">{t("form.success")}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -464,7 +454,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map + Location Section - محسّن */}
+      {/* Map + Location Section */}
       <section className="relative z-10 py-8 sm:py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
@@ -472,13 +462,13 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="rounded-3xl overflow-hidden shadow-2xl relative bg-gradient-to-br from-[#0D1324]/90 to-[#1B2A4A]/80 border border-[#F47A1F]/20 backdrop-blur-md"
+            className="rounded-3xl overflow-hidden shadow-2xl relative bg-black/90 border border-[#F47A1F]/20 backdrop-blur-md"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Map placeholder / Image */}
               <div className="relative h-64 lg:h-80 overflow-hidden">
                 <div className="absolute inset-0 bg-[url('/trip-mountain.jpg')] bg-cover bg-center" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070A13]/90 via-[#070A13]/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 
                 {/* Animated pin */}
                 <motion.div
@@ -501,22 +491,21 @@ const Contact = () => {
                   <div className="w-10 h-10 rounded-lg bg-[#F47A1F]/20 flex items-center justify-center border border-[#F47A1F]/40">
                     <Compass className="w-5 h-5 text-[#F47A1F]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#F5F7FA]">موقعنا</h3>
+                  <h3 className="text-2xl font-bold text-[#F5F7FA]">{t("map.title")}</h3>
                 </div>
                 
                 <p className="text-[#B6BDD6] mb-6 leading-relaxed">
-                  نقع في قلب القاهرة، مصر. يسعدنا استقبالكم في مقرنا الرئيسي 
-                  للتعرف على رحلاتنا واختيار المغامرة المناسبة لكم.
+                  {t("map.description")}
                 </p>
                 
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-3 text-[#B6BDD6]">
                     <MapPin className="w-4 h-4 text-[#F47A1F]" />
-                    <span>القاهرة، مصر - الدقي</span>
+                    <span>{t("map.address")}</span>
                   </div>
                   <div className="flex items-center gap-3 text-[#B6BDD6]">
                     <Clock className="w-4 h-4 text-[#F47A1F]" />
-                    <span>السبت - الخميس: 9 صباحاً - 6 مساءً</span>
+                    <span>{t("map.hours")}</span>
                   </div>
                 </div>
 
@@ -526,10 +515,10 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="mt-6 inline-flex items-center justify-center gap-2 h-11 px-6 rounded-xl bg-[#1B2A4A]/80 border border-[#F47A1F]/30 text-[#F5F7FA] font-medium hover:border-[#F47A1F]/60 hover:bg-[#1B2A4A] transition-all w-fit"
+                  className="mt-6 inline-flex items-center justify-center gap-2 h-11 px-6 rounded-xl bg-black/80 border border-[#F47A1F]/30 text-[#F5F7FA] font-medium hover:border-[#F47A1F]/60 hover:bg-black transition-all w-fit"
                 >
                   <MapPin className="w-4 h-4" />
-                  فتح في خرائط جوجل
+                  {t("map.openInMaps")}
                 </motion.a>
               </div>
             </div>
@@ -537,7 +526,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* CTA Section - محسّن */}
+      {/* CTA Section */}
       <section className="relative z-10 py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -545,7 +534,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="max-w-4xl mx-auto text-center rounded-3xl p-8 sm:p-12 relative overflow-hidden bg-gradient-to-br from-[#2A1F3F]/60 via-[#0D1324]/80 to-[#1B2A4A]/60 border border-[#F47A1F]/25 backdrop-blur-md shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+            className="max-w-4xl mx-auto text-center rounded-3xl p-8 sm:p-12 relative overflow-hidden bg-black/80 border border-[#F47A1F]/25 backdrop-blur-md shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-[#F47A1F]/20 to-transparent rounded-br-full" />
@@ -572,16 +561,15 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
               >
                 <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-                <span className="text-sm text-[#B6BDD6]">ابدأ رحلتك الآن</span>
+                <span className="text-sm text-[#B6BDD6]">{t("cta.badge")}</span>
               </motion.div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#F5F7FA]">
-                جاهز لبدء <span className="text-gradient-fire">مغامرتك</span>؟
+                {t("cta.title")} <span className="text-gradient-fire">{t("cta.titleHighlight")}</span>؟
               </h2>
               
               <p className="text-lg text-[#B6BDD6] mb-10 max-w-xl mx-auto">
-                تواصل معنا الآن ودعنا نساعدك في تخطيط رحلتك المثالية
-                التي ستبقى في ذاكرتك للأبد
+                {t("cta.subtitle")}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -592,7 +580,7 @@ const Contact = () => {
                   className="inline-flex items-center justify-center h-14 px-8 rounded-2xl font-bold bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] text-white shadow-[0_10px_30px_rgba(244,122,31,0.4)] hover:shadow-[0_15px_40px_rgba(244,122,31,0.5)] transition-all duration-300"
                 >
                   <Phone className="w-5 h-5 ml-2" />
-                  اتصل بنا الآن
+                  {t("cta.callNow")}
                 </motion.a>
                 
                 <motion.a 
@@ -604,7 +592,7 @@ const Contact = () => {
                   className="inline-flex items-center justify-center h-14 px-8 rounded-2xl font-bold bg-transparent border-2 border-[#F47A1F]/50 text-[#F5F7FA] hover:bg-[#F47A1F]/10 hover:border-[#F47A1F] transition-all duration-300"
                 >
                   <MessageCircle className="w-5 h-5 ml-2" />
-                  تواصل عبر واتساب
+                  {t("cta.whatsapp")}
                 </motion.a>
               </div>
             </div>

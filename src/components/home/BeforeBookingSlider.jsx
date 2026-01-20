@@ -17,35 +17,17 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
-
-const notes = [
-  {
-    icon: WifiOff,
-    title: "الشبكة ضعيفة أثناء التخييم",
-    desc: "وده جزء مقصود من التجربة علشان تفصل عن الدنيا وتعيش الهدوء الحقيقي.",
-    desc2: "✔ في الكامب والفندق الشبكة أفضل نسبيًا",
-  },
-  {
-    icon: ThermometerSnowflake,
-    title: "الجو خفيف نهارًا وبارد ليلًا",
-    desc: "التجهيزات محسوبة للبرد، ومعاك إرشادات واضحة قبل الرحلة علشان تيجي جاهز ومطمّن.",
-    desc2: "✔ مع بطانيات في الكامب لضمان راحتك",
-  },
-  {
-    icon: Backpack,
-    title: "المطلوب منك بسيط جدًا",
-    desc: "ملابسك، حاجاتك الشخصية، والالتزام بتعليمات الرحلة.",
-    desc2: "✔ وإحنا علينا باقي التفاصيل والتجهيزات",
-  },
-  {
-    icon: RefreshCcw,
-    title: "البرنامج مرن للسلامة",
-    desc: "ممكن يتغيّر ترتيب بعض النقاط حسب الظروف الجوية أو الأمنية، وده علشان نضمن تجربة آمنة ومريحة.",
-    desc2: "✔ كل التعديلات بتكون لصالح راحتك وسلامتك من غير ما نضيّع روح التجربة أو قيمتها",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function BeforeBookingSlider() {
+  const t = useTranslations("beforeBooking");
+
+  const notes = [
+    { icon: WifiOff, key: "network" },
+    { icon: ThermometerSnowflake, key: "weather" },
+    { icon: Backpack, key: "requirements" },
+    { icon: RefreshCcw, key: "flexibility" },
+  ];
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
   const sliderRef = useRef(null);
@@ -70,7 +52,7 @@ export default function BeforeBookingSlider() {
   };
 
   return (
-    <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden">
+    <section className="relative py-4 sm:py-6 md:py-8 overflow-hidden">
      
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
@@ -85,11 +67,11 @@ export default function BeforeBookingSlider() {
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2 sm:mb-3">
             <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 icon-fire" />
             <h2 className="text-[clamp(1.75rem,5vw,3.2rem)] font-bold leading-tight text-primary">
-              قبل ما تحجز
+              {t("title")}
             </h2>
           </div>
           <p className="text-[clamp(0.95rem,2.2vw,1.15rem)] leading-relaxed px-2 text-secondary">
-            ملاحظات مهمة علشان التجربة تبقى مريحة من أولها.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -121,13 +103,13 @@ export default function BeforeBookingSlider() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-[clamp(1rem,2.5vw,1.15rem)] font-bold mb-1 leading-snug text-primary">
-                        {item.title}
+                        {t(`notes.${item.key}.title`)}
                       </h3>
                       <p className="text-[clamp(0.8rem,1.8vw,0.9rem)] leading-relaxed mb-2 text-secondary">
-                        {item.desc}
+                        {t(`notes.${item.key}.desc`)}
                       </p>
                       <p className="text-[clamp(0.75rem,1.7vw,0.85rem)] leading-relaxed font-medium pt-2 text-fire border-t border-white/10">
-                        {item.desc2}
+                        {t(`notes.${item.key}.desc2`)}
                       </p>
                     </div>
                   </div>

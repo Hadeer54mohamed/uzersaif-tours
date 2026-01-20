@@ -19,8 +19,11 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
+  const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
   const currentYear = new Date().getFullYear();
   const [showPopup, setShowPopup] = useState(false);
   const [stars, setStars] = useState([]);
@@ -50,10 +53,10 @@ const Footer = () => {
   };
 
   const quickLinks = [
-    { href: "/", label: "الرئيسية" },
-    { href: "/Trips", label: "الرحلات" },
-    { href: "/about", label: "من نحن" },
-    { href: "/contact", label: "تواصل معنا" },
+    { href: "/", label: tNav("home") },
+    { href: "/Trips", label: tNav("trips") },
+    { href: "/about", label: tNav("about") },
+    { href: "/contact", label: tNav("contact") },
   ];
 
   const socialLinks = [
@@ -75,28 +78,7 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden">
-      {/* 🌌 خلفية فضائية غامقة */}
-      <div className="absolute inset-0 footer-bg" />
 
-      {/* ✨ طبقة النجوم */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-
-      {/* ☄️ طبقة الشهب */}
-      <div className="absolute inset-0 pointer-events-none">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
-
-      {/* توهج زخرفي */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 opacity-20 glow-purple" />
-        <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 opacity-15 glow-fire" />
-      </div>
 
       <div className="relative z-10 container mx-auto px-4 pt-4 pb-4 sm:pt-6 sm:pb-6">
         <motion.div
@@ -119,51 +101,13 @@ const Footer = () => {
               />
             </Link>
             <p className="text-sm leading-relaxed max-w-xs text-secondary">
-              نقدم لك أفضل تجارب السفر والرحلات السياحية المميزة. استمتع برحلات
-              لا تُنسى في أجمل المناطق الطبيعية.
+              {t("description")}
             </p>
             <div className="pt-1">
-              <p className="font-medium text-sm mb-2 text-primary">
-                تواصل معنا
-              </p>
               <div className="pt-1 relative">
-                <div className="flex gap-2">
-                  <motion.input
-                    type="email"
-                    placeholder="بريدك الإلكتروني"
-                    className="flex-1 min-w-0 rounded-xl px-4 py-2.5 text-sm placeholder:opacity-50 focus:outline-none transition-all backdrop-blur-sm input-cosmic"
-                    whileFocus={{
-                      scale: 1.02,
-                    }}
-                  />
-
-                  <motion.button
-                    onClick={handleSubmit}
-                    className="p-2.5 rounded-xl transition-all btn-fire"
-                    whileHover={{
-                      scale: 1.1,
-                    }}
-                  >
-                    <Send size={18} className="text-primary" />
-                  </motion.button>
-                </div>
-
-                {/* Popup */}
-                <AnimatePresence>
-                  {showPopup && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className="absolute bottom-[-55px] left-1/2 -translate-x-1/2 text-sm px-4 py-2 rounded-xl shadow-lg btn-fire pointer-events-none"
-                      role="status"
-                      aria-live="polite"
-                    >
-                      التفاصيل هتوصلك على بريدك ❤️
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <a href="#booking" className="px-6 py-2 rounded-xl shadow-md hover:shadow-lg transition-all font-bold btn-fire">
+                  {t("bookNow")}
+                </a>
               </div>
             </div>
           </motion.div>
@@ -172,7 +116,7 @@ const Footer = () => {
           <motion.div variants={itemVariants} className="lg:pr-8">
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
-              روابط سريعة
+              {t("quickLinks")}
             </h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
@@ -198,7 +142,7 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
-              تواصل معنا
+              {t("contactUs")}
             </h3>
             <ul className="space-y-2">
               {[
@@ -232,7 +176,7 @@ const Footer = () => {
                   <span className="w-8 h-8 rounded-lg flex items-center justify-center backdrop-blur-sm icon-container">
                     <MapPin size={16} className="icon-fire" />
                   </span>
-                  <span className="text-sm">القاهرة، مصر</span>
+                  <span className="text-sm">{t("location")}</span>
                 </div>
               </li>
             </ul>
@@ -242,10 +186,10 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
-              تابعنا
+              {t("followUs")}
             </h3>
             <p className="text-sm mb-3 text-muted">
-              تابعنا على منصات التواصل الاجتماعي لمعرفة آخر العروض والرحلات
+              {t("followUsDesc")}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social, index) => {
@@ -257,7 +201,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
                     whileTap={{ scale: 0.9 }}
                     className={`group relative w-11 h-11 rounded-xl flex items-center justify-center
-                               bg-[#1B2A4A]/60 border border-[#F47A1F]/25
+                               bg-black/60 border border-[#F47A1F]/25
                                text-[#B6BDD6] overflow-hidden
                                hover:text-white hover:border-transparent
                                transition-all duration-300 ${social.color}`}
@@ -284,8 +228,8 @@ const Footer = () => {
           viewport={{ once: true }}
           className="flex flex-col md:flex-row items-center justify-center gap-4 text-center"
         >
-          <p className="text-sm flex items-center gap-2 text-muted" dir="rtl">
-            © {currentYear} &nbsp; جميع الحقوق محفوظة
+          <p className="text-sm flex items-center gap-2 text-muted">
+            © {currentYear} &nbsp; {t("copyright")}
             <span className="font-semibold text-gradient-fire" dir="ltr">
               UzerSaif
             </span>
@@ -295,7 +239,7 @@ const Footer = () => {
             className="text-sm flex items-center gap-1 text-muted"
             dir="ltr"
           >
-            Designed & Developed by
+            {t("designedBy")}
             <a
               href="https://www.facebook.com/ENSEGYPTEG"
               target="_blank"
