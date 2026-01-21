@@ -11,13 +11,13 @@ import {
   Volume2, 
   VolumeX,
   Image as ImageIcon,
-  Video,
-  Sparkles
+  Video
 } from "lucide-react";
 import { homeGallery } from "@/data/mediaSwiperData";
 import { useTranslations } from "next-intl";
+
 // Media Item Component for individual items
-const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectFit = "cover" }) => {
+const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const t = useTranslations("mediaSwiper");
@@ -68,8 +68,7 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
       if (url.includes("youtube.com") || url.includes("youtu.be")) return "youtube";
       if (url.includes("vimeo.com")) return "vimeo";
       if (url.includes("facebook.com") || url.includes("fb.watch")) return "facebook";
-      if (url.includes("instagram.com")) return "instagram";
-      if (url.includes("tiktok.com")) return "tiktok";
+  
       return "local";
     };
 
@@ -87,10 +86,10 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
       }
 
       return (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full bg-black">
           <iframe
             src={embedUrl}
-            className="w-full h-full object-cover"
+            className="w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
@@ -99,26 +98,14 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
       );
     }
 
-    // Facebook/Instagram/TikTok - Show external link card
-    if (platform === "facebook" || platform === "instagram" || platform === "tiktok") {
+    // Facebook- Show external link card
+    if (platform === "facebook" ) {
       const platformInfo = {
         facebook: { 
           name: "Facebook", 
           color: "from-blue-600 to-blue-800",
           icon: <Facebook size={20} className="text-white" />,
           message: "فيديو فيسبوك"
-        },
-        instagram: { 
-          name: "Instagram", 
-          color: "from-pink-500 via-purple-500 to-orange-500",
-          icon: <Instagram size={20} className="text-white" />, 
-          message: "فيديو انستجرام"
-        },
-        tiktok: { 
-          name: "TikTok", 
-          color: "from-black to-gray-800",
-          icon: <Music size={20} className="text-white" />,
-          message: "فيديو تيك توك"
         }
       };
 
@@ -185,11 +172,11 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
 
     // Local video
     return (
-      <div className="relative w-full h-full group">
+      <div className="relative w-full h-full group bg-black">
         <video
           ref={videoRef}
           src={videoUrl}
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-contain md:object-${objectFit}`}
           loop
           muted={isMuted}
           playsInline
@@ -235,14 +222,14 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
 
   // Image type
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full bg-black">
       <motion.img
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.8 }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
-        className={`w-full h-full object-${objectFit}`}
+        className={`w-full h-full object-contain md:object-${objectFit}`}
         onError={(e) => {
           console.error("Image failed to load:", item.image);
           e.target.src = "/trip.jpg";
@@ -266,14 +253,12 @@ const MediaItem = ({ item, isActive, onVideoToggle, isMuted, toggleMute, objectF
 
 // Main MediaSwiper Component
 const MediaSwiper = ({ 
-  gallerySlug = null, 
-  showOnHomepage = false,
   customMedia = homeGallery,
   className = "",
   height = "h-[500px]",
   autoPlayDefault = true,
-  intervalDefault = 5,
-  objectFit = "cover"
+  intervalDefault = 15,
+  objectFit = "contain"
 }) => {
   // تحويل البيانات مباشرة
   const getGalleryData = () => {

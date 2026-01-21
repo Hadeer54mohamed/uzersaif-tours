@@ -89,7 +89,7 @@ const Footer = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {/* Logo & Description */}
-          <motion.div
+          {/* <motion.div
             variants={itemVariants}
             className="space-y-3 lg:col-span-1"
           >
@@ -110,10 +110,10 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
 
           {/* Quick Links */}
-          <motion.div variants={itemVariants} className="lg:pr-8">
+       {/*    <motion.div variants={itemVariants} className="lg:pr-8">
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
               {t("quickLinks")}
@@ -136,10 +136,10 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants}>
+        {/*   <motion.div variants={itemVariants}>
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
               {t("contactUs")}
@@ -180,10 +180,10 @@ const Footer = () => {
                 </div>
               </li>
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Social Media */}
-          <motion.div variants={itemVariants}>
+         {/*  <motion.div variants={itemVariants}>
             <h3 className="font-bold text-base sm:text-lg mb-3 flex items-center gap-2 text-primary">
               <span className="title-accent" />
               {t("followUs")}
@@ -207,14 +207,14 @@ const Footer = () => {
                                transition-all duration-300 ${social.color}`}
                     aria-label={social.label}
                   >
-                    {/* خلفية متحركة عند الـ hover */}
                     <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <SocialIcon className="w-5 h-5 relative z-10 transition-transform duration-300 group-hover:scale-110" />
                   </motion.a>
                 );
               })}
             </div>
-          </motion.div>
+          </motion.div> */}
+
         </motion.div>
 
         {/* Divider */}

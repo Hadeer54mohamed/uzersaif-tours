@@ -11,55 +11,87 @@
     "bookNow": "Book Now"
   },
   "hero": {
-    "title": "NASA Space Journey",
+    "title": "A Space Journey… In the ",
     "titleHighlight": "White Desert",
-    "inHeart": "In the Heart of",
-    "subtitle": "days where you'll leave everything behind…",
+    "inHeart": " Heart of",
+    "subtitle": " where you'll leave everything behind…",
     "days": "3",
+    "daysText": "Days",
     "subtitleContinue": "and enter another world of",
     "strangenessAndBeauty": "strangeness and beauty",
+    "subtitle2": "This is not a tourist trip… it's",
+    "subtitle2Highlight": "and not suitable for everyone.",
+    "subtitle2Continue": "an experience you'll live with the desert people,",
     "realExperience": "A real experience organized by",
-    "bedouinSpecialist": "specialized Bedouins",
+    "subtitle3Continue": "A real experience organized by",
+    "bedouinSpecialist2": "Farafra Oasis Bedouins",
     "experience": "With over",
     "years": "26 years",
-    "andExecuted": "of experience and over",
-    "thousandTrips": "1000 trips",
-    "insideReserve": "Inside one of the world's most amazing reserves —",
-    "whiteDesert": "The White Desert"
+    "andExecuted": "and a thousand trips",
+    "insideReserve": " in one of",
+    "whiteDesert": "the world's most amazing reserves",
+    "subtitle3": "This trip is fully organized by Farafra Oasis Bedouins,",
+    "subtitle3Highlight": "and every detail is calculated so you can live the experience with peace of mind."
+  },
+  "beforeContinue": {
+    "title": "Before we continue…",
+    "descriptionStart": "This trip is made for people looking for a",
+    "highlightFeeling": "real feeling",
+    "descriptionEnd": "not just a program.",
+    "crowd": "Crowds and noise",
+    "noise": "Loud sounds",
+    "fastTrip": "Quick trip",
+    "photosOnly": "Just photos",
+    "footerHighlight": "This trip might not be for you… and that's okay."
+  },
+  "desertComparison": {
+    "titleStart": "The difference between a regular desert trip…",
+    "titleHighlight": "and the White Desert experience with Farafra Bedouins",
+
+    "othersTitle": "Many trips",
+    "other1": "Compressed schedule without meaning",
+    "other2": "Focus on photos",
+    "other3": "Superficial organization",
+    "other4": "An experience that ends and you return the same",
+
+    "ourTitle": "Our trip",
+    "our1": "Calm and organized rhythm",
+    "our2": "Live with the locals and learn their stories",
+    "our3": "The White Desert as an experience… not an Activity",
+    "our4": "An experience that truly leaves a mark inside you"
+  },
+  "desertFeeling": {
+    "title": "The feeling you'll experience",
+
+    "safe": "Complete safety and calm… without feeling isolated",
+    "fire": "Bedouin fire",
+    "stars": "A sky full of stars",
+    "noNotifications": "No notifications",
+    "noRush": "No rush",
+
+    "footerHighlightStart": "The White Desert is not just a view…",
+    "footerText": "it's an empty space that lets you",
+    "footerHighlightEnd": "hear yourself."
   },
   "experiences": {
-    "title": "What will you gain from the White Desert trip?",
-    "subtitle": "Things not available in any other trip… because this experience is designed for you from the start.",
+    "title": "What new things will you gain from the White Desert trip?",
+    "subtitleStart": "Things not available in any other trip…",
+    "subtitle": " because this experience is designed for you from the start.",
     "items": {
       "spaceFeeling": {
         "title": "Real Space Feeling",
-        "desc": "A natural place that looks like another planet, without decoration, without acting, and without tourist deception.",
+        "desc": "A natural place that actually looks like another planet, without decoration, without acting, and without tourist deception.",
         "desc2": "✔ Real space-like experience… on Earth."
       },
       "uniquePhotos": {
         "title": "Photos Unlike Anyone Else's",
-        "desc": "Take photos that look like they're from outer space - because you're actually standing in a place like no other, white formations, empty spaces, and an open sky without limits - unique, non-touristy photos.",
-        "desc2": "✔ Natural. Raw. Unfiltered."
+        "desc": "White formations, empty spaces, and a sky without limits",
+        "desc2": "✔ Photos Natural. Raw. Unfiltered."
       },
       "adventure": {
-        "title": "Live an Adventure Experience",
-        "desc": "Without feeling like you're risking yourself, with a smart progression that lets you enjoy while feeling safe: equipped camp → calculated camping → Bedouin hotel",
-        "desc2": "✔ An adventure with feeling… without pressure or hassle."
-      },
-      "safeDecision": {
-        "title": "A Safe Decision from the Start",
-        "desc": "Book knowing you won't regret it because of the Farafra Oasis Bedouin guarantee that protects your rights and makes the decision psychologically safe from the beginning",
-        "desc2": "✔ Farafra Oasis Bedouin Guarantee"
-      },
-      "topProgram": {
-        "title": "Program Number One in Its Class",
-        "desc": "A closed and tested program, every step is known and every time is calculated.",
-        "desc2": "✔ No improvisation or 'we'll figure it out on the way'"
-      },
-      "bedouinHospitality": {
-        "title": "Authentic Bedouin Hospitality",
-        "desc": "Farafra Oasis Bedouin hospitality from Bedouins who have lived their whole lives in the desert",
-        "desc2": "✔ You'll feel like you're sitting with your family"
+        "title": "Calculated Adventure",
+        "desc": "Equipped camp - calculated camping - Bedouin hotel",
+        "desc2": "✔ Adventure feeling without pressure or hassle"
       },
       "realDisconnect": {
         "title": "Real Disconnection from Life",
@@ -68,60 +100,54 @@
       },
       "deeperReturn": {
         "title": "Return with Something Deeper Than Photos",
-        "desc": "Feel calmer, mentally cleaner, as if you took a break longer than its duration.",
-        "desc2": "✔ Not just Memories on your phone, but Mental reset"
+        "desc": "Calm, comfort, Mental Reset",
+        "desc2": "✔ Not just Memories on your phone"
       },
       "noWorries": {
         "title": "Don't Worry About Any Details",
-        "desc": "Sleep, food, transportation, equipment… everything is included in the price.",
-        "desc2": "✔ No hidden costs or surprise calculations"
+        "desc": "Sleep, food, transportation, equipment.",
+        "desc2": "✔ Everything is included in the price"
       },
       "notForEveryone": {
         "title": "An Experience Not Made for Everyone",
-        "desc": "Not because you're looking for the cheapest trip or because you want to follow the trend.",
-        "desc2": "✔ An experience you choose because you understand its value"
+        "desc": "",
+        "desc2": "✔ You choose it because you understand its value"
       },
       "rightDecision": {
         "title": "Feel Your Decision Was Right from the First Moment",
-        "desc": "Not after you return, because reassurance is there from the beginning, and continues with you throughout the trip.",
-        "desc2": "✔ Reassurance is there from the first moment"
+        "desc": "",
+        "desc2": "✔ Reassurance is there from the beginning"
       },
       "bedouinGuide": {
         "title": "Bedouin Guide from the Locals",
-        "desc": "Responsible for your comfort, telling you about the desert from the perspective of someone who lives it.",
-        "desc2": "✔ Bedouin guide from the locals available to support you throughout the trip"
+        "desc": "",
+        "desc2": "✔ Available with you throughout the trip"
       }
     }
   },
-  "mediaSwiper": {
-    "image": "Image",
-    "video": "Video"
-  },
- "whyChooseUs": {
-  "title": "Why is this trip different from",
-  "titleHighlight": "any other place in Egypt?",
-  "features": {
-    "soulChanging": {
-      "title": "A soul-changing experience",
-      "description": "The White Desert is not just a natural miracle or a trip that feels out of this world. It’s a meaningful experience — its silence and beauty gently change something deep inside you."
-    },
-    "smartComfort": {
-      "description": "Smart, comfortable planning that keeps you at ease at all times (3-star hotel – well-equipped camping – fully prepared camps)."
-    },
-    "uniqueMemories": {
-      "description": "You’ll capture photos that feel like they’re from another world — not only because we take you to the most iconic White Desert landmarks, but also because our team helps you create truly stunning shots."
-    },
-    "bedouinSafety": {
-      "description": "With the Bedouins, you are safe. We take care of your comfort, and in return, you help us protect and preserve the nature reserve."
-    },
-    "disconnect": {
-      "description": "You’ll live among silence, stars, and fire — completely disconnecting from the noise and chaos of city life."
+  "whyChooseUs": {
+    "title": "Why is this trip different from any other place in Egypt?",
+    
+    "features": {
+      "soulChanging": {
+        "description": "The White Desert is not just *one of God's miracles*\nIt's a meaningful experience… its silence and beauty change things deep inside you"
+      },
+      "smartComfort": {
+        "description": "*Smart and comfortable planning that keeps you at ease*\n (3-star hotel – calculated camping – equipped camp)"
+      },
+      "uniqueMemories": {
+        "description": "You'll take photos as if you're *from another world*\nNot just because we take you to a nice place but you have a team that knows how to get the best photos"
+      },
+      "bedouinSafety": {
+        "description": "*With the Bedouins, you are safe*\nWe take care of your comfort… and you take care of the place"
+      },
+      "disconnect": {
+        "description": "*You'll live among silence, stars, and fire*\nand completely disconnect from city noise"
+      }
     }
-  }
-}
-,
+  },
   "aboutBedouin": {
-    "badge": "Farafra Oasis Heritage",
+    "badge": "Who's taking you on the trip?",
     "title": "We're not just organizers,",
     "titleHighlight": "We're the owners of the place",
     "description": "We are the Bedouins of Farafra Oasis, the people and guardians of the White Desert. We offer an experience that comes from the heart of the place itself. Camping with us is a complete life, not just accommodation, with simplicity, comfort, and real adventure in nature we respect and preserve.",
@@ -129,7 +155,7 @@
     "stats": {
       "experience": "Years of Experience",
       "trips": "Successful Trips",
-      "clients": "Clients",
+      "clients": "Happy Clients",
       "safety": "Safety & Responsibility",
       "experienceDesc": "Years of Experience",
       "experienceDesc2": "in the Heart of the Desert"
@@ -158,7 +184,7 @@
       },
       "food": {
         "question": "What about the food?",
-        "answer": "7 meals throughout the trip (3 breakfast - 2 lunch - 2 dinner):\n• Day 1 breakfast in Farafra (fava beans - eggs - cheese - halawa or jam - bread - hot drinks)\n• Day 1 light lunch at Ain Khadra (pasta with chicken - salad)\n• Day 1 dinner in the White Desert BBQ (grilled chicken quarter - rice - vegetables - salad - charcoal tea)\n• Day 2 breakfast in the desert (beans or eggs - cheese - halawa or jam)\n• Day 2 lunch (pasta - chicken - salad)\n• Day 2 dinner (Mandi chicken quarter - rice - salad)\n• Day 3 breakfast (feteer - honey - cheese - tahini)"
+        "answer": "Food is an essential part of the experience, not an addition. 7 complete meals, fresh and Organic food, enough and on time, with Zarda tea and hot drinks all day."
       },
       "hiddenCosts": {
         "question": "Are there any other costs besides what's written?",
@@ -172,7 +198,7 @@
   },
   "footer": {
     "description": "We offer you the best travel and unique tour experiences. Enjoy unforgettable trips in the most beautiful natural areas.",
-    "bookNow": "Book Now",
+    "bookNow": "Book Your Spot Now",
     "contactUs": "Contact Us",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
@@ -279,7 +305,7 @@
       "required": "Required fields",
       "submit": "Send Message",
       "sending": "Sending...",
-      "success": "Your message was sent successfully! ✨"
+      "success": "Your message was sent successfully!"
     },
     "map": {
       "title": "Our Location",
@@ -321,16 +347,14 @@
     "switchTo": "Switch to"
   },
   "exitIntentPopup": {
-    "lastChance": "Last Chance!",
-    "discount": "Discount",
-    "currency": "EGP",
-    "code": "Code",
-    "remaining": "Only",
-    "spots": "spots left",
-    "bookNow": "Book Now",
-    "deposit": "25% deposit only • Instant reply",
-    "whatsappMessage": "Hello Saher, I saw the last chance offer and I'd like to book my spot in the White Desert trip!",
-    "tripTitle": "White Desert Trip"
+    "title": "Before you leave…",
+    "description": "This trip isn't for everyone\nAnd maybe now isn't your time\nBut if the reason is:",
+    "reason1": "You need to think about it",
+    "reason2": "You're not sure if it's right for you",
+    "reason3": "The decision feels heavy",
+    "askButton": "Ask us one question before you go",
+    "saveNote": "Save the trip and come back when you feel it's time",
+    "whatsappMessage": "Hello Uzer Saif, I have a question before booking the trip!"
   },
   "spaceshipIntro": {
     "launching": "Launching...",
@@ -339,6 +363,10 @@
     "landingTitle": "Landing on the White Desert",
     "welcomeText": "Welcome to planet",
     "skip": "Skip"
+  },
+  "mediaSwiper": {
+    "image": "Image",
+    "video": "Video"
   },
   "testimonialsData": {
     "items": [
@@ -365,7 +393,7 @@
       {
         "id": 5,
         "name": "Mai Essam Kamal",
-        "comment": "One of the best trips I've ever taken, really. May God bless you as you made us happy ❤️❤️"
+        "comment": "One of the best trips I've ever taken, really. May God bless you as you made us happy"
       },
       {
         "id": 6,
@@ -385,12 +413,12 @@
       {
         "id": 9,
         "name": "Abdulrahman El Sobhy",
-        "comment": "It was an outstanding experience full of activities, excitement, and entertainment. I enjoyed every single moment of the trip and would like to repeat it soon inshallah. The politeness and decency of the tour guide Mohamed El Sha3er, and the enjoyment of his leadership skills made him the perfect tour guide for the trip. Thank you very much for this amazing experience ❤️"
+        "comment": "It was an outstanding experience full of activities, excitement, and entertainment. I enjoyed every single moment of the trip and would like to repeat it soon inshallah. The politeness and decency of the tour guide Mohamed El Sha3er, and the enjoyment of his leadership skills made him the perfect tour guide for the trip. Thank you very much for this amazing experience"
       },
       {
         "id": 10,
         "name": "Aya Yahia",
-        "comment": "I really miss the trip, the time and the people, it feels like a dream ❤️ Really thank you so much, I had fun and there was amazing effort so everything would be perfect ❤️❤️❤️ Especially the camping ❤️❤️❤️ Special thanks to Sha3er and Saher and everyone who worked to make it this beautiful ❤️ Plus all the friends I met ❤️"
+        "comment": "I really miss the trip, the time and the people, it feels like a dream. Really thank you so much, I had fun and there was amazing effort so everything would be perfect. Especially the camping. Special thanks to Sha3er and Saher and everyone who worked to make it this beautiful. Plus all the friends I met"
       }
     ]
   },
@@ -445,14 +473,71 @@
     }
   },
   "reviewsVideos": {
-    "title": "What Our Clients Said About the White Desert Trip?",
+    "title": "What Our Clients Said About the Trip",
+    "subtitle": "What do people say about the White Desert trip with UzerSaif?",
     "clickToClose": "Click anywhere to close",
     "watchVideo": "Watch Video",
     "videos": {
+      "QViYDcYGl34": "Watch Video",
+      "-aUqfhZNjPQ": "Watch Video",
+      "hkvlJHJEeHs": "Watch Video",
+      "jIYepfj2xZk": "Watch Video",
+      "qBw1QuRwz_o": "Watch Video",
+      "GzfxsGQc1LA": "Watch Video",
+      "mmtSc1TVgN4": "Watch Video",
+      "kUQyvODbExY": "Watch Video",
+      "yeYdMzvLTXk": "Watch Video",
       "jdI3GoGe9XI": "White Desert Trip - An Unforgettable Experience",
+      "MKmVsxvuXck": "Watch Video",
       "i4w2WfMh-fw": "Adventure in the Heart of the White Desert",
       "facebook": "Why are the Mushroom and Chicken symbols of the White Desert?!"
     }
+  },
+  "tripForYou": {
+    "title": "Is This Trip For You?",
+    "forYouTitle": "This trip is for you if:",
+    "notForYouTitle": "Not for you if:",
+    "forYou": {
+      "psychological": "Travel has become a *psychological need* for you, not just breaking routine",
+      "travelOften": "*You travel often…* but rarely come back feeling truly rested",
+      "quietPlace": "You need a *quiet place,* with no demands, no schedules, no loud sounds",
+      "valueFeeling": "*You understand the value isn't in the crowd or the program,* but in how you feel after the day ends",
+      "leavePhone": "*You can leave your phone* aside for a while, without feeling like you're missing out",
+      "respectPlace": "*You respect the places you visit,* and prefer to experience them peacefully, not consume them"
+    },
+    "notForYou": {
+      "noise": "*You're looking for a trip with* noise and loud laughter",
+      "network": "*You need network all the time*",
+      "moveAround": "You want to *move from place to place* without sitting still or calming down",
+      "travelToSay": "*You travel just to say you traveled*",
+      "notReady": "You're not ready to leave the city rhythm *even when you're away from it*"
+    },
+    "bedouinBox": {
+      "title": "We are the Bedouins of Farafra Oasis",
+      "line1": "This desert is our home, and we know it well",
+      "line2": "If you feel it's right for you…",
+      "welcome": "We'll welcome you and share a part of our lives with you"
+    }
+  },
+  "priceAction": {
+    "introLine1": "This trip isn't the cheapest",
+    "introLine2": "Because it's not made for everyone",
+    "introLine3": "And doesn't repeat every week",
+    "priceIncludes": "This price includes everything…",
+    "priceIncludesDetail": "From the moment you leave Cairo until you return.",
+    "bookingMethodTitle": "How to Book",
+    "afterBooking": {
+      "title": "After you book:",
+      "contact": "We'll contact you within minutes",
+      "details": "We'll send you all the details step by step",
+      "cancel": "And if you feel the trip isn't for you… cancellation is easy and guaranteed"
+    },
+    "askQuestion": "If you want to ask one question before you decide… that's natural.",
+    "feelingCalm": "And if you feel calm and the White Desert is calling you quietly",
+    "notCoincidence": "Then your presence here is no coincidence.",
+    "mainButton": "I'm Ready for the Experience",
+    "secondaryLink": "Or ask us one question on WhatsApp",
+    "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!"
   },
   "desertTrip": {
     "exploreTitle": "Explore",
@@ -477,9 +562,9 @@
     "guaranteeTitle": "Farafra Oasis Bedouin Guarantee",
     "guaranteeNote": "Camping with us isn't a hotel… but we're Bedouins, and our word is our honor.",
     "importantNote": "Please send your ID photo and transfer screenshot to book the hotel and obtain security permits",
-    "subscribeNow": "Subscribe Now",
+    "subscribeNow": "I want to subscribe now",
     "loading": "Loading...",
-    "whatsappMessage": "Hello Saher, I'd like to book my spot in \"{title}\". Can you share the details?",
+    "whatsappMessage": "Hello Uzer Saif, I'd like to book my spot in \"{title}\". Can you share the details?",
     "trips": {
       "white-desert-premium": {
         "title": "White Desert Trip Program",

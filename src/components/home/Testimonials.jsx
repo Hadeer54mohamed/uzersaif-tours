@@ -13,6 +13,64 @@ import {
   generateMeteors,
 } from "@/components/SpaceElements";
 import { useTranslations } from "next-intl";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Grid } from "swiper/modules";
+
+// Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/grid";
+
+// Testimonial Card Component
+const TestimonialCard = ({ testimonial, index, t, openModal }) => {
+  const hasImages = testimonial.images && testimonial.images.length > 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ delay: index * 0.05, duration: 0.4 }}
+      whileHover={{ y: -5, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={() => openModal(testimonial)}
+      className="cursor-pointer h-full"
+    >
+      <Card className="hover:shadow-xl transition-all duration-300 text-center backdrop-blur-sm card-cosmic overflow-hidden flex flex-col h-full" style={{ minHeight: hasImages ? '280px' : '200px' }}>
+        {hasImages && (
+          <div className="relative h-32 w-full overflow-hidden flex-shrink-0">
+            <div className="flex h-full">
+              {testimonial.images.slice(0, 3).map((img, i) => (
+                <div key={i} className="relative flex-1 h-full">
+                  <Image src={img} alt="" fill className="object-cover" />
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+            <div className="absolute bottom-2 right-2 px-2 py-1 rounded-full text-xs font-bold bg-[#F47A1F] text-white">
+              {testimonial.images.length} {t("photos")}
+            </div>
+          </div>
+        )}
+
+        <CardContent className="p-4 flex flex-col flex-1">
+          <div className="flex mb-2 justify-center">
+            {[...Array(testimonial.rating)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 fill-current star-rating" />
+            ))}
+          </div>
+          <p className="text-secondary leading-relaxed mb-3 text-xs flex-1 line-clamp-4">
+            "{testimonial.comment}"
+          </p>
+          <div className="flex items-center gap-2 pt-2 border-t border-fire-light justify-center">
+            <h4 className="font-bold text-sm text-primary">{testimonial.name}</h4>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
 
 const Testimonials = () => {
   const t = useTranslations("testimonials");
@@ -68,55 +126,91 @@ const Testimonials = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-4">
-        <div className="text-center mb-6 sm:mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-primary">{t("title")}</h2>
-        </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-6 sm:mb-10"
+        >
+          <h2 className="text-[clamp(1.25rem,4vw,2.5rem)] font-bold leading-tight text-primary">
+            {t("title")}
+          </h2>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {testimonials.map((testimonial, index) => {
-              const hasImages = testimonial.images && testimonial.images.length > 0;
-              return (
-                <motion.div
-                  key={testimonial.id}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => openModal(testimonial)}
-                  className="cursor-pointer"
-                >
-                  <Card className="hover:shadow-xl transition-all duration-300 text-center backdrop-blur-sm card-cosmic overflow-hidden flex flex-col" style={{ minHeight: hasImages ? '280px' : '200px' }}>
-                    {hasImages && (
-                      <div className="relative h-32 w-full overflow-hidden flex-shrink-0">
-                        <div className="flex h-full">
-                          {testimonial.images.slice(0, 3).map((img, i) => (
-                            <div key={i} className="relative flex-1 h-full">
-                              <Image src={img} alt="" fill className="object-cover" />
-                            </div>
-                          ))}
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
-                        <div className="absolute bottom-2 right-2 px-2 py-1 rounded-full text-xs font-bold bg-[#F47A1F] text-white">
-                          {testimonial.images.length} {t("photos")}
-                        </div>
-                      </div>
-                    )}
+        {/* Swiper Carousel */}
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination, A11y, Grid]}
+            spaceBetween={16}
+            slidesPerView={1}
+            grid={{
+              rows: 2,
+              fill: "row",
+            }}
+            navigation={{
+              prevEl: ".testimonials-prev",
+              nextEl: ".testimonials-next",
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 3,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+                spaceBetween: 24,
+              },
+            }}
+            className="testimonials-swiper"
+            dir="rtl"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={testimonial.id}>
+                <TestimonialCard
+                  testimonial={testimonial}
+                  index={index}
+                  t={t}
+                  openModal={openModal}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-                    <CardContent className="p-4 flex flex-col flex-1">
-                      <div className="flex mb-2 justify-center">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current star-rating" />
-                        ))}
-                      </div>
-                      <p className="text-secondary leading-relaxed mb-3 text-xs flex-1 line-clamp-4">
-                        "{testimonial.comment}"
-                      </p>
-                      <div className="flex items-center gap-2 pt-2 border-t border-fire-light justify-center">
-                        <h4 className="font-bold text-sm text-primary">{testimonial.name}</h4>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              );
-            })}
+          {/* Custom Navigation Buttons */}
+          <button
+            className="testimonials-prev absolute top-1/2 -translate-y-1/2 -right-1 sm:-right-4 md:-right-6 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-orange-500 sm:bg-primary/90 hover:bg-orange-600 sm:hover:bg-primary text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="السابق"
+          >
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          </button>
+          <button
+            className="testimonials-next absolute top-1/2 -translate-y-1/2 -left-1 sm:-left-4 md:-left-6 z-20 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-orange-500 sm:bg-primary/90 hover:bg-orange-600 sm:hover:bg-primary text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="التالي"
+          >
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+          </button>
         </div>
       </div>
 

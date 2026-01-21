@@ -42,7 +42,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (!isMounted) return;
-    
+
     // نجوم أكتر للموبايل والديسكتوب
     const starCount = isMobile ? 80 : 150;
     setStars(generateStars(starCount));
@@ -51,7 +51,7 @@ const Hero = () => {
       baseRepeatDelay: 5,
       repeatDelayRange: 8
     }));
-    
+
     // توليد النجوم اللامعة
     const brightCount = isMobile ? 8 : 15;
     const generatedBrightStars = [...Array(brightCount)].map((_, i) => ({
@@ -90,35 +90,55 @@ const Hero = () => {
         >
 
           <h1
-            className="text-[clamp(1.5rem,4vw,3.2rem)] font-bold mb-2 drop-shadow-lg text-white leading-tight"
+            className="text-[clamp(1.5rem,4vw,3.2rem)] font-bold mb-2 drop-shadow-lg text-fire leading-tight"
           >
             {t("title")} <br className="md:hidden" />
-            {t("inHeart")} <span className="text-gradient-fire">{t("titleHighlight")}</span>
+            {t("inHeart")}{" "}
+            <span className="text-white">
+              {t("titleHighlight")}
+            </span>
           </h1>
 
-
-          <div className="max-w-3xl space-y-3 px-4">
-            <h2
-              className="text-[clamp(1.1rem,2.5vw,1.8rem)] font-medium text-primary/90 leading-relaxed text-center"
-            >
-              <span dir="ltr" className="inline-block text-fire font-bold">
-                {t("days")}
-              </span>{" "}
-              {t("subtitle")}
-              <br />
-              {t("subtitleContinue")}{" "}
-              <span className="text-fire font-bold">
-                {t("strangenessAndBeauty")}
-              </span>
-            </h2>
+          <div className="w-full max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto px-2 sm:px-4 pt-2">
+            <div className="bg-[#F47A1F]/15 backdrop-blur-md border border-[#F47A1F]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-[#F47A1F]/10">
+              <p className="text-[clamp(0.8rem,3.5vw,1.15rem)] sm:text-[clamp(0.9rem,2vw,1.15rem)] leading-relaxed text-center text-white/90 drop-shadow">
+                {t("subtitle2")}
+                <br className="sm:hidden" />
+                {" "}{t("subtitle2Continue")}{" "}
+                <br className="sm:hidden" />
+                <span className="text-[#F47A1F] font-bold">
+                  {t("subtitle2Highlight")}
+                </span>
+              </p>
+            </div>
           </div>
-        </motion.div>
 
-        <p className="text-[clamp(0.9rem,2vw,1.15rem)] mt-3 max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90">
+
+        </motion.div>
+        <p
+          className="text-[clamp(0.9rem,2vw,1.15rem)] mt-3 text-primary/90 leading-relaxed text-center"
+        >
+          <span dir="ltr" className="inline-block text-fire font-bold">
+            {t("days")}
+          </span>{" "}
+          <span className="text-fire font-bold">{t("daysText")}</span>
+          {t("subtitle")}
+          <br />
+
+          {t("subtitleContinue")}{" "}
+          <span className="text-fire font-bold">
+            {t("strangenessAndBeauty")}
+          </span>
+          <br />
+          {t("subtitle3Continue")}{" "}
+          <span className="text-fire font-bold">
+            {t("bedouinSpecialist2")}
+          </span>
+        </p>
+        <p className="text-[clamp(0.9rem,2vw,1.15rem)]  max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90">
           {t("experience")}{" "}
           <span className="text-fire font-bold">{t("years")}</span>{" "}
           {t("andExecuted")}{" "}
-          <span className="text-fire font-bold">{t("thousandTrips")}</span>
         </p>
 
         <p className="text-[clamp(0.9rem,2vw,1.15rem)] mb-4 md:mb-5 max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90">
@@ -127,27 +147,23 @@ const Hero = () => {
             {" "}{t("whiteDesert")}
           </span>
         </p>
-        <MediaSwiper 
+        <MediaSwiper
           customMedia={afterHeroVideo}
           height="h-[600px]"
-          className="container mx-auto px-4 my-12"
-        /> 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-5 md:mb-6">
-          <motion.a
-            href="#booking"
-            whileHover={{ scale: 1.06, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              size="lg"
-              variant="outline"
-              className="block w-full py-3 rounded-xl font-bold transition-all btn-fire text-center">
-              {tCommon("bookNow")}
-            </Button>
-          </motion.a>
+          className="container mx-auto px-4 "
+        />
+
+        <div className="w-full max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto px-2 sm:px-4 pt-4">
+          <div className="bg-[#F47A1F]/15 backdrop-blur-md border border-[#F47A1F]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-[#F47A1F]/10">
+            <p className="text-[clamp(0.8rem,3.5vw,1.15rem)] sm:text-[clamp(0.9rem,2vw,1.15rem)] leading-relaxed text-center text-white/90 drop-shadow">
+              {t("subtitle3")}
+              <br className="sm:hidden" /> {" "}
+              <span className="text-[#F47A1F] font-bold">
+                {t("subtitle3Highlight")}
+              </span>
+            </p>
+          </div>
         </div>
-     
       </div>
     </section>
   );

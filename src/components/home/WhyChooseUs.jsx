@@ -9,10 +9,13 @@ import {
   generateMeteors,
 } from "@/components/SpaceElements";
 import { useTranslations } from "next-intl";
+import { Sparkles, Shield, Camera, Flame, Moon } from "lucide-react";
+import MediaSwiper from "../MediaSwiper";
+import { WhyChooseUs as WhyChooseUsMedia } from "@/data/mediaSwiperData";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: { opacity: 1, y: 0, scale: 1 },
 };
 
 const WhyChooseUs = () => {
@@ -21,26 +24,11 @@ const WhyChooseUs = () => {
   const [meteors, setMeteors] = useState([]);
 
   const features = [
-    {
-      key: "soulChanging",
-      gridClass: "lg:col-span-3",
-    },
-    {
-      key: "smartComfort",
-      gridClass: "lg:col-span-3",
-    },
-    {
-      key: "uniqueMemories",
-      gridClass: "lg:col-span-2",
-    },
-    {
-      key: "bedouinSafety",
-      gridClass: "lg:col-span-2",
-    },
-    {
-      key: "disconnect",
-      gridClass: "lg:col-span-2",
-    },
+    { key: "soulChanging", icon: Sparkles, color: "from-amber-500 to-orange-600" },
+    { key: "smartComfort", icon: Shield, color: "from-emerald-500 to-teal-600" },
+    { key: "uniqueMemories", icon: Camera, color: "from-purple-500 to-pink-600" },
+    { key: "bedouinSafety", icon: Flame, color: "from-red-500 to-orange-600" },
+    { key: "disconnect", icon: Moon, color: "from-blue-500 to-indigo-600" },
   ];
 
   useEffect(() => {
@@ -48,54 +36,81 @@ const WhyChooseUs = () => {
     setMeteors(generateMeteors(2, { delayMultiplier: 8, baseRepeatDelay: 20 }));
   }, []);
 
+  const renderTextWithOrange = (text) => {
+    if (!text) return null;
+    const lines = text.split("\n");
+    return lines.map((line, i) => (
+      <span key={i} className="block">
+        {line.split(/\*(.*?)\*/g).map((part, j) =>
+          j % 2 === 1 ? (
+            <span key={j} className="text-[#F47A1F] font-semibold">
+              {part}
+            </span>
+          ) : (
+            <span key={j}>{part}</span>
+          )
+        )}
+      </span>
+    ));
+  };
+
   return (
-    <section className="relative py-5 md:py-8 overflow-hidden bg-black">
-      {/* خلفية النجوم */}
-      <div className="absolute inset-0 pointer-events-none">
-        {stars.map((star) => (
-          <StarParticle key={star.id} star={star} />
-        ))}
-      </div>
-      <div className="absolute inset-0 pointer-events-none">
-        {meteors.map((meteor) => (
-          <ShootingStar key={meteor.id} meteor={meteor} />
-        ))}
-      </div>
+    <section className="relative py-10 sm:py-16 overflow-hidden bg-black text-white">
+           {/* Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#F47A1F]/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-4">
+        {/* Title */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-center mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
-            {t("title")} <span className="text-orange-500">{t("titleHighlight")}</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-fire">
+            {t("title")}
           </h2>
-          <div className="h-1 w-24 mx-auto bg-gradient-to-r from-orange-600 to-amber-400 rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-3 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className={`${feature.gridClass} group`}
-            >
-              <div className="relative h-full p-3 md:p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 overflow-hidden">
-                <p className="text-white/90 leading-snug text-xs md:text-sm text-center">
-                  {t(`features.${feature.key}.description`)}
-                </p>
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+        {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <motion.div
+                key={feature.key}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className={index === 4 ? "sm:col-span-2 lg:col-span-1" : ""}
+              >
+                {/* Card */}
+                <div className="relative h-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-md hover:border-[#F47A1F]/30 hover:bg-white/10 transition-all duration-300 group">
+                  {/* Text */}
+                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                    {renderTextWithOrange(t(`features.${feature.key}.description`))}
+                  </p>
 
-                <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-orange-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              </div>
-            </motion.div>
-          ))}
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#F47A1F]/0 to-[#F47A1F]/0 group-hover:from-[#F47A1F]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+                  
+                  {/* Bottom Line */}
+                  <div className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[#F47A1F] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
+      <MediaSwiper
+          customMedia={WhyChooseUsMedia}
+          height="h-[600px]"
+          className="container mx-auto px-4 pt-5 "
+        />
+
     </section>
   );
 };

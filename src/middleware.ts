@@ -1,17 +1,9 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
-export function middleware(request: NextRequest) {
-  // الحصول على اللغة المفضلة من الكوكيز أو استخدام العربية كافتراضي
-  const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
-  
-  // إضافة الهيدر للغة
-  const response = NextResponse.next();
-  response.headers.set('x-locale', locale);
-  
-  return response;
-}
+export default createMiddleware(routing);
 
 export const config = {
+  // تطابق جميع المسارات ما عدا الملفات الثابتة و API
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

@@ -452,3 +452,64 @@ body {
 .animate-section-title {
   animation: section-title-appear .7s cubic-bezier(.25,.1,.25,1) both;
 }
+
+/* ===== Reviews Videos Swiper ===== */
+.reviews-videos-swiper .swiper-pagination {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.reviews-videos-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--primary));
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.reviews-videos-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.reviews-videos-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Hide default navigation */
+.reviews-videos-swiper .swiper-button-next,
+.reviews-videos-swiper .swiper-button-prev {
+  display: none;
+}
+
+/* RTL Support */
+.reviews-videos-swiper[dir="rtl"] .swiper-wrapper {
+  direction: rtl;
+}
+
+/* ===== Testimonials Swiper ===== */
+.testimonials-swiper {
+  padding-bottom: 50px !important;
+}
+
+.testimonials-swiper .swiper-slide {
+  height: auto !important;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 640px) {
+  .testimonials-swiper .swiper-slide {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-swiper .swiper-slide {
+    margin-bottom: 24px;
+  }
+}
+
+.testimonials-swiper .swiper-pagination {
+  bottom: 10px !important;
+}

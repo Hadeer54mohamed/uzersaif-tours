@@ -6,10 +6,13 @@ import { Menu, X, Globe } from "lucide-react";
 import { NavLink } from "../NavLink";
 import { Button } from "../ui/button";
 import { useTranslations, useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 const Navbar = ({ transparent = false }) => {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -22,13 +25,12 @@ const Navbar = ({ transparent = false }) => {
   }, []);
 
   const switchLocale = (newLocale) => {
-    document.cookie = `NEXT_LOCALE=${newLocale};path=/;max-age=31536000`;
-    window.location.reload();
+    router.replace(pathname, { locale: newLocale });
   };
 
   const navLinks = [
     { href: "/", label: t("home") },
-    { href: "/Trips", label: t("trips") },
+    { href: "/trips", label: t("trips") },
     { href: "/about", label: t("about") },
     { href: "/contact", label: t("contact") },
   ];
@@ -56,7 +58,7 @@ const Navbar = ({ transparent = false }) => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+         {/*  {navLinks.map((link) => (
             <NavLink
               key={link.href}
               href={link.href}
@@ -68,7 +70,7 @@ const Navbar = ({ transparent = false }) => {
               </span>
               <span className="absolute bottom-0 right-0 h-[2px] w-0 transition-all hover:w-full hover:left-0 nav-link-underline" />
             </NavLink>
-          ))}
+          ))} */}
 
           {/* Language Switcher */}
           <button
@@ -107,7 +109,7 @@ const Navbar = ({ transparent = false }) => {
             isMobileMenuOpen ? "translate-y-0" : "-translate-y-10"
           }`}
         >
-          {navLinks.map((link) => (
+       {/*    {navLinks.map((link) => (
             <NavLink
               key={link.href}
               href={link.href}
@@ -117,7 +119,7 @@ const Navbar = ({ transparent = false }) => {
             >
               {link.label}
             </NavLink>
-          ))}
+          ))} */}
 
           {/* Mobile Language Switcher */}
           <button

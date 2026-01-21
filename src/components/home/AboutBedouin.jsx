@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { History, ShieldCheck, Users, Map } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-
+import MediaSwiper from "../MediaSwiper";
+import { AboutBedouin as AboutBedouinMedia } from "@/data/mediaSwiperData";
 const AboutBedouin = () => {
   const t = useTranslations("aboutBedouin");
 
@@ -31,16 +32,11 @@ const AboutBedouin = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 relative group order-2 lg:order-1"
           >
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5]">
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-              <Image 
-                src="/teamuzer.jpg" 
-                alt="بدو الفرافرة" 
-                fill
+            <MediaSwiper
+          customMedia={AboutBedouinMedia}
+          height="h-[600px]"
                 className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-              />
-            </div>
-            
+              /> 
             {/* بطاقة الخبرة */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
@@ -62,7 +58,7 @@ const AboutBedouin = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-block text-orange-500 font-bold tracking-widest uppercase text-sm mb-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+              <span className="inline-block text-orange-500 font-bold tracking-widest uppercase text-xl mb-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
                 {t("badge")}
               </span>
               

@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
-    "@radix-ui/react-slot": "^1.2.4",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.26.2",
     "lucide-react": "^0.562.0",
@@ -20,6 +18,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "sonner": "^2.0.7",
+    "swiper": "^12.0.3",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {

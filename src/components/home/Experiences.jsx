@@ -24,7 +24,8 @@ import {
   generateStars,
   generateMeteors,
 } from "@/components/SpaceElements";
-
+import MediaSwiper from "../MediaSwiper";
+import { Experiences as ExperiencesMedia } from "@/data/mediaSwiperData";
 export default function Experiences() {
   const t = useTranslations("experiences");
   const [stars, setStars] = useState([]);
@@ -34,9 +35,6 @@ export default function Experiences() {
     { icon: Globe, key: "spaceFeeling" },
     { icon: Camera, key: "uniquePhotos" },
     { icon: Compass, key: "adventure" },
-    { icon: ShieldCheck, key: "safeDecision" },
-    { icon: Map, key: "topProgram" },
-    { icon: Home, key: "bedouinHospitality" },
     { icon: MoonStar, key: "realDisconnect" },
     { icon: Brain, key: "deeperReturn" },
     { icon: CheckCircle, key: "noWorries" },
@@ -67,12 +65,12 @@ export default function Experiences() {
             {t("title")}
           </h2>
           <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] leading-relaxed px-2 text-secondary">
-            {t("subtitle")}
+          <span className="text-fire">{t("subtitleStart")}</span> {t("subtitle")}
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 max-w-7xl mx-auto">
           {values.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -82,27 +80,35 @@ export default function Experiences() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: i * 0.03, duration: 0.4 }}
-                className="group rounded-lg p-2.5 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm border border-white/5 hover:border-orange-500/20"
+                className="group"
               >
-                <div className="flex items-start gap-2">
-                  <Icon className="w-5 h-5 mt-0.5 flex-shrink-0 text-orange-500" />
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base sm:text-lg font-black text-white leading-tight mb-1">
-                      {t(`items.${item.key}.title`)}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-semibold text-gray-300 leading-snug">
-                      {t(`items.${item.key}.desc`)}
-                    </p>
-                    <p className="text-xs sm:text-sm font-bold text-orange-400 leading-snug mt-1">
-                      {t(`items.${item.key}.desc2`)}
-                    </p>
+                <div className="relative h-full p-3 md:p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 overflow-hidden">
+                  <div className="flex items-start gap-2">
+                    <Icon className="w-5 h-5 mt-0.5 flex-shrink-0 text-orange-500" />
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base sm:text-lg font-black text-white leading-tight mb-1">
+                        {t(`items.${item.key}.title`)}
+                      </h3>
+                      <p className="text-xs sm:text-sm font-semibold text-gray-300 leading-snug">
+                        {t(`items.${item.key}.desc`)}
+                      </p>
+                      <p className="text-xs sm:text-sm font-bold text-orange-400 leading-snug mt-1">
+                        {t(`items.${item.key}.desc2`)}
+                      </p>
+                    </div>
                   </div>
+                  <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-orange-500 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </div>
               </motion.div>
             );
           })}
         </div>
       </div>
+      <MediaSwiper
+          customMedia={ExperiencesMedia}
+          height="h-[600px]"
+          className="container mx-auto px-4 pt-5 "
+        />
     </section>
   );
 }
