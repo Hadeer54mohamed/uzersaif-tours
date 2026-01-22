@@ -42,8 +42,8 @@ export const mountainGallery = {
 export const afterHeroVideo = {
   media: [
     {
-      type: "image",
-      image: "/real.gif",
+      type: "video",
+      video: "/real.mp4",
     },
   ],
 };

@@ -109,8 +109,8 @@ const Home = () => {
         <Footer />
       </div>
 
-{/*       <ExitIntentPopup />
- */}    </>
+      <ExitIntentPopup />
+   </>
   );
 };
 
