@@ -146,17 +146,17 @@ const About = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
           >
             <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-            <span className="text-sm text-[#B6BDD6]">{t("badge")}</span>
+            <span className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] md:text-sm md:font-normal">{t("badge")}</span>
           </motion.div>
           
-          <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-black mb-4 leading-tight">
+          <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 leading-tight md:text-[clamp(2.5rem,7vw,4.5rem)] md:font-black">
             <span className="text-gradient-fire">{t("title")}</span>
             <span className="text-[#F5F7FA]"> {t("titleHighlight")}</span>
           </h1>
           
-          <p className="text-[clamp(1rem,2.5vw,1.35rem)] text-[#B6BDD6] leading-relaxed max-w-xl mx-auto">
+          <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] leading-relaxed max-w-xl mx-auto md:text-[clamp(1rem,2.5vw,1.35rem)] md:font-normal">
             {t("subtitle")}
-            <span className="text-[#FFB85C] font-semibold"> {t("subtitleHighlight")}</span>
+            <span className="text-[#FFB85C] font-black"> {t("subtitleHighlight")}</span>
           </p>
         </motion.div>
       </section>
@@ -174,10 +174,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F7FA] mb-3">
+            <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] mb-3 md:text-4xl">
               {t("storyTitle")} <span className="text-gradient-fire">{t("storyHighlight")}</span>
             </h2>
-            <p className="text-[#B6BDD6] max-w-lg mx-auto">
+            <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] max-w-lg mx-auto md:text-base md:font-normal">
               {t("storySubtitle")}
             </p>
           </motion.div>
@@ -207,7 +207,7 @@ const About = () => {
                                 border border-[#F47A1F]/30 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5 text-[#F47A1F]" />
                   </div>
-                  <p className="text-[#B6BDD6] leading-relaxed text-sm sm:text-base">
+                  <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] leading-relaxed md:text-base md:font-normal">
                     {t(`features.${feature.key}`)}
                   </p>
                 </motion.div>
@@ -236,10 +236,10 @@ const About = () => {
                 <Heart className="w-12 h-12 text-[#F47A1F] mx-auto" />
               </motion.div>
               
-              <p className="text-xl sm:text-2xl font-bold text-[#F5F7FA] mb-2">
+              <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#F5F7FA] mb-2 md:text-2xl">
                 {t("highlightTitle")}
               </p>
-              <p className="text-lg sm:text-xl text-[#FFB85C] font-semibold">
+              <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#FFB85C] md:text-xl md:font-black">
                 {t("highlightSubtitle")}
               </p>
             </div>
@@ -252,7 +252,7 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#F5F7FA] mb-3">
+            <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] mb-3 md:text-4xl">
               {t("valuesTitle")}
             </h2>
           </motion.div>
@@ -281,11 +281,11 @@ const About = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold mb-3 text-center text-[#F5F7FA] group-hover:text-[#FFB85C] transition-colors">
+                  <h3 className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-3 text-center text-[#F5F7FA] group-hover:text-[#FFB85C] transition-colors md:text-lg">
                     {t(`values.${value.key}.title`)}
                   </h3>
 
-                  <p className="text-sm leading-relaxed text-center text-[#B6BDD6]">
+                  <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed text-center text-[#B6BDD6] md:text-sm md:font-normal">
                     {t(`values.${value.key}.description`)}
                   </p>
                 </motion.div>
@@ -329,7 +329,7 @@ const About = () => {
                     >
                       {stat.value}
                     </motion.h3>
-                    <p className="text-sm sm:text-base font-medium text-[#B6BDD6]">
+                    <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] md:text-sm md:font-normal">
                       {t(`stats.${stat.labelKey}`)}
                     </p>
                   </motion.div>
@@ -362,10 +362,10 @@ const About = () => {
                 <Compass className="w-12 h-12 text-[#F47A1F] mx-auto mb-4" />
               </motion.div>
               
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#F5F7FA]">
+              <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F5F7FA]">
                 {t("cta.title")} <span className="text-gradient-fire">{t("cta.titleHighlight")}</span>؟
               </h2>
-              <p className="text-[#B6BDD6] mb-8 max-w-lg mx-auto">
+              <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] mb-8 max-w-lg mx-auto md:text-base md:font-normal">
                 {t("cta.subtitle")}
               </p>
               

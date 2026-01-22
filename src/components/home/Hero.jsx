@@ -90,7 +90,7 @@ const Hero = () => {
         >
 
           <h1
-            className="text-[clamp(1.5rem,4vw,3.2rem)] font-bold mb-2 drop-shadow-lg text-fire leading-tight"
+            className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-2 drop-shadow-lg text-fire leading-tight md:text-[clamp(1.5rem,4vw,3.2rem)]"
           >
             {t("title")} <br className="md:hidden" />
             {t("inHeart")}{" "}
@@ -101,7 +101,7 @@ const Hero = () => {
 
           <div className="w-full max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto px-2 sm:px-4 pt-2">
             <div className="bg-[#F47A1F]/15 backdrop-blur-md border border-[#F47A1F]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-[#F47A1F]/10">
-              <p className="text-[clamp(0.8rem,3.5vw,1.15rem)] sm:text-[clamp(0.9rem,2vw,1.15rem)] leading-relaxed text-center text-white/90 drop-shadow">
+              <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed text-center text-white/90 drop-shadow md:text-[clamp(0.9rem,2vw,1.15rem)] md:font-normal">
                 {t("subtitle2")}
                 <br className="sm:hidden" />
                 {" "}{t("subtitle2Continue")}{" "}
@@ -116,7 +116,7 @@ const Hero = () => {
 
         </motion.div>
         <p
-          className="text-[clamp(0.9rem,2vw,1.15rem)] mt-3 text-primary/90 leading-relaxed text-center"
+          className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold mt-3 text-primary/90 leading-relaxed text-center md:text-[clamp(0.9rem,2vw,1.15rem)] md:font-normal"
         >
           <span dir="ltr" className="inline-block text-fire font-bold">
             {t("days")}
@@ -135,15 +135,15 @@ const Hero = () => {
             {t("bedouinSpecialist2")}
           </span>
         </p>
-        <p className="text-[clamp(0.9rem,2vw,1.15rem)]  max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90">
+        <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90 md:text-[clamp(0.9rem,2vw,1.15rem)] md:font-normal">
           {t("experience")}{" "}
           <span className="text-fire font-bold">{t("years")}</span>{" "}
           {t("andExecuted")}{" "}
         </p>
 
-        <p className="text-[clamp(0.9rem,2vw,1.15rem)] mb-4 md:mb-5 max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90">
+        <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-4 md:mb-5 max-w-2xl mx-auto leading-relaxed text-center drop-shadow text-primary/90 md:text-[clamp(0.9rem,2vw,1.15rem)] md:font-normal">
           {t("insideReserve")}
-          <span className="text-fire font-semibold">
+          <span className="text-fire font-black">
             {" "}{t("whiteDesert")}
           </span>
         </p>
@@ -155,7 +155,7 @@ const Hero = () => {
 
         <div className="w-full max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto px-2 sm:px-4 pt-4">
           <div className="bg-[#F47A1F]/15 backdrop-blur-md border border-[#F47A1F]/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-lg shadow-[#F47A1F]/10">
-            <p className="text-[clamp(0.8rem,3.5vw,1.15rem)] sm:text-[clamp(0.9rem,2vw,1.15rem)] leading-relaxed text-center text-white/90 drop-shadow">
+            <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed text-center text-white/90 drop-shadow md:text-[clamp(0.9rem,2vw,1.15rem)] md:font-normal">
               {t("subtitle3")}
               <br className="sm:hidden" /> {" "}
               <span className="text-[#F47A1F] font-bold">

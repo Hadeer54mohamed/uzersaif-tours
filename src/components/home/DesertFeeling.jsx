@@ -33,7 +33,7 @@ export default function DesertFeeling() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-4 text-[#F47A1F] drop-shadow-lg"
+          className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F47A1F] drop-shadow-lg md:text-[clamp(1.25rem,4vw,2.2rem)]"
         >
           {t("title")}
         </motion.h2>
@@ -58,7 +58,7 @@ export default function DesertFeeling() {
                   <span className="w-2 h-2 rounded-full bg-[#F47A1F] shadow shadow-[#F47A1F]/40 group-hover:scale-125 transition-transform" />
 
                   {/* Text */}
-                  <span className="text-white/85 text-[clamp(0.95rem,2.5vw,1.05rem)] leading-relaxed">
+                  <span className="text-white/85 text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed md:text-[clamp(0.95rem,2.5vw,1.05rem)] md:font-black">
                     {t(item)}
                   </span>
                 </motion.li>
@@ -73,13 +73,13 @@ export default function DesertFeeling() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="max-w-3xl mx-auto text-white/90 text-[clamp(0.95rem,2.5vw,1.1rem)] leading-relaxed"
+          className="max-w-3xl mx-auto text-fire text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed md:text-[clamp(0.95rem,2.5vw,1.1rem)] md:font-black"
         >
-          <span className="text-[#F47A1F] font-semibold">
+          <span className="text-[#F47A1F] font-black">
             {t("footerHighlightStart")}
           </span>{" "}
           {t("footerText")}{" "}
-          <span className="text-[#F47A1F] font-semibold">
+          <span className="text-[#F47A1F] font-black">
             {t("footerHighlightEnd")}
           </span>
         </motion.p>

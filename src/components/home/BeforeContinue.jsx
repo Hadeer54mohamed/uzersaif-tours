@@ -32,7 +32,7 @@ export default function BeforeContinue() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-3 sm:mb-4 text-[#F47A1F] drop-shadow-lg"
+        className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-3 sm:mb-4 text-[#F47A1F] drop-shadow-lg md:text-[clamp(1.25rem,4vw,2.2rem)]"
       >
         {t("title")}
       </motion.h2>
@@ -43,13 +43,16 @@ export default function BeforeContinue() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-white/90 text-[clamp(0.9rem,2.5vw,1.05rem)] leading-relaxed mb-6 sm:mb-8 max-w-3xl mx-auto px-2"
+        className="text-white/90 text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed mb-2 sm:mb-8 max-w-3xl mx-auto px-2 md:text-[clamp(0.9rem,2.5vw,1.05rem)] md:font-normal"
       >
+        
         {t("descriptionStart")}{" "}
-        <span className="text-[#F47A1F] font-semibold">
+        <span className="text-[#F47A1F] font-black">
           {t("highlightFeeling")}
         </span>{" "}
         {t("descriptionEnd")}
+        <br />
+          {t("quote")}
       </motion.p>
   
       {/* List */}
@@ -65,13 +68,13 @@ export default function BeforeContinue() {
             <motion.li
               key={item}
               variants={itemVariants}
-              className="group flex items-center justify-center gap-3 text-center transition-all duration-300 hover:translate-x-0.5"
+              className="group flex items-center font-black justify-center gap-3 text-center transition-all duration-300 hover:translate-x-0.5"
             >
               {/* Fire Dot */}
               <span className="w-2 h-2 rounded-full bg-[#F47A1F] flex-shrink-0 shadow shadow-[#F47A1F]/40 group-hover:scale-125 transition-transform" />
 
               {/* Text */}
-              <span className="text-white/80 text-[clamp(0.95rem,2.5vw,1.05rem)] leading-relaxed group-hover:text-white transition-colors">
+              <span className="text-white text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed group-hover:text-white transition-colors md:text-[clamp(0.95rem,2.5vw,1.05rem)] md:font-black">
                 {t(item)}
               </span>
             </motion.li>
@@ -88,7 +91,7 @@ export default function BeforeContinue() {
         className="max-w-3xl mx-auto"
       >
         <div className="bg-[#F47A1F]/10 backdrop-blur-sm border border-[#F47A1F]/30 rounded-xl p-4 sm:p-5">
-          <p className="text-white/90 text-[clamp(0.9rem,2.5vw,1.05rem)] leading-relaxed">
+          <p className="text-white/90 text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed md:text-[clamp(0.9rem,2.5vw,1.05rem)] md:font-normal">
             <span className="text-[#F47A1F] font-bold">
               {t("footerHighlight")}
             </span>

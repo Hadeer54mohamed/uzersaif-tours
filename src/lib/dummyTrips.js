@@ -11,7 +11,7 @@ export const dummyTrips = [
     // Prices and discounts (numbers only)
     price: 6499,
     originalPrice: 9800,
-    discountCode: "Frafra",
+    discountCode: "farfra26",
 
     // Booking info
     bookingSteps: {

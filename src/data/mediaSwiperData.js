@@ -42,8 +42,8 @@ export const mountainGallery = {
 export const afterHeroVideo = {
   media: [
     {
-      type: "video",
-      video: "/real.mp4",
+      type: "image",
+      image: "/real.gif",
     },
   ],
 };
@@ -72,6 +72,10 @@ export const DesertComparison = {
   media: [
     {
       type: "image",
+      image: "/DesertComparison/6.jpg",
+    },
+    {
+      type: "image",
       image: "/DesertComparison/1.jpg",
     },
     {
@@ -89,11 +93,8 @@ export const DesertComparison = {
     {
       type: "image",
       image: "/DesertComparison/5.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertComparison/6.jpg",
     }
+   
   ],
 };
 export const DesertFeeling = {

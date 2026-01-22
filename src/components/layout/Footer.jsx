@@ -230,7 +230,7 @@ const Footer = () => {
         >
           <p className="text-sm flex items-center gap-2 text-muted">
             © {currentYear} &nbsp; {t("copyright")}
-            <span className="font-semibold text-gradient-fire" dir="ltr">
+            <span className="font-black text-gradient-fire" dir="ltr">
               UzerSaif
             </span>
           </p>
@@ -244,7 +244,7 @@ const Footer = () => {
               href="https://www.facebook.com/ENSEGYPTEG"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold hover:underline transition-colors text-fire"
+              className="font-black hover:underline transition-colors text-fire"
             >
               ENS
             </a>

@@ -31,7 +31,7 @@ const TripForYou = () => {
       <span key={i} className="block">
         {line.split(/\*(.*?)\*/g).map((part, j) =>
           j % 2 === 1 ? (
-            <span key={j} className={`${colorClass} font-semibold`}>
+            <span key={j} className={`${colorClass} font-black`}>
               {part}
             </span>
           ) : (
@@ -49,18 +49,7 @@ const TripForYou = () => {
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-red-500/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-4">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-fire">
-            {t("title")}
-          </h2>
-        </motion.div>
+      
 
         {/* Two Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto mb-12">
@@ -73,7 +62,7 @@ const TripForYou = () => {
             className="relative"
           >
             <div className="p-6 sm:p-8 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm">
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-emerald-400 flex items-center gap-3">
+              <h3 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-6 text-emerald-400 flex items-center gap-3 md:text-2xl">
                 <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
                   <Check className="w-5 h-5 text-emerald-400" />
                 </div>
@@ -90,7 +79,7 @@ const TripForYou = () => {
                     className="flex items-start gap-3 text-white/80"
                   >
                     <span className="mt-1.5 w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" />
-                    <span className="leading-relaxed text-sm sm:text-base">
+                    <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                       {renderTextWithHighlight(t(`forYou.${item}`), "text-[#F47A1F]")}
                     </span>
                   </motion.li>
@@ -108,7 +97,7 @@ const TripForYou = () => {
             className="relative"
           >
             <div className="p-6 sm:p-8 rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/5 to-transparent backdrop-blur-sm">
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-red-400 flex items-center gap-3">
+              <h3 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-6 text-red-400 flex items-center gap-3 md:text-2xl">
                 <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
                   <X className="w-5 h-5 text-red-400" />
                 </div>
@@ -125,7 +114,7 @@ const TripForYou = () => {
                     className="flex items-start gap-3 text-white/80"
                   >
                     <span className="mt-1.5 w-2 h-2 rounded-full bg-red-400 flex-shrink-0" />
-                    <span className="leading-relaxed text-sm sm:text-base">
+                    <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                       {renderTextWithHighlight(t(`notForYou.${item}`), "text-red-400")}
                     </span>
                   </motion.li>
@@ -160,16 +149,16 @@ const TripForYou = () => {
             </div>
 
             <div className="relative z-10 text-center">
-              <h4 className="text-xl sm:text-2xl font-bold mb-4 text-[#F47A1F]">
+              <h4 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F47A1F] md:text-2xl">
                 {t("bedouinBox.title")}
               </h4>
-              <p className="text-white/90 leading-relaxed mb-4 text-sm sm:text-base">
+              <p className="text-white/90 leading-relaxed mb-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                 {t("bedouinBox.line1")}
               </p>
-              <p className="text-white/90 leading-relaxed text-sm sm:text-base">
+              <p className="text-white/90 leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold">
                 {t("bedouinBox.line2")}
               </p>
-              <p className="mt-4 text-lg sm:text-xl font-semibold text-[#F47A1F] flex items-center justify-center gap-2">
+              <p className="mt-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#F47A1F] flex items-center justify-center gap-2 md:text-xl md:font-black">
                 <span>{t("bedouinBox.welcome")}</span>
               </p>
             </div>

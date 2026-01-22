@@ -55,7 +55,7 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden">
+    <section id="faq" className="relative overflow-hidden">
     
 
       
@@ -67,10 +67,10 @@ const FAQ = () => {
               <HelpCircle className="w-8 h-8 icon-fire" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-2 sm:mb-3 text-primary">
+          <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-2 sm:mb-3 text-primary md:text-4xl md:font-extrabold">
             {t("title")}
           </h2>
-          <p className="text-base sm:text-lg max-w-2xl mx-auto text-secondary">
+          <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold max-w-2xl mx-auto text-secondary md:text-lg md:font-normal">
             {t("subtitle")}
           </p>
         </div>
@@ -89,7 +89,7 @@ const FAQ = () => {
                 <button
                   onClick={() => toggleItem(faq.id)}
                   aria-expanded={isOpen}
-                  className="w-full flex justify-center items-center gap-2 text-lg sm:text-xl font-bold transition-colors faq-question"
+                  className="w-full flex justify-center items-center gap-2 text-[clamp(1.25rem,4vw,2.2rem)] font-bold transition-colors faq-question md:text-xl"
                 >
                   {question}
                   <ChevronDown
@@ -126,7 +126,7 @@ const FAQ = () => {
                           </div>
                         </div>
                       )}
-                      <p className={`text-base leading-relaxed faq-answer flex-1 whitespace-pre-line ${faq.image ? "text-right" : ""}`}>
+                      <p className={`text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed faq-answer flex-1 whitespace-pre-line md:text-base md:font-normal ${faq.image ? "text-right" : ""}`}>
                         {answer}
                       </p>
                     </div>

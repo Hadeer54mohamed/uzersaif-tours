@@ -27,7 +27,7 @@ const PriceAction = () => {
   ];
 
   return (
-    <section className="py-16 relative" dir="rtl">
+    <section className=" relative" dir="rtl">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#F47A1F]/5 blur-[120px] rounded-full" />
@@ -59,45 +59,45 @@ const PriceAction = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-6 md:p-8 relative overflow-hidden"
+            className="bg-gradient-to-br from-[#F47A1F] to-[#FFB85C] rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-2xl shadow-[#F47A1F]/30"
           >
             {/* Glow Effect */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#F47A1F]/10 blur-[60px]" />
-            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#F47A1F]/10 blur-[60px]" />
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-white/20 blur-[60px]" />
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-white/20 blur-[60px]" />
 
             <div className="relative z-10 text-center space-y-5">
               {/* Discount Badge */}
-              <div className="inline-block mx-auto px-6 py-2 border border-[#F5F7FA]/30 rounded-full text-2xl font-black bg-gradient-to-r from-[#F47A1F] via-[#FFB85C] to-[#F47A1F] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(255,184,92,0.35)]">
+              <div className="inline-block mx-auto px-6 py-2 border border-black/30 rounded-full text-2xl font-black bg-black text-white">
                 {tTrip("discount")} {tTrip(`trips.${tripKey}.discountAmount`)}
               </div>
 
               {/* Coupon Code */}
-              <p className="text-[#F47A1F] font-black text-lg">
+              <p className="text-black font-black text-lg">
                 {tTrip("useCode")} <span className="underline">{trip.discountCode}</span>
               </p>
 
               {/* Small Note */}
-              <p className="text-sm font-bold text-[#8A91A8]">
+              <p className="text-sm font-bold text-black/70">
                 {tTrip("priceAfterDiscount")}
               </p>
 
               {/* Price */}
-              <div className="text-5xl md:text-6xl font-black text-[#F5F7FA]">
+              <div className="text-5xl md:text-6xl font-black text-black">
                 {trip.price}
-                <span className="text-xl font-bold text-[#F47A1F] mr-2">{tTrip("currency")}</span>
+                <span className="text-xl font-bold text-black/80 mr-2">{tTrip("currency")}</span>
               </div>
 
               {/* Old Price */}
-              <div className="text-xl font-black text-[#8A91A8] line-through">
+              <div className="text-xl font-black text-black/60 line-through">
                 {tTrip("insteadOf")} {trip.originalPrice} {tTrip("currency")}
               </div>
 
               {/* Price Includes Note */}
-              <div className="pt-4 border-t border-white/10">
-                <p className="text-[#B6BDD6] font-bold text-base leading-relaxed">
+              <div className="pt-4 border-t border-black/20">
+                <p className="text-black/80 font-bold text-base leading-relaxed">
                   {t("priceIncludes")}
                   <br />
-                  <span className="text-white">{t("priceIncludesDetail")}</span>
+                  <span className="text-black">{t("priceIncludesDetail")}</span>
                 </p>
               </div>
             </div>

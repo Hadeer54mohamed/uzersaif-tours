@@ -34,7 +34,7 @@ export default function DesertComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-[clamp(1.3rem,4vw,2.4rem)] font-bold mb-10 text-white"
+          className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-10 text-white md:text-[clamp(1.3rem,4vw,2.4rem)]"
         >
           {t("titleStart")}{" "}
           <span className="text-[#F47A1F]">{t("titleHighlight")}</span>
@@ -50,7 +50,7 @@ export default function DesertComparison() {
             viewport={{ once: true }}
             className="border border-red-500/30 bg-red-500/5 rounded-2xl p-5 sm:p-6"
           >
-            <h3 className="text-red-400 font-bold text-lg mb-4">
+            <h3 className="text-red-400 font-bold text-[clamp(1.25rem,4vw,2.2rem)] mb-4 md:text-lg">
               {t("othersTitle")}
             </h3>
 
@@ -65,7 +65,7 @@ export default function DesertComparison() {
                   className="flex items-start gap-3"
                 >
                   <span className="text-red-400 mt-1">✕</span>
-                  <span className="leading-relaxed text-lg">{t(key)}</span>
+                  <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-lg md:font-black">{t(key)}</span>
                 </motion.li>
               ))}
             </motion.ul>
@@ -79,7 +79,7 @@ export default function DesertComparison() {
             viewport={{ once: true }}
             className="border border-green-500/30 bg-green-500/5 rounded-2xl p-5 sm:p-6"
           >
-            <h3 className="text-green-400 font-bold text-lg mb-4">
+            <h3 className="text-green-400 font-bold text-[clamp(1.25rem,4vw,2.2rem)] mb-4">
               {t("ourTitle")}
             </h3>
 
@@ -94,7 +94,7 @@ export default function DesertComparison() {
                   className="flex items-start gap-3"
                 >
                   <span className="text-green-400 mt-1">✔</span>
-                  <span className="leading-relaxed text-lg">{t(key)}</span>
+                  <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-lg md:font-black">{t(key)}</span>
                 </motion.li>
               ))}
             </motion.ul>

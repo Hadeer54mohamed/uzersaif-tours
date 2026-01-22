@@ -85,11 +85,18 @@ const Home = () => {
         <SectionDivider />
         <DesertTrip />
         <MediaSwiper
+          customMedia={hotelGallery}
+          height="h-[600px]"
+          className="container mx-auto px-4 my-12"
+          objectFit="contain"
+          intervalDefault={15}
+        />
+       {/*  <MediaSwiper
           customMedia={DesertTrips}
           height="h-[600px]"
           className="container mx-auto px-4 my-12"
           objectFit="contain"
-        />
+        /> */}
         <SectionDivider />
         <ReviewsVideos />
 
@@ -99,21 +106,11 @@ const Home = () => {
         <TripForYou />
         <SectionDivider />
         <PriceAction />
-        <SectionDivider />
-        
-        <MediaSwiper
-          customMedia={hotelGallery}
-          height="h-[600px]"
-          className="container mx-auto px-4 my-12"
-          objectFit="contain"
-        />
-        <SectionDivider />
-        <Testimonials />
         <Footer />
       </div>
 
-      <ExitIntentPopup />
-    </>
+{/*       <ExitIntentPopup />
+ */}    </>
   );
 };
 

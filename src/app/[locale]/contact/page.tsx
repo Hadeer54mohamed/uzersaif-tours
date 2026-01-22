@@ -190,15 +190,15 @@ const Contact = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
           >
             <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-            <span className="text-sm text-[#B6BDD6]">{t("badge")}</span>
+            <span className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] md:text-sm md:font-normal">{t("badge")}</span>
           </motion.div>
           
-          <h1 className="text-[clamp(2.5rem,7vw,4.5rem)] font-black mb-4 leading-tight">
+          <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 leading-tight md:text-[clamp(2.5rem,7vw,4.5rem)] md:font-black">
             <span className="text-gradient-fire">{t("title")}</span>
             <span className="text-[#F5F7FA]"> {t("titleHighlight")}</span>
           </h1>
           
-          <p className="text-[clamp(1rem,2.5vw,1.35rem)] text-[#B6BDD6] leading-relaxed max-w-xl mx-auto">
+          <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] leading-relaxed max-w-xl mx-auto md:text-[clamp(1rem,2.5vw,1.35rem)] md:font-normal">
             {t("subtitle")}
             <br />
             <span className="text-[#FFB85C]">{t("subtitleHighlight")}</span>
@@ -219,10 +219,10 @@ const Contact = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#F5F7FA] mb-3">
+            <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] mb-3 md:text-4xl">
               {t("sectionTitle")}
             </h2>
-            <p className="text-[#B6BDD6] max-w-lg mx-auto">
+            <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] max-w-lg mx-auto">
               {t("sectionSubtitle")}
             </p>
           </motion.div>
@@ -257,13 +257,13 @@ const Contact = () => {
                         <div className="absolute inset-0 rounded-xl bg-[#F47A1F]/20 blur-xl opacity-0 group-hover:opacity-50 transition-opacity" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-[#F5F7FA] mb-0.5 group-hover:text-[#FFB85C] transition-colors">
+                        <h3 className="font-bold text-[clamp(1.25rem,4vw,2.2rem)] text-[#F5F7FA] mb-0.5 group-hover:text-[#FFB85C] transition-colors md:text-base">
                           {t(`info.${info.key}.title`)}
                         </h3>
-                        <p className="text-[#F47A1F] font-semibold text-sm" dir={info.link.startsWith("tel") ? "ltr" : "rtl"}>
+                        <p className="text-[#F47A1F] font-bold text-[clamp(1.25rem,4vw,2.2rem)]" dir={info.link.startsWith("tel") ? "ltr" : "rtl"}>
                           {info.content || t(`info.${info.key}.content`)}
                         </p>
-                        <p className="text-[#8A91A8] text-xs mt-1">{t(`info.${info.key}.description`)}</p>
+                        <p className="text-[#8A91A8] text-[clamp(1.25rem,4vw,2.2rem)] font-bold mt-1 md:text-xs md:font-normal">{t(`info.${info.key}.description`)}</p>
                       </div>
                       <div className="text-[#F47A1F]/30 group-hover:text-[#F47A1F]/60 transition-colors">
                         <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +280,7 @@ const Contact = () => {
                 variants={itemVariants}
                 className="pt-4"
               >
-                <p className="text-[#8A91A8] text-sm mb-4">{t("followUs")}</p>
+                <p className="text-[#8A91A8] text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-4 md:text-sm md:font-normal">{t("followUs")}</p>
                 <div className="flex gap-3">
                   {socialLinks.map((social, index) => {
                     const SocialIcon = social.icon;
@@ -319,10 +319,10 @@ const Contact = () => {
                     <Send className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#F5F7FA]">
+                    <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] md:text-2xl">
                       {t("form.title")}
                     </h2>
-                    <p className="text-[#8A91A8] text-sm">{t("form.subtitle")}</p>
+                    <p className="text-[#8A91A8] text-[clamp(1.25rem,4vw,2.2rem)] font-bold">{t("form.subtitle")}</p>
                   </div>
                 </div>
 
@@ -330,7 +330,7 @@ const Contact = () => {
                   {/* Row 1 - Name & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#B6BDD6] block">
+                      <label className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] block md:text-sm md:font-medium">
                         {t("form.name")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
@@ -343,7 +343,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#B6BDD6] block">
+                      <label className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] block md:text-sm md:font-medium">
                         {t("form.email")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
@@ -362,7 +362,7 @@ const Contact = () => {
                   {/* Row 2 - Phone & Subject */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#B6BDD6] block">
+                      <label className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] block md:text-sm md:font-medium">
                         {t("form.phone")} <span className="text-[#F47A1F]">*</span>
                       </label>
                       <Input 
@@ -377,7 +377,7 @@ const Contact = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#B6BDD6] block">
+                      <label className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] block md:text-sm md:font-medium">
                         {t("form.subject")}
                       </label>
                       <Input 
@@ -407,7 +407,7 @@ const Contact = () => {
 
                   {/* Submit Button */}
                   <div className="flex items-center justify-between pt-2">
-                    <p className="text-xs text-[#8A91A8]">
+                    <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#8A91A8] md:text-xs md:font-normal">
                       <span className="text-[#F47A1F]">*</span> {t("form.required")}
                     </p>
                     <motion.button
@@ -444,7 +444,7 @@ const Contact = () => {
                                  flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500/90 to-emerald-600/90 text-white shadow-lg shadow-emerald-500/30 backdrop-blur-sm"
                     >
                       <CheckCircle2 className="w-5 h-5" />
-                      <span className="font-medium">{t("form.success")}</span>
+                      <span className="font-bold text-[clamp(1.25rem,4vw,2.2rem)] md:text-base md:font-medium">{t("form.success")}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -491,14 +491,14 @@ const Contact = () => {
                   <div className="w-10 h-10 rounded-lg bg-[#F47A1F]/20 flex items-center justify-center border border-[#F47A1F]/40">
                     <Compass className="w-5 h-5 text-[#F47A1F]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#F5F7FA]">{t("map.title")}</h3>
+                  <h3 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] md:text-2xl">{t("map.title")}</h3>
                 </div>
                 
-                <p className="text-[#B6BDD6] mb-6 leading-relaxed">
+                <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] mb-6 leading-relaxed md:text-base md:font-normal">
                   {t("map.description")}
                 </p>
                 
-                <div className="space-y-3 text-sm">
+                <div className="space-y-3 text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-sm md:font-normal">
                   <div className="flex items-center gap-3 text-[#B6BDD6]">
                     <MapPin className="w-4 h-4 text-[#F47A1F]" />
                     <span>{t("map.address")}</span>
@@ -561,14 +561,14 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F47A1F]/10 border border-[#F47A1F]/30 mb-6"
               >
                 <Sparkles className="w-4 h-4 text-[#FFB85C]" />
-                <span className="text-sm text-[#B6BDD6]">{t("cta.badge")}</span>
+                <span className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] md:text-sm md:font-normal">{t("cta.badge")}</span>
               </motion.div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#F5F7FA]">
+              <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F5F7FA]">
                 {t("cta.title")} <span className="text-gradient-fire">{t("cta.titleHighlight")}</span>؟
               </h2>
               
-              <p className="text-lg text-[#B6BDD6] mb-10 max-w-xl mx-auto">
+              <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#B6BDD6] mb-10 max-w-xl mx-auto md:text-lg md:font-normal">
                 {t("cta.subtitle")}
               </p>
               

@@ -86,7 +86,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
       }
 
       return (
-        <div className="relative w-full h-full bg-black">
+        <div className="relative w-full h-full">
           <iframe
             src={embedUrl}
             className="w-full h-full"
@@ -172,11 +172,11 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
     // Local video
     return (
-      <div className="relative w-full h-full group bg-black">
+      <div className="relative w-full h-full group">
         <video
           ref={videoRef}
           src={videoUrl}
-          className={`w-full h-full object-contain md:object-${objectFit}`}
+          className={`w-full h-full object-cover`}
           loop
           muted={isMuted}
           playsInline
@@ -222,31 +222,19 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
   // Image type
   return (
-    <div className="relative w-full h-full bg-black">
+    <div className="relative w-full h-full">
       <motion.img
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.8 }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
-        className={`w-full h-full object-contain md:object-${objectFit}`}
+        className={`w-full h-full object-cover`}
         onError={(e) => {
           console.error("Image failed to load:", item.image);
           e.target.src = "/trip.jpg";
         }}
-      />
-      
-      {/* Image Badge */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-sm flex items-center gap-2 text-white text-sm font-medium border border-[#F47A1F]/30"
-      >
-        <ImageIcon className="w-4 h-4" />
-        {t("image")}
-      </motion.div>
-
-    
+      />    
     </div>
   );
 };
@@ -258,7 +246,8 @@ const MediaSwiper = ({
   height = "h-[500px]",
   autoPlayDefault = true,
   intervalDefault = 15,
-  objectFit = "contain"
+  objectFit = "cover",
+  aspectRatio = ""
 }) => {
   // تحويل البيانات مباشرة
   const getGalleryData = () => {
@@ -359,8 +348,8 @@ const MediaSwiper = ({
   // No gallery found
   if (!gallery?.media?.length) {
     return (
-      <div className={`${height} ${className} flex items-center justify-center 
-                      bg-black/90 rounded-3xl
+      <div className={`w-full ${height} ${aspectRatio} ${className} flex items-center justify-center 
+                      bg-gray-100 dark:bg-gray-800 rounded-3xl
                       border border-[#F47A1F]/20`}>
         <div className="text-center space-y-4">
           <ImageIcon className="w-16 h-16 mx-auto text-[#8A91A8]" />
@@ -371,13 +360,12 @@ const MediaSwiper = ({
   }
 
   return (
-    <div className={`${className}`}>
+    <div className={`${className} w-full`}>
       
       {/* المعرض */}
       <div 
-        className={`relative ${height} rounded-3xl overflow-hidden 
-                    border border-[#F47A1F]/20 shadow-2xl shadow-[#F47A1F]/10
-                    bg-black`}
+        className={`relative w-full ${height} ${aspectRatio} rounded-3xl overflow-hidden 
+                    border border-[#F47A1F]/20 shadow-2xl shadow-[#F47A1F]/10`}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >

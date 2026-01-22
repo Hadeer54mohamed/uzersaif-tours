@@ -61,10 +61,10 @@ export default function Experiences() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center mb-4 sm:mb-6 md:mb-8"
         >
-          <h2 className="text-[clamp(1.75rem,5vw,2.8rem)] font-bold mb-2 sm:mb-3 leading-tight px-2 text-primary">
+          <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-2 sm:mb-3 leading-tight px-2 text-primary">
             {t("title")}
           </h2>
-          <p className="text-[clamp(0.95rem,2.2vw,1.1rem)] leading-relaxed px-2 text-secondary">
+          <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed px-2 text-secondary md:text-[clamp(0.95rem,2.2vw,1.1rem)] md:font-normal">
           <span className="text-fire">{t("subtitleStart")}</span> {t("subtitle")}
           </p>
         </motion.div>
@@ -86,13 +86,13 @@ export default function Experiences() {
                   <div className="flex items-start gap-2">
                     <Icon className="w-5 h-5 mt-0.5 flex-shrink-0 text-orange-500" />
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-lg font-black text-white leading-tight mb-1">
+                      <h3 className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-white leading-tight mb-1 md:text-lg md:font-black">
                         {t(`items.${item.key}.title`)}
                       </h3>
-                      <p className="text-xs sm:text-sm font-semibold text-gray-300 leading-snug">
+                      <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-gray-300 leading-snug md:text-sm md:font-black">
                         {t(`items.${item.key}.desc`)}
                       </p>
-                      <p className="text-xs sm:text-sm font-bold text-orange-400 leading-snug mt-1">
+                      <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-orange-400 leading-snug mt-1 md:text-sm">
                         {t(`items.${item.key}.desc2`)}
                       </p>
                     </div>

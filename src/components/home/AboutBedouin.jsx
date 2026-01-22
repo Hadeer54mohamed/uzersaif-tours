@@ -37,6 +37,8 @@ const AboutBedouin = () => {
           height="h-[600px]"
                 className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
               /> 
+
+              
             {/* بطاقة الخبرة */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
@@ -58,42 +60,62 @@ const AboutBedouin = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-block text-orange-500 font-bold tracking-widest uppercase text-xl mb-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
+              <span className="inline-block text-orange-500 font-bold tracking-widest uppercase text-[clamp(1.25rem,4vw,2.2rem)] mb-3 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 md:text-xl">
                 {t("badge")}
               </span>
               
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold  text-white mb-6 leading-tight md:text-4xl lg:text-5xl">
                 {t("title")} <br className="hidden md:block"/> 
-                <span className="text-orange-500">{t("titleHighlight")}</span>
+                <span className="text-orange-500 ">{t("titleHighlight")}</span>
               </h2>
               
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+              <p className="text-white text-[clamp(1.25rem,4vw,2.2rem)]  font-bold leading-relaxed mb-6 md:text-lg md:font-normal">
                 {t("description")}
               </p>
               
               <div className="relative pr-6 mb-6 border-r-4 border-orange-600/80 rounded-sm">
-                <p className="text-gray-400 leading-relaxed italic text-sm md:text-base">
+                <p className="text-white leading-relaxed italic text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                   {t("quote")}
                 </p>
               </div>
             </motion.div>
-
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-colors duration-500"
+            >
+              <p className="text-white text-[clamp(1.25rem,4vw,2.2rem)] font-bold mb-1 md:text-xl md:font-medium">{t("promise")}</p>
+              <p className="text-orange-400 text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-lg">{t("promiseHighlight")}</p>
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-l from-orange-600 to-transparent" />
+                <span className="text-white text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-xl md:font-medium">UzerSaif Team</span>
+              </div>
+            </motion.div>
             {/* الأرقام */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-white/10"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6"
             >
               {stats.map((stat, idx) => (
-                <div key={idx} className="text-center group cursor-default">
-                  <div className="flex items-center justify-center gap-2 mb-1">
+                <motion.div 
+                  key={idx} 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 * idx }}
+                  className="text-center group cursor-default p-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-orange-500/40 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="flex items-center justify-center gap-2 mb-2">
                     <span className="group-hover:scale-110 transition-transform duration-300">{stat.icon}</span>
-                    <span className="text-xl md:text-2xl font-bold text-white">{stat.value}</span>
+                    <span className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-orange-500 md:text-2xl">{stat.value}</span>
                   </div>
-                  <p className="text-gray-500 text-xs md:text-sm">{stat.label}</p>
-                </div>
+                  <p className="text-white text-[clamp(1rem,3vw,1.1rem)] font-medium md:text-sm md:font-normal">{stat.label}</p>
+                </motion.div>
               ))}
             </motion.div>
 
@@ -107,29 +129,13 @@ const AboutBedouin = () => {
             >
               <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-600 to-amber-400 rounded-full group-hover:shadow-[0_0_15px_rgba(234,88,12,0.4)] transition-shadow duration-500" />
               <div className="pr-6">
-                <h3 className="text-white font-bold text-lg md:text-xl mb-2 group-hover:text-orange-400 transition-colors">
+                <h3 className="text-orange-400 font-bold text-[clamp(1.25rem,4vw,2.2rem)] mb-2 group-hover:text-orange-400 transition-colors md:text-xl">
                   {t("teamTitle")}
                 </h3>
-                <p className="text-gray-400 leading-relaxed text-sm md:text-base">
+                <p className="text-white leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                   {t("teamDescription")}
-                  <span className="text-orange-400 font-medium"> {t("teamHighlight")}</span>
+                  <span className="text-orange-400 font-black"> {t("teamHighlight")}</span>
                 </p>
-              </div>
-            </motion.div>
-
-            {/* الخاتمة */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-orange-500/30 transition-colors duration-500"
-            >
-              <p className="text-white text-lg md:text-xl font-medium mb-1">{t("promise")}</p>
-              <p className="text-orange-400 text-base md:text-lg">{t("promiseHighlight")}</p>
-              <div className="mt-4 flex items-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-l from-orange-600 to-transparent" />
-                <span className="text-white/60 text-lg md:text-xl font-medium">UzerSaif Team</span>
               </div>
             </motion.div>
           </div>

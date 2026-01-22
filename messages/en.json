@@ -37,6 +37,7 @@
     "title": "Before we continue…",
     "descriptionStart": "This trip is made for people looking for a",
     "highlightFeeling": "real feeling",
+    "quote": "So if you're looking for: ",
     "descriptionEnd": "not just a program.",
     "crowd": "Crowds and noise",
     "noise": "Loud sounds",
@@ -73,78 +74,80 @@
     "footerText": "it's an empty space that lets you",
     "footerHighlightEnd": "hear yourself."
   },
-  "experiences": {
-    "title": "What new things will you gain from the White Desert trip?",
-    "subtitleStart": "Things not available in any other trip…",
-    "subtitle": " because this experience is designed for you from the start.",
-    "items": {
-      "spaceFeeling": {
-        "title": "Real Space Feeling",
-        "desc": "A natural place that actually looks like another planet, without decoration, without acting, and without tourist deception.",
-        "desc2": "✔ Real space-like experience… on Earth."
-      },
-      "uniquePhotos": {
-        "title": "Photos Unlike Anyone Else's",
-        "desc": "White formations, empty spaces, and a sky without limits",
-        "desc2": "✔ Photos Natural. Raw. Unfiltered."
-      },
-      "adventure": {
-        "title": "Calculated Adventure",
-        "desc": "Equipped camp - calculated camping - Bedouin hotel",
-        "desc2": "✔ Adventure feeling without pressure or hassle"
-      },
-      "realDisconnect": {
-        "title": "Real Disconnection from Life",
-        "desc": "Silence, stars, fire, and clean quiet without noise, without crowds",
-        "desc2": "✔ Limited numbers to keep the experience Clean & Meaningful."
-      },
-      "deeperReturn": {
-        "title": "Return with Something Deeper Than Photos",
-        "desc": "Calm, comfort, Mental Reset",
-        "desc2": "✔ Not just Memories on your phone"
-      },
-      "noWorries": {
-        "title": "Don't Worry About Any Details",
-        "desc": "Sleep, food, transportation, equipment.",
-        "desc2": "✔ Everything is included in the price"
-      },
-      "notForEveryone": {
-        "title": "An Experience Not Made for Everyone",
-        "desc": "",
-        "desc2": "✔ You choose it because you understand its value"
-      },
-      "rightDecision": {
-        "title": "Feel Your Decision Was Right from the First Moment",
-        "desc": "",
-        "desc2": "✔ Reassurance is there from the beginning"
-      },
-      "bedouinGuide": {
-        "title": "Bedouin Guide from the Locals",
-        "desc": "",
-        "desc2": "✔ Available with you throughout the trip"
-      }
+ "experiences": {
+  "title": "What will you take away from the trip?",
+  "subtitleStart": "Things you won’t find on any other trip…",
+  "subtitle": "Because this experience is designed in every detail just for you",
+  "items": {
+    "spaceFeeling": {
+      "title": "The Real Feeling of Space",
+      "desc": "A place that truly feels like another planet—not decoration, acting, or tourist trickery",
+      "desc2": "✔ Real space experience… on Earth"
+    },
+    "uniquePhotos": {
+      "title": "Photos Unlike Any Other",
+      "desc": "White formations, empty spaces, and endless skies",
+      "desc2": "✔ Natural. Raw. Unfiltered."
+    },
+    "adventure": {
+      "title": "A Thoughtful Adventure",
+      "desc": "Prepared camp – planned camping – Bedouin-style hotel",
+      "desc2": "✔ Adventure feeling without stress or hassle"
+    },
+    "realDisconnect": {
+      "title": "Truly Disconnect from the World",
+      "desc": "Silence, stars, fire, and pure calm",
+      "desc2": "✔ Limited spots to keep the experience Clean & Meaningful."
+    },
+    "deeperReturn": {
+      "title": "Return with More Than Photos",
+      "desc": "Calm, rest, mental reset",
+      "desc2": "✔ Not just memories on your phone"
+    },
+    "noWorries": {
+      "title": "No Need to Worry About Details",
+      "desc": "Sleep, food, transport, preparation",
+      "desc2": "✔ Everything is included in the price"
+    },
+    "notForEveryone": {
+      "title": "An Experience Not Made for Everyone",
+      "desc": "",
+      "desc2": "✔ Choose it because you understand its value"
+    },
+    "rightDecision": {
+      "title": "Feel That You Made the Right Choice from the Start",
+      "desc": "",
+      "desc2": "✔ Peace of mind from the very beginning"
+    },
+    "bedouinGuide": {
+      "title": "Local Bedouin Guide",
+      "desc": "",
+      "desc2": "✔ With you throughout the trip"
     }
-  },
+  }
+},
+
   "whyChooseUs": {
     "title": "Why is this trip different from any other place in Egypt?",
     
-    "features": {
-      "soulChanging": {
-        "description": "The White Desert is not just *one of God's miracles*\nIt's a meaningful experience… its silence and beauty change things deep inside you"
-      },
-      "smartComfort": {
-        "description": "*Smart and comfortable planning that keeps you at ease*\n (3-star hotel – calculated camping – equipped camp)"
-      },
-      "uniqueMemories": {
-        "description": "You'll take photos as if you're *from another world*\nNot just because we take you to a nice place but you have a team that knows how to get the best photos"
-      },
-      "bedouinSafety": {
-        "description": "*With the Bedouins, you are safe*\nWe take care of your comfort… and you take care of the place"
-      },
-      "disconnect": {
-        "description": "*You'll live among silence, stars, and fire*\nand completely disconnect from city noise"
-      }
-    }
+   "features": {
+  "soulChanging": {
+    "description": "The White Desert is not just *a sign of God's wonders*\nThis is a meaningful experience… its calm and beauty change something deep inside you"
+  },
+  "smartComfort": {
+    "description": "*Smart and comfortable arrangements to keep you always at ease*\n(3-star hotel – planned camping – fully equipped camp)"
+  },
+  "uniqueMemories": {
+    "description": "You'll take photos as if *from another world*\nNot just because we take you to a beautiful place, but because our team knows how to capture the perfect shot for the setting"
+  },
+  "bedouinSafety": {
+    "description": "*With the Bedouins, you are safe*\nWe take care of your comfort… and you take care of the place"
+  },
+  "disconnect": {
+    "description": "*Live surrounded by calm, stars, and fire*\nAnd disconnect completely from the city's noise"
+  }
+}
+
   },
   "aboutBedouin": {
     "badge": "Who's taking you on the trip?",
@@ -305,7 +308,7 @@
       "required": "Required fields",
       "submit": "Send Message",
       "sending": "Sending...",
-      "success": "Your message was sent successfully!"
+      "success": "Your message was sent successfully! ✨"
     },
     "map": {
       "title": "Our Location",

@@ -43,7 +43,7 @@ const WhyChooseUs = () => {
       <span key={i} className="block">
         {line.split(/\*(.*?)\*/g).map((part, j) =>
           j % 2 === 1 ? (
-            <span key={j} className="text-[#F47A1F] font-semibold">
+            <span key={j} className="text-[#F47A1F] font-black">
               {part}
             </span>
           ) : (
@@ -55,8 +55,8 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section className="relative py-10 sm:py-16 overflow-hidden bg-black text-white">
-           {/* Ambient Glow */}
+    <section className="relative py-6 sm:py-10 overflow-hidden bg-black text-white">
+      {/* Ambient Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#F47A1F]/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-4">
@@ -68,14 +68,14 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-fire">
+          <h2 className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-fire md:text-4xl">
             {t("title")}
           </h2>
         </motion.div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-        {features.map((feature, index) => {
+          {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <motion.div
@@ -90,13 +90,13 @@ const WhyChooseUs = () => {
                 {/* Card */}
                 <div className="relative h-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-md hover:border-[#F47A1F]/30 hover:bg-white/10 transition-all duration-300 group">
                   {/* Text */}
-                  <p className="text-white/85 leading-relaxed text-sm sm:text-base">
+                  <p className="text-white/85 leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                     {renderTextWithOrange(t(`features.${feature.key}.description`))}
                   </p>
 
                   {/* Hover Glow */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#F47A1F]/0 to-[#F47A1F]/0 group-hover:from-[#F47A1F]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
-                  
+
                   {/* Bottom Line */}
                   <div className="absolute bottom-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-[#F47A1F] to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
                 </div>
@@ -106,11 +106,26 @@ const WhyChooseUs = () => {
         </div>
       </div>
       <MediaSwiper
-          customMedia={WhyChooseUsMedia}
-          height="h-[600px]"
-          className="container mx-auto px-4 pt-5 "
-        />
+        customMedia={WhyChooseUsMedia}
+        height="h-[600px]"
+        className="container mx-auto px-4 pt-5 "
+      />
 
+      {/* CTA Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="text-center mt-10"
+      >
+        <a
+          href="#faq"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] shadow-lg shadow-[#F47A1F]/30 hover:shadow-[#F47A1F]/50 hover:scale-105 transition-all duration-300"
+        >
+          عايز أتأكد إن الرحلة مناسبة ليّ؟
+        </a>
+      </motion.div>
     </section>
   );
 };
