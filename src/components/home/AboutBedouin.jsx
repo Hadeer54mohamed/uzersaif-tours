@@ -74,7 +74,7 @@ const AboutBedouin = () => {
               </p>
               
               <div className="relative pr-6 mb-6 border-r-4 border-orange-600/80 rounded-sm">
-                <p className="text-white leading-relaxed italic text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
+                <p className="text-fire leading-relaxed  text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
                   {t("quote")}
                 </p>
               </div>

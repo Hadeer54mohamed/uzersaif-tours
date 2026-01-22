@@ -52,7 +52,7 @@ export default function BeforeContinue() {
         </span>{" "}
         {t("descriptionEnd")}
         <br />
-          {t("quote")}
+        
       </motion.p>
   
       {/* List */}

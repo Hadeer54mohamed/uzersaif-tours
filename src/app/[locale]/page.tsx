@@ -87,7 +87,7 @@ const Home = () => {
         <MediaSwiper
           customMedia={hotelGallery}
           height="h-[600px]"
-          className="container mx-auto px-4 my-12"
+          className="container mx-auto px-4 "
           objectFit="contain"
           intervalDefault={15}
         />
@@ -109,7 +109,7 @@ const Home = () => {
         <Footer />
       </div>
 
-      <ExitIntentPopup />
+      <ExitIntentPopup /> 
    </>
   );
 };

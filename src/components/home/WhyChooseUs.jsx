@@ -121,9 +121,9 @@ const WhyChooseUs = () => {
       >
         <a
           href="#faq"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] shadow-lg shadow-[#F47A1F]/30 hover:shadow-[#F47A1F]/50 hover:scale-105 transition-all duration-300"
+          className="inline-flex items-center gap-3 px-8 py-5 sm:px-12 sm:py-6 rounded-2xl font-bold text-lg sm:text-xl text-white bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] shadow-lg shadow-[#F47A1F]/30 hover:shadow-[#F47A1F]/50 hover:scale-105 transition-all duration-300"
         >
-          عايز أتأكد إن الرحلة مناسبة ليّ؟
+          {t("ctaButton")}
         </a>
       </motion.div>
     </section>

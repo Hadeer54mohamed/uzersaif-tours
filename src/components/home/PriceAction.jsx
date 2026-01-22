@@ -132,6 +132,30 @@ const PriceAction = () => {
             </div>
           </motion.div>
 
+          {/* Subscribe Now Button */}
+         {/*  <motion.a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.25 }}
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-emerald-500/30 text-base sm:text-lg flex items-center justify-center gap-3 transition-all hover:shadow-emerald-500/50 hover:brightness-110"
+          >
+            <MessageCircle size={24} />
+            {t("subscribeNow")}
+          </motion.a> */}
+          
+          {/* Subscribe Note */}
+          <div className="w-full bg-[#F47A1F]/10 backdrop-blur-sm border border-[#F47A1F]/30 rounded-xl p-4 sm:p-5">
+            <p className="text-[#FFB85C] font-bold text-[clamp(1rem,3.5vw,1.5rem)] md:text-sm text-center leading-relaxed">
+              {t("subscribeNow")}
+            </p>
+          </div>
+
           {/* After Booking Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

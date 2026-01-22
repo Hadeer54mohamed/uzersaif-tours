@@ -37,8 +37,7 @@
     "title": "Before we continue…",
     "descriptionStart": "This trip is made for people looking for a",
     "highlightFeeling": "real feeling",
-    "quote": "So if you're looking for: ",
-    "descriptionEnd": "not just a program.",
+    "descriptionEnd": "not just a program …so If you're looking for:",
     "crowd": "Crowds and noise",
     "noise": "Loud sounds",
     "fastTrip": "Quick trip",
@@ -58,7 +57,7 @@
     "ourTitle": "Our trip",
     "our1": "Calm and organized rhythm",
     "our2": "Live with the locals and learn their stories",
-    "our3": "The White Desert as an experience… not an Activity",
+    "our3": "The White Desert is a completely different experience and feeling… not just an Activity",
     "our4": "An experience that truly leaves a mark inside you"
   },
   "desertFeeling": {
@@ -146,8 +145,8 @@
   "disconnect": {
     "description": "*Live surrounded by calm, stars, and fire*\nAnd disconnect completely from the city's noise"
   }
-}
-
+},
+    "ctaButton": "Want to make sure this trip is right for you?"
   },
   "aboutBedouin": {
     "badge": "Who's taking you on the trip?",
@@ -491,7 +490,6 @@
       "kUQyvODbExY": "Watch Video",
       "yeYdMzvLTXk": "Watch Video",
       "jdI3GoGe9XI": "White Desert Trip - An Unforgettable Experience",
-      "MKmVsxvuXck": "Watch Video",
       "i4w2WfMh-fw": "Adventure in the Heart of the White Desert",
       "facebook": "Why are the Mushroom and Chicken symbols of the White Desert?!"
     }
@@ -540,7 +538,8 @@
     "notCoincidence": "Then your presence here is no coincidence.",
     "mainButton": "I'm Ready for the Experience",
     "secondaryLink": "Or ask us one question on WhatsApp",
-    "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!"
+    "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!",
+    "subscribeNow": "Please send your ID photo and transfer screenshot to book the hotel and obtain security permits"
   },
   "desertTrip": {
     "exploreTitle": "Explore",

@@ -195,16 +195,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
           </motion.button>
         </div>
 
-        {/* Video Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-[#F47A1F]/80 backdrop-blur-sm flex items-center gap-2 text-white text-sm font-medium"
-        >
-          <Video className="w-4 h-4" />
-          {t("video")}
-        </motion.div>
-
+       
         {/* Mute Button */}
         <motion.button
           whileHover={{ scale: 1.1 }}
@@ -222,19 +213,31 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
   // Image type
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden bg-black">
+      
+      {/* Blurred Background */}
       <motion.img
-        initial={{ scale: 1.1 }}
+        src={getImageUrl(item.image)}
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover scale-105 blur-xl opacity-40"
+        animate={{ scale: [1.1, 1.15, 1.1] }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
+
+      {/* Main Image */}
+      <motion.img
+        initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
-        className={`w-full h-full object-cover`}
+        className="relative z-10 w-full h-full object-contain"
+        loading="lazy"
         onError={(e) => {
-          console.error("Image failed to load:", item.image);
           e.target.src = "/trip.jpg";
         }}
-      />    
+      />
+
     </div>
   );
 };
@@ -243,11 +246,11 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 const MediaSwiper = ({ 
   customMedia = homeGallery,
   className = "",
-  height = "h-[500px]",
+  height = "h-[400px] sm:h-[500px] md:h-[600px]",
   autoPlayDefault = true,
-  intervalDefault = 15,
+  intervalDefault = 2,
   objectFit = "cover",
-  aspectRatio = ""
+  aspectRatio = "aspect-[4/3] sm:aspect-[16/10] md:aspect-auto"
 }) => {
   // تحويل البيانات مباشرة
   const getGalleryData = () => {

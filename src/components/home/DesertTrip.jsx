@@ -111,27 +111,24 @@ const DesertTrip = () => {
               className="space-y-5"
             >
               {/* Hero Image */}
-              <div className="relative h-[280px] md:h-[400px] rounded-2xl overflow-hidden border border-[#F47A1F]/20 shadow-xl shadow-[#F47A1F]/10">
+              <div className="relative h-[220px] sm:h-[280px] md:h-[400px] rounded-2xl overflow-hidden border border-[#F47A1F]/20 shadow-xl shadow-[#F47A1F]/10">
                 <img src={selectedTrip.image} className="w-full h-full object-cover" alt={selectedTrip.title} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#F47A1F]/30 rounded-tl-2xl" />
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#F47A1F]/30 rounded-tr-2xl" />
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#F47A1F]/30 rounded-bl-2xl" />
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#F47A1F]/30 rounded-br-2xl" />
-                <div className="absolute bottom-6 right-6 left-6 text-white">
-                  <div className="flex gap-2 mb-2">
-                    <span className="px-3 py-1 rounded-full text-[clamp(1.25rem,4vw,2.2rem)] font-bold bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] md:text-xs">{selectedTrip.duration}</span>
-                    <span className="px-3 py-1 rounded-full text-[clamp(1.25rem,4vw,2.2rem)] font-bold bg-black/60 backdrop-blur-md border border-[#F47A1F]/30 md:text-xs">{selectedTrip.location}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute top-0 left-0 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-l-2 border-[#F47A1F]/30 rounded-tl-2xl" />
+                <div className="absolute top-0 right-0 w-10 h-10 sm:w-16 sm:h-16 border-t-2 border-r-2 border-[#F47A1F]/30 rounded-tr-2xl" />
+                <div className="absolute bottom-0 left-0 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-l-2 border-[#F47A1F]/30 rounded-bl-2xl" />
+                <div className="absolute bottom-0 right-0 w-10 h-10 sm:w-16 sm:h-16 border-b-2 border-r-2 border-[#F47A1F]/30 rounded-br-2xl" />
+                <div className="absolute bottom-4 right-4 left-4 sm:bottom-6 sm:right-6 sm:left-6 text-white">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="px-4 py-1.5 rounded-full text-base sm:text-lg font-bold bg-gradient-to-r from-[#F47A1F] to-[#FFB85C]">{selectedTrip.duration}</span>
+                    <span className="px-4 py-1.5 rounded-full text-base sm:text-lg font-bold bg-black/60 backdrop-blur-md border border-[#F47A1F]/30">{selectedTrip.location}</span>
                   </div>
-                  <h1 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] md:text-4xl md:font-black">{selectedTrip.title}</h1>
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#F5F7FA]">{selectedTrip.title}</h1>
                 </div>
               </div>
 
-              {/* التجمع + السعر (يمين) | البرنامج (شمال) */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4" id="booking">
-                {/* العمود الأيمن - نقاط التجمع + السعر */}
                 <div className="space-y-4 order-1">
-                  {/* نقاط التجمع */}
                   <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
                     <h3 className="text-4xl font-bold text-fire mb-4 md:text-2xl md:font-black">{t("gatheringPoints")}</h3>
                     <div className="space-y-2">
@@ -168,7 +165,6 @@ const DesertTrip = () => {
                   </div> */}
                 </div>
 
-                {/* العمود الأيسر - برنامج الرحلة */}
                 <div className="space-y-3 order-2">
                   <h3 className="text-4xl font-bold text-fire md:text-2xl md:font-black">{t("tripProgram")}</h3>
                   <Accordion type="single" collapsible className="space-y-2">
@@ -197,25 +193,7 @@ const DesertTrip = () => {
               {/* طريقة الحجز */}
               {selectedTrip.bookingSteps && (
                 <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
-                  <h3 className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#F5F7FA] mb-4 md:text-xl md:font-black">{t("bookingMethod")}</h3>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 pb-5">
-                    <div className="p-7 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-[clamp(1.25rem,4vw,2.2rem)] block mb-1 md:text-xl">{t("deposit")}</span>
-                      <span className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#F47A1F] md:text-xl md:font-black">{selectedTrip.bookingSteps.deposit}</span>
-                    </div>
-                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-[clamp(1.25rem,4vw,2.2rem)] block mb-1 md:text-xs">{t("payment")}</span>
-                      <span className="font-bold text-[#F5F7FA] text-[clamp(1.25rem,4vw,2.2rem)] md:text-sm">{selectedTrip.bookingSteps.method}</span>
-                    </div>
-                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-[clamp(1.25rem,4vw,2.2rem)] block mb-1 md:text-xl">{t("number")}</span>
-                      <span className="font-bold text-[#F47A1F] text-[clamp(1.25rem,4vw,2.2rem)] md:text-xl md:font-black">{selectedTrip.bookingSteps.number}</span>
-                    </div>
-                    <div className="p-3 bg-white/5 rounded-xl border border-[#F47A1F]/10 text-center">
-                      <span className="text-[#8A91A8] font-bold text-[clamp(1.25rem,4vw,2.2rem)] block mb-1 md:text-xs">{t("account")}</span>
-                      <span className="font-bold text-[#F5F7FA] text-[clamp(1.25rem,4vw,2.2rem)] md:text-sm">{selectedTrip.bookingSteps.accountName}</span>
-                    </div>
-                  </div>
+               
                   {/* ملاحظة */}
                   <div className="
   py-5 px-4
@@ -230,14 +208,7 @@ const DesertTrip = () => {
   hover:scale-[1.03]
   hover:shadow-[0_0_25px_rgba(255,184,92,0.25)]
 ">
-                    <span className="
-    block
-    text-white
-    font-bold
-    text-[clamp(1.25rem,4vw,2.2rem)] md:text-base md:font-extrabold
-  ">
-                      {t("subscribeNow")}
-                    </span>
+                   
 
                     <p className="text-[#FFB85C] font-bold text-[clamp(1.25rem,4vw,2.2rem)] md:text-xs md:font-black">
                       {t("importantNote")}
@@ -245,7 +216,7 @@ const DesertTrip = () => {
                   </div>
 
                   {/* زر الواتساب */}
-                  <motion.a
+                  {/* <motion.a
                     href={`https://wa.me/201069836767?text=${encodeURIComponent(t("whatsappMessage", { title: selectedTrip.title }))}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -255,7 +226,7 @@ const DesertTrip = () => {
                   >
                     <MessageCircle size={24} />
                     {t("bookNow")}
-                  </motion.a>
+                  </motion.a> */}
                 </div>
               )}
 

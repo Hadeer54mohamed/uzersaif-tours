@@ -16,7 +16,7 @@ export const dummyTrips = [
     // Booking info
     bookingSteps: {
       deposit: "25%",
-      method: "Vodafone Cash أو InstaPay",
+      method: "InstaPay أو Vodafone Cash",
       number: "01011879549",
       accountName: "ساهر عابد عمر سيد",
     },

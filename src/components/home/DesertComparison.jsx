@@ -79,27 +79,21 @@ export default function DesertComparison() {
             viewport={{ once: true }}
             className="border border-green-500/30 bg-green-500/5 rounded-2xl p-5 sm:p-6"
           >
-            <h3 className="text-green-400 font-bold text-[clamp(1.25rem,4vw,2.2rem)] mb-4">
-              {t("ourTitle")}
-            </h3>
+            <h3 className="text-green-400 font-extrabold mb-4 text-[clamp(1.6rem,5vw,2.3rem)] md:text-[clamp(1.4rem,2.5vw,2rem)]">
+    {t("ourTitle")}
+  </h3>
 
-            <motion.ul
-              variants={container}
-              className="space-y-3 text-white/90"
-            >
+            <motion.ul variants={container} className="space-y-4 text-white/90">
               {["our1", "our2", "our3", "our4"].map((key) => (
-                <motion.li
-                  key={key}
-                  variants={item}
-                  className="flex items-start gap-3"
-                >
-                  <span className="text-green-400 mt-1">✔</span>
-                  <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-lg md:font-black">{t(key)}</span>
+                <motion.li key={key} variants={item} className="flex items-start gap-3">
+                  <span className="text-green-400 mt-1 text-lg">✔</span>
+                  <span className="leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-lg md:font-black">
+                    {t(key)}
+                  </span>
                 </motion.li>
               ))}
             </motion.ul>
           </motion.div>
-         
         </div>
        
       </div>
