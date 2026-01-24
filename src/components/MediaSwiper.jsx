@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
-import { Facebook, Instagram, Music } from "lucide-react";
+import { Facebook } from "lucide-react";
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -319,76 +319,75 @@ const MediaSwiper = ({
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isMediaLoaded, setIsMediaLoaded] = useState(false);
-  const directionRef = useRef(1);
-  const [direction, setDirection] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
   const dragX = useMotionValue(0);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // تحديث البيانات عند تغييرها
   useEffect(() => {
     setGallery(getGalleryData());
   }, [customMedia, autoPlayDefault, intervalDefault]);
 
-  // إعادة تعيين حالة التحميل عند تغيير الصورة
   useEffect(() => {
     setIsMediaLoaded(false);
     
     const fallbackTimer = setTimeout(() => {
       setIsMediaLoaded(true);
-    }, 300);
+    }, isMobile ? 500 : 300);
     
     return () => clearTimeout(fallbackTimer);
-  }, [currentIndex]);
+  }, [currentIndex, isMobile]);
 
   const handleMediaLoaded = useCallback(() => {
     setIsMediaLoaded(true);
   }, []);
 
   const shouldAutoPlay = gallery?.autoPlay !== undefined ? gallery.autoPlay : autoPlayDefault;
+
+  // Force unpause on mobile after initial load
+  useEffect(() => {
+    if (isMobile && isPaused) {
+      const timer = setTimeout(() => {
+        setIsPaused(false);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
   
   useEffect(() => {
     if (!gallery?.media?.length || isPaused || !shouldAutoPlay || !isMediaLoaded) return;
 
     const interval = setInterval(() => {
-      directionRef.current = 1;
-      setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % gallery.media.length);
     }, (gallery?.autoPlayInterval || intervalDefault) * 1000);
 
     return () => clearInterval(interval);
   }, [gallery, isPaused, shouldAutoPlay, intervalDefault, isMediaLoaded]);
 
-  // Navigation functions - always go right (direction 1) for next, left (-1) for prev
+  // Navigation functions
   const goToNext = useCallback(() => {
     if (!gallery?.media?.length) return;
-    directionRef.current = 1;
-    setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % gallery.media.length);
   }, [gallery]);
 
   const goToPrev = useCallback(() => {
     if (!gallery?.media?.length) return;
-    directionRef.current = -1;
-    setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + gallery.media.length) % gallery.media.length);
   }, [gallery]);
 
   const goToIndex = useCallback((index) => {
     if (!gallery?.media?.length) return;
-    const mediaLength = gallery.media.length;
-    // For loop: if going from last to first, always go right (1)
-    // If going from first to last, always go left (-1)
-    let newDirection;
-    if (currentIndex === mediaLength - 1 && index === 0) {
-      newDirection = 1; // Loop forward
-    } else if (currentIndex === 0 && index === mediaLength - 1) {
-      newDirection = -1; // Loop backward
-    } else {
-      newDirection = index > currentIndex ? 1 : -1;
-    }
-    directionRef.current = newDirection;
-    setDirection(newDirection);
     setCurrentIndex(index);
-  }, [gallery, currentIndex]);
+  }, [gallery]);
 
   // Handle drag
   const handleDragEnd = (event, info) => {
@@ -397,6 +396,10 @@ const MediaSwiper = ({
       goToPrev();
     } else if (info.offset.x < -threshold) {
       goToNext();
+    }
+    // Ensure autoplay continues on mobile after swipe
+    if (isMobile) {
+      setIsPaused(false);
     }
   };
 
@@ -440,8 +443,8 @@ const MediaSwiper = ({
       <div 
         className={`relative w-full ${height} ${aspectRatio} rounded-3xl overflow-hidden 
                     border border-[#F47A1F]/20 shadow-2xl shadow-[#F47A1F]/10`}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
+        onMouseEnter={() => !isMobile && setIsPaused(true)}
+        onMouseLeave={() => !isMobile && setIsPaused(false)}
       >
       
       {/* Background to prevent black flash */}

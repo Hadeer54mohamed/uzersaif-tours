@@ -31,7 +31,9 @@
     "insideReserve": " in one of",
     "whiteDesert": "the world's most amazing reserves",
     "subtitle3": "This trip is fully organized by Farafra Oasis Bedouins,",
-    "subtitle3Highlight": "and every detail is calculated so you can live the experience with peace of mind."
+    "subtitle3Highlight": "and every detail is calculated so you can live the experience with peace of mind.",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available"
   },
   "beforeContinue": {
     "title": "Before we continue…",
@@ -58,7 +60,9 @@
     "our1": "Calm and organized rhythm",
     "our2": "Live with the locals and learn their stories",
     "our3": "The White Desert is a completely different experience and feeling… not just an Activity",
-    "our4": "An experience that truly leaves a mark inside you"
+    "our4": "An experience that truly leaves a mark inside you",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available"
   },
   "desertFeeling": {
     "title": "The feeling you'll experience",
@@ -123,7 +127,9 @@
       "desc": "",
       "desc2": "✔ With you throughout the trip"
     }
-  }
+  },
+  "bookingButton": "Book Your Spot Now",
+  "limitedSpots": "Limited spots available"
 },
 
   "whyChooseUs": {
@@ -146,7 +152,9 @@
     "description": "*Live surrounded by calm, stars, and fire*\nAnd disconnect completely from the city's noise"
   }
 },
-    "ctaButton": "Want to make sure this trip is right for you?"
+    "ctaButton": "Want to make sure this trip is right for you?",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available"
   },
   "aboutBedouin": {
     "badge": "Who's taking you on the trip?",
@@ -166,7 +174,9 @@
     "teamDescription": "A professional team that understands the nature of the desert and provides an honest and warm experience. Committed to reserve laws, caring for the environment,",
     "teamHighlight": "and with any situation, we find an immediate solution.",
     "promise": "We promise you a different experience...",
-    "promiseHighlight": "Not because we're selling a trip, we're sharing a part of our lives with you."
+    "promiseHighlight": "Not because we're selling a trip, we're sharing a part of our lives with you.",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available"
   },
   "faq": {
     "title": "Frequently Asked Questions",
@@ -232,6 +242,8 @@
   "beforeBooking": {
     "title": "Before You Book",
     "subtitle": "Important notes to ensure a comfortable experience from the start.",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available",
     "notes": {
       "network": {
         "title": "Weak Network During Camping",
@@ -273,7 +285,9 @@
       "jdI3GoGe9XI": "White Desert Trip - An Unforgettable Experience",
       "i4w2WfMh-fw": "Adventure in the Heart of the White Desert",
       "facebook": "Why are the Mushroom and Chicken symbols of the White Desert?!"
-    }
+    },
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available"
   },
   "tripForYou": {
     "title": "Is This Trip For You?",
@@ -317,7 +331,8 @@
     "askQuestion": "If you want to ask one question before you decide… that's natural.",
     "feelingCalm": "And if you feel calm and the White Desert is calling you quietly",
     "notCoincidence": "Then your presence here is no coincidence.",
-    "mainButton": "I'm Ready for the Experience",
+    "mainButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available",
     "secondaryLink": "Or ask us one question on WhatsApp",
     "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!",
     "subscribeNow": "Please send your ID photo and transfer screenshot to book the hotel and obtain security permits"
@@ -350,6 +365,8 @@
     "subscribeNow": "I want to subscribe now",
     "loading": "Loading...",
     "whatsappMessage": "Hello Uzer Saif, I'd like to book my spot in \"{title}\". Can you share the details?",
+    "bookingButton": "Book Your Spot Now",
+    "limitedSpots": "Limited spots available",
     "trips": {
       "white-desert-premium": {
         "title": "White Desert Trip Program",

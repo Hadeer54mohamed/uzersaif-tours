@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { MessageCircle } from "lucide-react";
 import MediaSwiper from "../MediaSwiper";
 import { DesertComparison as desertComparisonMedia } from "@/data/mediaSwiperData";
 
@@ -95,7 +96,37 @@ export default function DesertComparison() {
             </motion.ul>
           </motion.div>
         </div>
-       
+  {/* Booking CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-10 max-w-md mx-auto"
+        >
+          <motion.a
+            href="#booking"
+            whileHover={{ scale: 1.02, y: -3 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] text-white py-4 px-8 rounded-2xl shadow-lg shadow-[#F47A1F]/40 flex flex-col items-center justify-center gap-1 transition-all hover:shadow-[#F47A1F]/60 hover:brightness-110"
+          >
+            <motion.div 
+              animate={{ x: [0, -6, 6, -6, 6, 0] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-1"
+            >
+              <span className="flex items-center gap-3 font-black text-xl">
+                <MessageCircle size={28} />
+                {t("bookingButton")}
+              </span>
+              <span className="text-black text-sm font-bold flex items-center gap-5">
+                <span>-</span>
+                {t("limitedSpots")}
+                <span>-</span>
+              </span>
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </div>
       <MediaSwiper
           customMedia={desertComparisonMedia}

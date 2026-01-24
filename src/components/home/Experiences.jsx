@@ -1,35 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 import {
   Globe,
   Camera,
   Compass,
-  ShieldCheck,
-  Map,
-  Home,
   MoonStar,
   Brain,
   CheckCircle,
   Crown,
   Smile,
   UserCheck,
+  MessageCircle,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-
-import {
-  StarParticle,
-  ShootingStar,
-  generateStars,
-  generateMeteors,
-} from "@/components/SpaceElements";
 import MediaSwiper from "../MediaSwiper";
 import { Experiences as ExperiencesMedia } from "@/data/mediaSwiperData";
+
 export default function Experiences() {
   const t = useTranslations("experiences");
-  const [stars, setStars] = useState([]);
-  const [meteors, setMeteors] = useState([]);
 
   const values = [
     { icon: Globe, key: "spaceFeeling" },
@@ -43,15 +32,8 @@ export default function Experiences() {
     { icon: UserCheck, key: "bedouinGuide" },
   ];
 
-  useEffect(() => {
-    setStars(generateStars(80));
-    setMeteors(generateMeteors(5, { delayMultiplier: 4, baseRepeatDelay: 10 }));
-  }, []);
-
   return (
     <section className="relative py-6 sm:py-8 md:py-10 overflow-hidden">
-   
-
       <div className="relative z-10 container mx-auto px-4 sm:px-6">
         {/* Heading */}
         <motion.div
@@ -65,7 +47,7 @@ export default function Experiences() {
             {t("title")}
           </h2>
           <p className="text-[clamp(1.25rem,4vw,2.2rem)] font-bold leading-relaxed px-2 text-secondary md:text-[clamp(0.95rem,2.2vw,1.1rem)] md:font-normal">
-          <span className="text-fire">{t("subtitleStart")}</span> {t("subtitle")}
+            <span className="text-fire">{t("subtitleStart")}</span> {t("subtitle")}
           </p>
         </motion.div>
 
@@ -103,12 +85,45 @@ export default function Experiences() {
             );
           })}
         </div>
+
+        {/* Booking CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-10 max-w-md mx-auto px-4"
+        >
+          <motion.a
+            href="#booking"
+            whileHover={{ scale: 1.02, y: -3 }}
+            whileTap={{ scale: 0.98 }}
+            className="w-full bg-gradient-to-r from-[#F47A1F] to-[#FFB85C] text-white py-4 px-8 rounded-2xl shadow-lg shadow-[#F47A1F]/40 flex flex-col items-center justify-center gap-1 transition-all hover:shadow-[#F47A1F]/60 hover:brightness-110"
+          >
+            <motion.div
+              animate={{ x: [0, -6, 6, -6, 6, 0] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-1"
+            >
+              <span className="flex items-center gap-3 font-black text-xl">
+                <MessageCircle size={28} />
+                {t("bookingButton")}
+              </span>
+              <span className="text-black text-sm font-bold flex items-center gap-5">
+                <span>-</span>
+                {t("limitedSpots")}
+                <span>-</span>
+              </span>
+            </motion.div>
+          </motion.a>
+        </motion.div>
       </div>
+
       <MediaSwiper
-          customMedia={ExperiencesMedia}
-          height="h-[600px]"
-          className="container mx-auto px-4 pt-5 "
-        />
+        customMedia={ExperiencesMedia}
+        height="h-[600px]"
+        className="container mx-auto px-4 pt-5"
+      />
     </section>
   );
 }
