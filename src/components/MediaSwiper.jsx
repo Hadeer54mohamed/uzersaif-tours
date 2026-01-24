@@ -17,7 +17,7 @@ import { afterHeroVideo } from "@/data/mediaSwiperData";
 import { useTranslations } from "next-intl";
 
 // Media Item Component for individual items
-const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" }) => {
+const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain", onLoadComplete }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const t = useTranslations("mediaSwiper");
@@ -92,6 +92,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
             className="w-full h-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            onLoad={() => onLoadComplete?.()}
           />
         
         </div>
@@ -110,6 +111,9 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
       };
 
       const info = platformInfo[platform];
+      
+      // Facebook card doesn't need loading, call immediately
+      setTimeout(() => onLoadComplete?.(), 0);
 
       return (
         <div className="relative w-full h-full">
@@ -181,6 +185,8 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
           muted={isMuted}
           playsInline
           onClick={handleVideoClick}
+          onLoadedData={() => onLoadComplete?.()}
+          onError={() => onLoadComplete?.()}
         />
         
         {/* Video Controls Overlay */}
@@ -211,7 +217,46 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
     );
   }
 
-  // Image type
+  const imgRef = useRef(null);
+  const loadCalledRef = useRef(false);
+
+  useEffect(() => {
+    loadCalledRef.current = false;
+    
+    const checkImage = () => {
+      if (!loadCalledRef.current) {
+        const img = imgRef.current;
+        if (img?.complete && img?.naturalHeight !== 0) {
+          loadCalledRef.current = true;
+          onLoadComplete?.();
+        }
+      }
+    };
+    
+    checkImage();
+    
+    const frameId = requestAnimationFrame(checkImage);
+    
+    const timeoutId = setTimeout(() => {
+      if (!loadCalledRef.current) {
+        loadCalledRef.current = true;
+        onLoadComplete?.();
+      }
+    }, 500);
+    
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timeoutId);
+    };
+  }, [item.image, onLoadComplete]);
+
+  const handleLoad = () => {
+    if (!loadCalledRef.current) {
+      loadCalledRef.current = true;
+      onLoadComplete?.();
+    }
+  };
+
   return (
     <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
       
@@ -226,15 +271,17 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
       {/* Main Image */}
       <motion.img
+        ref={imgRef}
         initial={{ opacity: 0.8 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
         className="relative z-10 max-w-full max-h-full object-contain"
-        loading="lazy"
+        onLoad={handleLoad}
         onError={(e) => {
           e.target.src = "/hotel1.jpg";
+          handleLoad();
         }}
       />
 
@@ -271,6 +318,7 @@ const MediaSwiper = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [isMediaLoaded, setIsMediaLoaded] = useState(false);
   const directionRef = useRef(1);
   const [direction, setDirection] = useState(1);
   const dragX = useMotionValue(0);
@@ -280,11 +328,25 @@ const MediaSwiper = ({
     setGallery(getGalleryData());
   }, [customMedia, autoPlayDefault, intervalDefault]);
 
-  // Auto-play functionality
+  // إعادة تعيين حالة التحميل عند تغيير الصورة
+  useEffect(() => {
+    setIsMediaLoaded(false);
+    
+    const fallbackTimer = setTimeout(() => {
+      setIsMediaLoaded(true);
+    }, 300);
+    
+    return () => clearTimeout(fallbackTimer);
+  }, [currentIndex]);
+
+  const handleMediaLoaded = useCallback(() => {
+    setIsMediaLoaded(true);
+  }, []);
+
   const shouldAutoPlay = gallery?.autoPlay !== undefined ? gallery.autoPlay : autoPlayDefault;
   
   useEffect(() => {
-    if (!gallery?.media?.length || isPaused || !shouldAutoPlay) return;
+    if (!gallery?.media?.length || isPaused || !shouldAutoPlay || !isMediaLoaded) return;
 
     const interval = setInterval(() => {
       directionRef.current = 1;
@@ -293,7 +355,7 @@ const MediaSwiper = ({
     }, (gallery?.autoPlayInterval || intervalDefault) * 1000);
 
     return () => clearInterval(interval);
-  }, [gallery, isPaused, shouldAutoPlay, intervalDefault]);
+  }, [gallery, isPaused, shouldAutoPlay, intervalDefault, isMediaLoaded]);
 
   // Navigation functions - always go right (direction 1) for next, left (-1) for prev
   const goToNext = useCallback(() => {
@@ -406,6 +468,7 @@ const MediaSwiper = ({
             isMuted={isMuted}
             toggleMute={() => setIsMuted(!isMuted)}
             objectFit={objectFit}
+            onLoadComplete={handleMediaLoaded}
           />
         </motion.div>
       </AnimatePresence>
@@ -464,9 +527,9 @@ const MediaSwiper = ({
       )}
 
       {/* Progress Bar */}
-      {gallery.media.length > 1 && shouldAutoPlay && !isPaused && (
+      {gallery.media.length > 1 && shouldAutoPlay && !isPaused && isMediaLoaded && (
         <motion.div
-          key={currentIndex}
+          key={`${currentIndex}-${isMediaLoaded}`}
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ 
