@@ -35,28 +35,17 @@
     "bookingButton": "Book Your Spot Now",
     "limitedSpots": "Limited spots available"
   },
-  "beforeContinue": {
-    "title": "Before we continue…",
-    "descriptionStart": "This trip is made for people looking for a",
-    "highlightFeeling": "real feeling",
-    "descriptionEnd": "not just a program …so If you're looking for:",
-    "crowd": "Crowds and noise",
-    "noise": "Loud sounds",
-    "fastTrip": "Quick trip",
-    "photosOnly": "Just photos",
-    "footerHighlight": "This trip might not be for you… and that's okay."
-  },
   "desertComparison": {
-    "titleStart": "The difference between a regular desert trip…",
-    "titleHighlight": "and the White Desert experience with Farafra Bedouins",
+    "titleStart": "The difference between a White Desert trip with companies",
+    "titleHighlight": "and with Farafra Oasis Bedouins",
 
-    "othersTitle": "Many trips",
+    "othersTitle": "With Companies",
     "other1": "Compressed schedule without meaning",
     "other2": "Focus on photos",
     "other3": "Superficial organization",
     "other4": "An experience that ends and you return the same",
 
-    "ourTitle": "Our trip",
+    "ourTitle": "With Farafra Oasis Bedouins",
     "our1": "Calm and organized rhythm",
     "our2": "Live with the locals and learn their stories",
     "our3": "The White Desert is a completely different experience and feeling… not just an Activity",
@@ -294,18 +283,17 @@
     "forYouTitle": "This trip is for you if:",
     "notForYouTitle": "Not for you if:",
     "forYou": {
-      "psychological": "Travel has become a *psychological need* for you, not just breaking routine",
+      "psychological": "Travel for you is a *psychological need* for rest, not just breaking routine",
       "travelOften": "*You travel often…* but rarely come back feeling truly rested",
       "quietPlace": "You need a *quiet place,* with no demands, no schedules, no loud sounds",
-      "valueFeeling": "*You understand the value isn't in the crowd or the program,* but in how you feel after the day ends",
       "leavePhone": "*You can leave your phone* aside for a while, without feeling like you're missing out",
-      "respectPlace": "*You respect the places you visit,* and prefer to experience them peacefully, not consume them"
+      "respectPlace": "*You respect the places you visit* and love to experience the adventure through the eyes of its people"
     },
     "notForYou": {
-      "noise": "*You're looking for a trip with* noise and loud laughter",
-      "network": "*You need network all the time*",
-      "moveAround": "You want to *move from place to place* without sitting still or calming down",
+      "noise": "You don't like *photography* or don't want to take the best photos",
+      "network": "You want to move from place to place *without stopping or enjoying*",
       "travelToSay": "*You travel just to say you traveled*",
+      "needNetwork": "*You need network all the time*",
       "notReady": "You're not ready to leave the city rhythm *even when you're away from it*"
     },
     "bedouinBox": {
@@ -331,7 +319,7 @@
     "askQuestion": "If you want to ask one question before you decide… that's natural.",
     "feelingCalm": "And if you feel calm and the White Desert is calling you quietly",
     "notCoincidence": "Then your presence here is no coincidence.",
-    "mainButton": "Book Your Spot Now",
+    "mainButton": "Send WhatsApp from here 👈🏻",
     "limitedSpots": "Limited spots available",
     "secondaryLink": "Or ask us one question on WhatsApp",
     "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!",

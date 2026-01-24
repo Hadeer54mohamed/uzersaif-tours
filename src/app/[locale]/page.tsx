@@ -15,11 +15,11 @@ import DesertTrip from "@/components/home/DesertTrip";
 import MediaSwiper from "@/components/MediaSwiper";
 import { hotelGallery } from "@/data/mediaSwiperData";
 import ReviewsVideos from "@/components/home/ReviewsVideos";
-import BeforeContinue from "@/components/home/BeforeContinue";
 import DesertComparison from "@/components/home/DesertComparison";
 import DesertFeeling from "@/components/home/DesertFeeling";
 import TripForYou from "@/components/home/TripForYou";
 import PriceAction from "@/components/home/PriceAction";
+import Guarantees from "@/components/home/Guarantees";
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -38,9 +38,8 @@ const Home = () => {
         >
           <Hero />
         </motion.div>
-
         <SectionDivider />
-        <BeforeContinue />
+        <TripForYou />
         <SectionDivider />
         <DesertComparison />
         <SectionDivider />
@@ -63,14 +62,46 @@ const Home = () => {
           intervalDefault={15}
         />
         <SectionDivider />
-        <ReviewsVideos />
-
+        <ReviewsVideos 
+          id="reviews" 
+          videos={[
+            { id: "QViYDcYGl34" },
+            { id: "-aUqfhZNjPQ" },
+            { id: "hkvlJHJEeHs" },
+            { id: "jIYepfj2xZk" },
+            { id: "qBw1QuRwz_o" },
+            { id: "GzfxsGQc1LA" },
+            { id: "mmtSc1TVgN4" },
+            { id: "kUQyvODbExY" },
+            { id: "yeYdMzvLTXk" },
+            { id: "jdI3GoGe9XI" },
+            { id: "i4w2WfMh-fw" },
+                    ]} 
+        />
+        <Guarantees />
         <SectionDivider />
         <FAQ />
-        <SectionDivider />
-        <TripForYou />
+        
         <SectionDivider />
         <PriceAction />
+        <ReviewsVideos 
+          id="companies-reviews" 
+          layout="grid"
+          showHeader={true}
+          showCTA={true}
+          videos={[
+            { id: "teb8R0GzsZY" },
+            { id: "I6bBE2nX3o4" },
+            { id: "yYJvqp7E7Fc" },
+            { id: "va6gEAnAF8s" },
+            { id: "9gBoQJT9FdY" },
+            { id: "WnfyS2w89Eo" },
+            { id: "hwMn050Og5c" },
+            { id: "7asO-BWZZ0w" },
+            { id: "59R8g9EeNeQ" },
+            { id: "CserZezSSew" },
+          ]} 
+        />
         <Footer />
       </div>
     </>

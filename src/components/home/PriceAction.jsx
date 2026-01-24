@@ -21,6 +21,7 @@ import { dummyTrips } from "@/lib/dummyTrips";
 const PriceAction = () => {
   const t = useTranslations("priceAction");
   const tTrip = useTranslations("desertTrip");
+  const tTripForYou = useTranslations("tripForYou");
 
   // Get trip data
   const trip = dummyTrips[0];
@@ -49,6 +50,47 @@ const PriceAction = () => {
 
       <div className="container mx-auto px-4 lg:px-6 relative z-10">
         <div className="max-w-4xl mx-auto space-y-8">
+           {/* Bedouin Message Box */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-3xl mx-auto" 
+         
+        >
+          <div id="booking" className="scroll-mt-24 relative p-6 sm:p-8 rounded-2xl border border-[#F47A1F]/30 bg-gradient-to-br from-[#F47A1F]/10 to-[#F47A1F]/5 backdrop-blur-md text-white ">
+            {/* Orange Glow Background */}
+            <div   className="absolute inset-0 rounded-2xl bg-[#F47A1F]/5 blur-xl pointer-events-none" />
+            
+            {/* Decorative Elements */}
+            <div className="absolute top-4 right-4 opacity-20">
+            </div>
+            
+            {/* Stars decoration */}
+            <div  className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+              <div className="absolute top-2 left-8 w-1 h-1 bg-[#F47A1F]/40 rounded-full" />
+              <div className="absolute top-6 left-16 w-1.5 h-1.5 bg-[#F47A1F]/30 rounded-full" />
+              <div className="absolute bottom-4 right-20 w-1 h-1 bg-[#F47A1F]/40 rounded-full" />
+              <div className="absolute bottom-8 left-12 w-1 h-1 bg-[#F47A1F]/30 rounded-full" />
+            </div>
+
+            <div  className="relative z-10 text-center">
+              <h4  className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F47A1F] md:text-2xl">
+                {tTripForYou("bedouinBox.title")}
+              </h4>
+              <p className="text-white/90 leading-relaxed mb-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
+                {tTripForYou("bedouinBox.line1")}
+              </p>
+              <p className="text-white/90 leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold">
+                {tTripForYou("bedouinBox.line2")}
+              </p>
+              <p className="mt-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#F47A1F] flex items-center justify-center gap-2 md:text-xl md:font-black">
+                <span>{tTripForYou("bedouinBox.welcome")}</span>
+              </p>
+            </div>
+          </div>
+        </motion.div>
           {/* Price Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,23 +177,6 @@ const PriceAction = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Subscribe Now Button */}
-         {/*  <motion.a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.25 }}
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg shadow-emerald-500/30 text-base sm:text-lg flex items-center justify-center gap-3 transition-all hover:shadow-emerald-500/50 hover:brightness-110"
-          >
-            <MessageCircle size={24} />
-            {t("subscribeNow")}
-          </motion.a> */}
           
           {/* Subscribe Note */}
           <div className="w-full bg-[#F47A1F]/10 backdrop-blur-sm border border-[#F47A1F]/30 rounded-xl p-4 sm:p-5">
@@ -221,7 +246,6 @@ const PriceAction = () => {
                 <span className="flex items-center gap-3 font-black text-xl">
                   <WhatsAppIcon size={28} />
                   {t("mainButton")}
-                  <ArrowLeft size={24} />
                 </span>
                 <span className="text-black text-sm font-bold flex items-center gap-5">
                   <span>-</span>

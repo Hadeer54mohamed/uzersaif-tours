@@ -12,7 +12,6 @@ const TripForYou = () => {
     "psychological",
     "travelOften",
     "quietPlace",
-    "valueFeeling",
     "leavePhone",
     "respectPlace",
   ];
@@ -20,8 +19,8 @@ const TripForYou = () => {
   const notForYouItems = [
     "noise",
     "network",
-    "moveAround",
     "travelToSay",
+    "needNetwork",
     "notReady",
   ];
 
@@ -53,7 +52,7 @@ const TripForYou = () => {
       
 
         {/* Two Columns */}
-        <div  className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto mb-12">
+        <div  className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto mb-3">
           {/* For You Section */}
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
@@ -124,48 +123,7 @@ const TripForYou = () => {
             </div>
           </motion.div>
         </div>
-        {/* Bedouin Message Box */}
-        <motion.div
-          id="booking"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} 
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-3xl mx-auto" 
-         
-        >
-          <div  className="relative p-6 sm:p-8 rounded-2xl border border-[#F47A1F]/30 bg-gradient-to-br from-[#F47A1F]/10 to-[#F47A1F]/5 backdrop-blur-md text-white ">
-            {/* Orange Glow Background */}
-            <div   className="absolute inset-0 rounded-2xl bg-[#F47A1F]/5 blur-xl pointer-events-none" />
-            
-            {/* Decorative Elements */}
-            <div className="absolute top-4 right-4 opacity-20">
-            </div>
-            
-            {/* Stars decoration */}
-            <div  className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-              <div className="absolute top-2 left-8 w-1 h-1 bg-[#F47A1F]/40 rounded-full" />
-              <div className="absolute top-6 left-16 w-1.5 h-1.5 bg-[#F47A1F]/30 rounded-full" />
-              <div className="absolute bottom-4 right-20 w-1 h-1 bg-[#F47A1F]/40 rounded-full" />
-              <div className="absolute bottom-8 left-12 w-1 h-1 bg-[#F47A1F]/30 rounded-full" />
-            </div>
-
-            <div  className="relative z-10 text-center">
-              <h4  className="text-[clamp(1.5rem,5vw,3rem)] font-bold mb-4 text-[#F47A1F] md:text-2xl">
-                {t("bedouinBox.title")}
-              </h4>
-              <p className="text-white/90 leading-relaxed mb-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold md:text-base md:font-normal">
-                {t("bedouinBox.line1")}
-              </p>
-              <p className="text-white/90 leading-relaxed text-[clamp(1.25rem,4vw,2.2rem)] font-bold">
-                {t("bedouinBox.line2")}
-              </p>
-              <p className="mt-4 text-[clamp(1.25rem,4vw,2.2rem)] font-bold text-[#F47A1F] flex items-center justify-center gap-2 md:text-xl md:font-black">
-                <span>{t("bedouinBox.welcome")}</span>
-              </p>
-            </div>
-          </div>
-        </motion.div>
+       
       </div>
     </section>
   );
