@@ -4,40 +4,11 @@ export const homeGallery = {
     {
       type: "video",
       video: "/uzer.mp4",
-    },
-    {
-      type: "image",
-      image: "/trip.jpg",
-    },
-    {
-      type: "image",
-      image: "/hero.jpg",
-    },
-    {
-      type: "image",
-      image: "/trip-desert.jpg",
-    },
-    {
-      type: "image",
-      image: "/trip-mountain.jpg",
-    },
+    }
   ],
 };
 
 
-// معرض رحلات الجبال
-export const mountainGallery = {
-  media: [
-    {
-      type: "image",
-      image: "/trip-mountain.jpg",
-    },
-    {
-      type: "image",
-      image: "/hero.jpg",
-    },
-  ],
-};
 
 export const afterHeroVideo = {
   media: [
@@ -53,18 +24,22 @@ export const hotelGallery = {
     {
       type: "image",
       image: "/hotel1.jpg",
+      video: "",
     },
     {
       type: "image",
       image: "/hotel2.jpg",
+      video: "",
     },
     {
       type: "image",
       image: "/hotel3.jpg",
+      video: "",
     },
     {
       type: "image",
       image: "/hotel.GIF",
+      video: "",
     },
   ],
 };
@@ -175,46 +150,6 @@ export const AboutBedouin = {
     {
       type: "image",
       image: "/AboutBedouin/22.jpg",
-    }
-  ],
-};
-export const DesertTrips = {
-  media: [
-    {
-      type: "image",
-      image: "/DesertTrips/23.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/24.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/25.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/26.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/27.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/28.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/29.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/30.jpg",
-    },
-    {
-      type: "image",
-      image: "/DesertTrips/31.jpg",
     }
   ],
 };
