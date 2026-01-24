@@ -127,7 +127,7 @@ const DesertTrip = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4" id="booking">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4" >
                 <div className="space-y-4 order-1">
                   <div className="bg-black/90 backdrop-blur-sm border border-[#F47A1F]/20 rounded-2xl p-5">
                     <h3 className="text-4xl font-bold text-fire mb-4 md:text-2xl md:font-black">{t("gatheringPoints")}</h3>

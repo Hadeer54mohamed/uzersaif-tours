@@ -27,7 +27,7 @@ const PriceAction = () => {
   ];
 
   return (
-    <section className=" relative" dir="rtl">
+    <section className=" relative" dir="rtl" id="booking">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#F47A1F]/5 blur-[120px] rounded-full" />
