@@ -33,10 +33,10 @@ const AboutBedouin = () => {
             className="lg:col-span-5 relative group order-2 lg:order-1"
           >
             <MediaSwiper
-          customMedia={AboutBedouinMedia}
-          height="h-[600px]"
-                className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-              /> 
+              customMedia={AboutBedouinMedia}
+              height="h-[500px] md:h-[700px] lg:h-[800px]"
+              className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+            /> 
 
               
             {/* بطاقة الخبرة */}

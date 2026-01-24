@@ -213,7 +213,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
   // Image type
   return (
-    <div className="relative w-full h-full overflow-hidden bg-black">
+    <div className="relative w-full h-full overflow-hidden bg-black flex items-center justify-center">
       
       {/* Blurred Background */}
       <motion.img
@@ -226,12 +226,12 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
       {/* Main Image */}
       <motion.img
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ opacity: 0.8 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         src={getImageUrl(item.image)}
         alt={item.alt || "Gallery image"}
-        className="relative z-10 w-full h-full object-contain"
+        className="relative z-10 max-w-full max-h-full object-contain"
         loading="lazy"
         onError={(e) => {
           e.target.src = "/trip.jpg";
@@ -244,14 +244,16 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
 
 // Main MediaSwiper Component
 const MediaSwiper = ({ 
-  customMedia = homeGallery,
+  customMedia = afterHeroVideo,
   className = "",
   height = "h-[400px] sm:h-[500px] md:h-[600px]",
   autoPlayDefault = true,
-  intervalDefault = 2,
+  intervalDefault = 4,
   objectFit = "cover",
   aspectRatio = "aspect-[4/3] sm:aspect-[16/10] md:aspect-auto"
 }) => {
+  const t = useTranslations("mediaSwiper");
+  
   // تحويل البيانات مباشرة
   const getGalleryData = () => {
     if (!customMedia) return null;
@@ -269,7 +271,8 @@ const MediaSwiper = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [direction, setDirection] = useState(0);
+  const directionRef = useRef(1);
+  const [direction, setDirection] = useState(1);
   const dragX = useMotionValue(0);
 
   // تحديث البيانات عند تغييرها
@@ -284,6 +287,7 @@ const MediaSwiper = ({
     if (!gallery?.media?.length || isPaused || !shouldAutoPlay) return;
 
     const interval = setInterval(() => {
+      directionRef.current = 1;
       setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % gallery.media.length);
     }, (gallery?.autoPlayInterval || intervalDefault) * 1000);
@@ -291,22 +295,36 @@ const MediaSwiper = ({
     return () => clearInterval(interval);
   }, [gallery, isPaused, shouldAutoPlay, intervalDefault]);
 
-  // Navigation functions
+  // Navigation functions - always go right (direction 1) for next, left (-1) for prev
   const goToNext = useCallback(() => {
     if (!gallery?.media?.length) return;
+    directionRef.current = 1;
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % gallery.media.length);
   }, [gallery]);
 
   const goToPrev = useCallback(() => {
     if (!gallery?.media?.length) return;
+    directionRef.current = -1;
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + gallery.media.length) % gallery.media.length);
   }, [gallery]);
 
   const goToIndex = useCallback((index) => {
     if (!gallery?.media?.length) return;
-    setDirection(index > currentIndex ? 1 : -1);
+    const mediaLength = gallery.media.length;
+    // For loop: if going from last to first, always go right (1)
+    // If going from first to last, always go left (-1)
+    let newDirection;
+    if (currentIndex === mediaLength - 1 && index === 0) {
+      newDirection = 1; // Loop forward
+    } else if (currentIndex === 0 && index === mediaLength - 1) {
+      newDirection = -1; // Loop backward
+    } else {
+      newDirection = index > currentIndex ? 1 : -1;
+    }
+    directionRef.current = newDirection;
+    setDirection(newDirection);
     setCurrentIndex(index);
   }, [gallery, currentIndex]);
 
@@ -320,32 +338,23 @@ const MediaSwiper = ({
     }
   };
 
-  // Animation variants
+  // Animation variants - simple fade transition
   const slideVariants = {
-    enter: (direction) => ({
-      x: direction > 0 ? "100%" : "-100%",
+    enter: {
       opacity: 0,
-      scale: 0.95,
-    }),
+    },
     center: {
-      x: 0,
       opacity: 1,
-      scale: 1,
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 },
-        scale: { duration: 0.3 },
+        opacity: { duration: 0.5, ease: "easeOut" },
       },
     },
-    exit: (direction) => ({
-      x: direction < 0 ? "100%" : "-100%",
+    exit: {
       opacity: 0,
-      scale: 0.95,
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.2 },
+        opacity: { duration: 0.3, ease: "easeIn" },
       },
-    }),
+    },
   };
 
   // No gallery found
@@ -356,7 +365,7 @@ const MediaSwiper = ({
                       border border-[#F47A1F]/20`}>
         <div className="text-center space-y-4">
           <ImageIcon className="w-16 h-16 mx-auto text-[#8A91A8]" />
-          <p className="text-[#B6BDD6]">لا توجد صور أو فيديوهات في المعرض</p>
+          <p className="text-[#B6BDD6]">{t("noMedia")}</p>
         </div>
       </div>
     );
@@ -373,11 +382,13 @@ const MediaSwiper = ({
         onMouseLeave={() => setIsPaused(false)}
       >
       
+      {/* Background to prevent black flash */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800" />
+      
       {/* Slides Container */}
-      <AnimatePresence initial={false} custom={direction} mode="wait">
+      <AnimatePresence initial={false} mode="wait">
         <motion.div
           key={currentIndex}
-          custom={direction}
           variants={slideVariants}
           initial="enter"
           animate="center"
@@ -387,7 +398,7 @@ const MediaSwiper = ({
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           style={{ x: dragX }}
-          className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          className="absolute inset-0 cursor-grab active:cursor-grabbing z-10"
         >
           <MediaItem
             item={gallery.media[currentIndex]}

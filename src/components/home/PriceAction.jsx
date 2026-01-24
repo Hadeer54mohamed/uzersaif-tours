@@ -92,6 +92,14 @@ const PriceAction = () => {
                 {tTrip("insteadOf")} {trip.originalPrice} {tTrip("currency")}
               </div>
 
+              {/* Foreigner Price */}
+              <div className="pt-4 mt-4 border-t border-black/20">
+                <p className="text-black/70 font-bold text-sm mb-2">{tTrip("foreignerPriceLabel")}</p>
+                <div className="text-4xl md:text-5xl font-black text-black">
+                  {tTrip("foreignerPrice")}
+                </div>
+              </div>
+
               {/* Price Includes Note */}
               <div className="pt-4 border-t border-black/20">
                 <p className="text-black/80 font-bold text-base leading-relaxed">

@@ -368,7 +368,8 @@
   },
   "mediaSwiper": {
     "image": "Image",
-    "video": "Video"
+    "video": "Video",
+    "noMedia": "No images or videos in the gallery"
   },
   "testimonialsData": {
     "items": [
@@ -555,6 +556,8 @@
     "useCode": "Use code",
     "priceAfterDiscount": "Trip price after discount",
     "currency": "EGP",
+    "foreignerPrice": "$210",
+    "foreignerPriceLabel": "Price for Non-Egyptians",
     "insteadOf": "Instead of",
     "bookingMethod": "Booking & Payment Method",
     "deposit": "Deposit",

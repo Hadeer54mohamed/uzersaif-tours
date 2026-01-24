@@ -368,7 +368,8 @@
   },
   "mediaSwiper": {
     "image": "صورة",
-    "video": "فيديو"
+    "video": "فيديو",
+    "noMedia": "لا توجد صور أو فيديوهات في المعرض"
   },
   "testimonialsData": {
     "items": [
@@ -555,6 +556,8 @@
     "useCode": "استخدم كود",
     "priceAfterDiscount": "سعر الرحلة بعد الخصم",
     "currency": "جنيه",
+    "foreignerPrice": "$210",
+    "foreignerPriceLabel": "السعر لغير المصريين",
     "insteadOf": "بدلاً من",
     "bookingMethod": "طريقة الحجز والدفع",
     "deposit": "العربون",
