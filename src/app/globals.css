@@ -488,28 +488,3 @@ body {
   direction: rtl;
 }
 
-/* ===== Testimonials Swiper ===== */
-.testimonials-swiper {
-  padding-bottom: 50px !important;
-}
-
-.testimonials-swiper .swiper-slide {
-  height: auto !important;
-  margin-bottom: 16px;
-}
-
-@media (min-width: 640px) {
-  .testimonials-swiper .swiper-slide {
-    margin-bottom: 20px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .testimonials-swiper .swiper-slide {
-    margin-bottom: 24px;
-  }
-}
-
-.testimonials-swiper .swiper-pagination {
-  bottom: 10px !important;
-}

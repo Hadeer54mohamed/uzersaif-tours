@@ -13,7 +13,7 @@ import {
   Image as ImageIcon,
   Video
 } from "lucide-react";
-import { homeGallery } from "@/data/mediaSwiperData";
+import { afterHeroVideo } from "@/data/mediaSwiperData";
 import { useTranslations } from "next-intl";
 
 // Media Item Component for individual items
@@ -23,9 +23,9 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
   const t = useTranslations("mediaSwiper");
   // Get image URL helper 
   const getImageUrl = (image) => {
-    if (!image) return "/trip.jpg";
+    if (!image) return "/TOURS.png";
     if (typeof image === "string") return image;
-    return "/trip.jpg";
+    return "/TOURS.png";
   };
 
   // Get video URL helper 
@@ -234,7 +234,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain" 
         className="relative z-10 max-w-full max-h-full object-contain"
         loading="lazy"
         onError={(e) => {
-          e.target.src = "/trip.jpg";
+          e.target.src = "/hotel1.jpg";
         }}
       />
 

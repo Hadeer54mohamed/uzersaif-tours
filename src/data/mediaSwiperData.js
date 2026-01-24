@@ -1,15 +1,3 @@
-// معرض الصفحة الرئيسية
-export const homeGallery = {
-  media: [
-    {
-      type: "video",
-      video: "/uzer.mp4",
-    }
-  ],
-};
-
-
-
 export const afterHeroVideo = {
   media: [
     {

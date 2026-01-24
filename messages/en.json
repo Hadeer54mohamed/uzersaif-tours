@@ -194,10 +194,6 @@
       }
     }
   },
-  "testimonials": {
-    "title": "What Our Clients Said About the White Desert Trip?",
-    "photos": "photos"
-  },
   "footer": {
     "description": "We offer you the best travel and unique tour experiences. Enjoy unforgettable trips in the most beautiful natural areas.",
     "bookNow": "Book Your Spot Now",
@@ -209,129 +205,6 @@
     "copyright": "All Rights Reserved",
     "designedBy": "Designed & Developed by"
   },
-  "about": {
-    "badge": "26 Years of Experience",
-    "title": "About",
-    "titleHighlight": "Us",
-    "subtitle": "Because our experience is 26 years…",
-    "subtitleHighlight": "and our word is our honor",
-    "storyTitle": "Our Story with",
-    "storyHighlight": "the Desert",
-    "storySubtitle": "From the original Farafra Oasis Bedouins, we offer you a real experience",
-    "features": {
-      "1": "We are the original Farafra Oasis Bedouins, our whole lives in the White Desert knowing its secrets, not just organizers.",
-      "2": "Over 26 years of experience specifically in the White Desert, with precise knowledge of every path, formation, and safe camping spot in every season.",
-      "3": "The current program has been executed over 1000 times with the same details before and succeeded with different groups.",
-      "4": "The decision is always in the hands of a trusted guide from Farafra Bedouins, accompanying the group throughout the trip.",
-      "5": "The team is used to dealing with different types of guests with respect for differences and each person's needs.",
-      "6": "Trip management is built on responsibility before pleasure. If someone gets tired, the solution is immediate.",
-      "7": "Our reputation is built on years of real execution, not a marketing campaign or promises on social media.",
-      "8": "Full commitment to the White Desert Reserve laws to preserve safety and nature."
-    },
-    "highlightTitle": "We'd rather lose a booking…",
-    "highlightSubtitle": "than lose trust or ruin the experience of other guests",
-    "valuesTitle": "What Sets Us Apart",
-    "values": {
-      "vision": {
-        "title": "Our Vision",
-        "description": "To be the first destination Arab travelers trust for unique and carefully designed travel experiences."
-      },
-      "mission": {
-        "title": "Our Mission",
-        "description": "We offer trips made with love and mastery, aiming to create unforgettable moments and details that make every trip different."
-      },
-      "ourValues": {
-        "title": "Our Values",
-        "description": "Professionalism, quality, transparency, commitment, and service that exceeds expectations at every step."
-      },
-      "team": {
-        "title": "Our Team",
-        "description": "A team of tourism experts passionate about organizing adventures and providing integrated experiences."
-      }
-    },
-    "stats": {
-      "destinations": "Tourist Destinations",
-      "tripsPerYear": "Trips Annually",
-      "happyClients": "Happy Clients",
-      "satisfaction": "Customer Satisfaction Rate"
-    },
-    "cta": {
-      "title": "Ready to Start",
-      "titleHighlight": "Your Adventure",
-      "subtitle": "Join thousands of adventurers who trusted us",
-      "button": "Discover Our Trips"
-    }
-  },
-  "contact": {
-    "badge": "We're Here to Help",
-    "title": "Contact",
-    "titleHighlight": "Us",
-    "subtitle": "We're always happy to be part of your next journey",
-    "subtitleHighlight": "Start your adventure now!",
-    "sectionTitle": "How Can We Help You?",
-    "sectionSubtitle": "Choose the appropriate way to contact us and we'll be happy to serve you",
-    "info": {
-      "phone": {
-        "title": "Call Us",
-        "description": "Available from 9 AM - 6 PM"
-      },
-      "email": {
-        "title": "Email",
-        "description": "We respond within 24 hours"
-      },
-      "address": {
-        "title": "Address",
-        "content": "Cairo, Egypt",
-        "description": "Our headquarters"
-      },
-      "hours": {
-        "title": "Working Hours",
-        "content": "Saturday - Thursday",
-        "description": "9 AM - 6 PM"
-      }
-    },
-    "followUs": "Follow us on",
-    "form": {
-      "title": "Send Us a Message",
-      "subtitle": "We'll respond as soon as possible",
-      "name": "Full Name",
-      "namePlaceholder": "Enter your name",
-      "email": "Email",
-      "emailPlaceholder": "example@email.com",
-      "phone": "Phone Number",
-      "phonePlaceholder": "+20 123 456 7890",
-      "subject": "Subject",
-      "subjectPlaceholder": "What would you like to inquire about?",
-      "message": "Message",
-      "messagePlaceholder": "Write your message here... We appreciate your time and promise a quick response",
-      "required": "Required fields",
-      "submit": "Send Message",
-      "sending": "Sending...",
-      "success": "Your message was sent successfully! ✨"
-    },
-    "map": {
-      "title": "Our Location",
-      "description": "We are located in the heart of Cairo, Egypt. We're happy to welcome you at our headquarters to learn about our trips and choose the right adventure for you.",
-      "address": "Cairo, Egypt - Dokki",
-      "hours": "Saturday - Thursday: 9 AM - 6 PM",
-      "openInMaps": "Open in Google Maps"
-    },
-    "cta": {
-      "badge": "Start Your Journey Now",
-      "title": "Ready to Start",
-      "titleHighlight": "Your Adventure",
-      "subtitle": "Contact us now and let us help you plan your perfect trip that will stay in your memory forever",
-      "callNow": "Call Us Now",
-      "whatsapp": "Contact via WhatsApp"
-    }
-  },
-  "trips": {
-    "badge": "Discover Our Adventures",
-    "title": "Our",
-    "titleHighlight": "Featured Trips",
-    "subtitle": "Choose your perfect trip and get ready for an",
-    "subtitleHighlight": "unforgettable adventure"
-  },
   "common": {
     "bookNow": "Book Now",
     "learnMore": "Learn More",
@@ -342,21 +215,6 @@
     "loading": "Loading...",
     "error": "An error occurred",
     "success": "Success"
-  },
-  "languageSwitcher": {
-    "ar": "العربية",
-    "en": "English",
-    "switchTo": "Switch to"
-  },
-  "exitIntentPopup": {
-    "title": "Before you leave…",
-    "description": "This trip isn't for everyone\nAnd maybe now isn't your time\nBut if the reason is:",
-    "reason1": "You need to think about it",
-    "reason2": "You're not sure if it's right for you",
-    "reason3": "The decision feels heavy",
-    "askButton": "Ask us one question before you go",
-    "saveNote": "Save the trip and come back when you feel it's time",
-    "whatsappMessage": "Hello Uzer Saif, I have a question before booking the trip!"
   },
   "spaceshipIntro": {
     "launching": "Launching...",
@@ -370,84 +228,6 @@
     "image": "Image",
     "video": "Video",
     "noMedia": "No images or videos in the gallery"
-  },
-  "testimonialsData": {
-    "items": [
-      {
-        "id": 1,
-        "name": "Ibrahem Mohamed",
-        "comment": "Very respectful people, educated and hardworking youth. Most importantly, they have transparency, clarity, and execute the program exactly. Top-level service, and beyond work, you feel extraordinary generosity which is not strange for the people of Farafra Oasis.... I strongly recommend UzerSaif team."
-      },
-      {
-        "id": 2,
-        "name": "Nada Nafie",
-        "comment": "The trip was very organized and I liked the people there, they're nice and it was a new experience. The stars in the desert are tremendously amazing, the dinner is always nice. Badawiya hotel is very clean and the prices are reasonable. The place is cozy and quiet. The hot springs are very relaxing and hot."
-      },
-      {
-        "id": 3,
-        "name": "Cosmina Staicu",
-        "comment": "Best people who made our first camping in the White Desert a sublime experience! Drifting, adrenaline & comfort, Milky Way, photos & videos, music, food & tea and most importantly the awesomeness of the people in the organizing team! Thank you for bringing us to the desert's moon!"
-      },
-      {
-        "id": 4,
-        "name": "Noura Kerky",
-        "comment": "One of the best trips I've been on. They treated us with taste and politeness, very hospitable. They showed us the White Desert and Farafra with its people and artistic and agricultural culture. Want an adventure in the desert? Available. Want to walk in greenery and enjoy nature? Available. Want to feed your soul with beautiful art? Available. I wish you progress and success, thank you."
-      },
-      {
-        "id": 5,
-        "name": "Mai Essam Kamal",
-        "comment": "One of the best trips I've ever taken, really. May God bless you as you made us happy"
-      },
-      {
-        "id": 6,
-        "name": "Hana Lasheen",
-        "comment": "I had a fantastic experience with User Saif Safari. They took care of all the details for my trip and made sure I had a great time. I highly recommend them."
-      },
-      {
-        "id": 7,
-        "name": "Maha Yasser Arafeh",
-        "comment": "The best people and the best organizers and trip. The people are very very very beautiful. Thank you for everything you provided."
-      },
-      {
-        "id": 8,
-        "name": "Love Egypt",
-        "comment": "A specialized company I traveled with and they treated us like family. Kind people by nature who love their work of serving us and providing the finest comfort tools in places you can't imagine exist."
-      },
-      {
-        "id": 9,
-        "name": "Abdulrahman El Sobhy",
-        "comment": "It was an outstanding experience full of activities, excitement, and entertainment. I enjoyed every single moment of the trip and would like to repeat it soon inshallah. The politeness and decency of the tour guide Mohamed El Sha3er, and the enjoyment of his leadership skills made him the perfect tour guide for the trip. Thank you very much for this amazing experience"
-      },
-      {
-        "id": 10,
-        "name": "Aya Yahia",
-        "comment": "I really miss the trip, the time and the people, it feels like a dream. Really thank you so much, I had fun and there was amazing effort so everything would be perfect. Especially the camping. Special thanks to Sha3er and Saher and everyone who worked to make it this beautiful. Plus all the friends I met"
-      }
-    ]
-  },
-  "guarantee": {
-    "title": "Farafra Oasis Bedouin Guarantee",
-    "subtitle": "Camping with us isn't a hotel… but we're Bedouins, and our word is our honor. With 26 years of desert experience",
-    "items": {
-      "stamp": {
-        "title": "Farafra Oasis Bedouin Seal",
-        "desc": "Not just written… it's a Bedouin promise and word of honor."
-      },
-      "respect": {
-        "title": "Respect for Time, Mind & Money",
-        "desc": "This is the strength of our honest word, respecting you as a guest, your money, and your mind."
-      },
-      "money": {
-        "title": "Your Money is Safe",
-        "desc": "Get a full refund without discussion if you cancel 7 days before the trip."
-      },
-      "comfort": {
-        "title": "Your Comfort is Our Responsibility",
-        "desc": "During the trip, your comfort is our priority within respect for the reserve and the spirit of the experience."
-      }
-    },
-    "footer": "you're in safe hands.",
-    "bookButton": "Book with Confidence"
   },
   "beforeBooking": {
     "title": "Before You Book",

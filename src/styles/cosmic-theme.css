@@ -310,27 +310,6 @@
   color: var(--text-secondary);
 }
 
-/* ====================== Testimonials ====================== */
-
-.quote-icon {
-  color: rgba(244, 122, 31, 0.4);
-}
-
-.star-rating {
-  color: var(--desert-ember);
-}
-
-/* ====================== Contact Info ====================== */
-
-.contact-card {
-  background: rgba(10, 10, 10, 0.8);
-  border: 1px solid rgba(244, 122, 31, 0.2);
-}
-
-.contact-card:hover {
-  transform: scale(1.02);
-}
-
 /* ====================== Animations ====================== */
 
 @keyframes cosmic-pulse {
