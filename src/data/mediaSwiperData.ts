@@ -14,7 +14,6 @@ export const afterHeroVideo: MediaGallery = {
     {
       type: "video",
       video: "/real.mp4",
-      poster: "/DesertComparison/1.jpg", // صورة تظهر أثناء تحميل الفيديو
     },
   ],
 };

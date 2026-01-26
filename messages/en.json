@@ -345,26 +345,35 @@
       "notDecided": "Haven't decided yet"
     },
     "comingWith": "Who are you coming with?",
-    "optional": "(Optional)",
     "comingWithOptions": {
       "alone": "Alone",
       "withSomeone": "With someone",
-      "smallGroup": "With a small group",
-      "notSure": "Not sure yet"
+      "smallGroup": "With a small group"
     },
     "notes": "Additional Notes",
     "notesPlaceholder": "Write any notes or questions...",
+    "optional": "optional",
+    "requiredFields": "Required fields",
     "depositQuestion": "Ready to secure your spot",
     "depositAmount": "with 25% deposit",
     "afterContact": "after we contact you?",
     "yes": "Yes",
     "needToAsk": "Need to ask first",
-    "submitButton": "Send My Details",
+    "submitButton": "Ready to book your spot",
     "submitting": "Sending...",
     "successTitle": "Sent Successfully!",
     "successMessage": "Thank you for contacting us, we'll get back to you soon",
     "successButton": "Done",
-    "errorMessage": "Something went wrong, please try again"
+    "errorMessage": "Something went wrong, please try again",
+    "validation": {
+      "nationality": "Nationality is required",
+      "fullName": "Full name is required",
+      "email": "Email is required",
+      "phone": "Phone number is required",
+      "tripDate": "Trip date is required",
+      "comingWith": "Please select who you're coming with",
+      "depositReady": "Please answer this question"
+    }
   },
   "desertTrip": {
     "exploreTitle": "Explore",

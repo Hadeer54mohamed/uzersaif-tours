@@ -346,26 +346,35 @@
       "notDecided": "لسه ما قررتش"
     },
     "comingWith": "هتيجي مع مين؟",
-    "optional": "(اختياري)",
     "comingWithOptions": {
       "alone": "لوحدي",
       "withSomeone": "مع شخص",
-      "smallGroup": "مع مجموعة صغيرة",
-      "notSure": "لسه مش محدد"
-    },
+      "smallGroup": "مع مجموعة صغيرة"
+        },
     "notes": "ملاحظات إضافية",
     "notesPlaceholder": "اكتب أي ملاحظات أو أسئلة...",
+    "optional": "اختياري",
+    "requiredFields": "الحقول المطلوبة",
     "depositQuestion": "جاهز تثبّت مكانك",
     "depositAmount": "بمقدم 25%",
     "afterContact": "بعد التواصل؟",
     "yes": "نعم",
     "needToAsk": "محتاج أستفسر الأول",
-    "submitButton": "إرسل بياناتي",
+    "submitButton": "جاهز تحجز مكانك ",
     "submitting": "جارٍ الإرسال...",
     "successTitle": "تم الإرسال بنجاح!",
     "successMessage": "شكراً لتواصلك معانا، هنرد عليك في أقرب وقت",
     "successButton": "تمام",
-    "errorMessage": "حصل مشكلة، حاول تاني"
+    "errorMessage": "حصل مشكلة، حاول تاني",
+    "validation": {
+      "nationality": "الجنسية مطلوبة",
+      "fullName": "الاسم مطلوب",
+      "email": "الإيميل مطلوب",
+      "phone": "رقم الهاتف مطلوب",
+      "tripDate": "موعد الرحلة مطلوب",
+      "comingWith": "اختر مع مين هتيجي",
+      "depositReady": "اختر إجابة السؤال ده"
+    }
   },
   "desertTrip": {
     "exploreTitle": "استكشف",

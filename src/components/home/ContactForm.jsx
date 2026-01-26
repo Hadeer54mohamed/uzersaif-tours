@@ -132,8 +132,37 @@ export default function ContactForm() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [error, setError] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
 
-  // خيارات الفورم مترجمة
+  // دالة التحقق من الحقول
+  function validateForm(formData) {
+    const errors = {};
+    
+    if (!formData.get("nationality")) {
+      errors.nationality = t("validation.nationality");
+    }
+    if (!formData.get("fullName")?.trim()) {
+      errors.fullName = t("validation.fullName");
+    }
+    if (!formData.get("email")?.trim()) {
+      errors.email = t("validation.email");
+    }
+    if (!formData.get("phone")?.trim()) {
+      errors.phone = t("validation.phone");
+    }
+    if (!formData.get("tripDate")) {
+      errors.tripDate = t("validation.tripDate");
+    }
+    if (!formData.get("comingWith")) {
+      errors.comingWith = t("validation.comingWith");
+    }
+    if (!formData.get("depositReady")) {
+      errors.depositReady = t("validation.depositReady");
+    }
+    
+    return errors;
+  }
+
   const tripDateOptions = [
     { value: t("tripDates.jan29"), label: t("tripDates.jan29") },
     { value: t("tripDates.nov13"), label: t("tripDates.nov13") },
@@ -144,10 +173,8 @@ export default function ContactForm() {
     { value: t("comingWithOptions.alone"), label: t("comingWithOptions.alone") },
     { value: t("comingWithOptions.withSomeone"), label: t("comingWithOptions.withSomeone"), default: true },
     { value: t("comingWithOptions.smallGroup"), label: t("comingWithOptions.smallGroup") },
-    { value: t("comingWithOptions.notSure"), label: t("comingWithOptions.notSure") },
   ];
 
-  // إخفاء الـ confetti بعد فترة
   useEffect(() => {
     if (showConfetti) {
       const timer = setTimeout(() => setShowConfetti(false), 4000);
@@ -157,11 +184,19 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setLoading(true);
     setError(false);
+    setFieldErrors({});
 
     const formData = new FormData(e.currentTarget);
     const form = e.currentTarget;
+
+    const errors = validateForm(formData);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    setLoading(true);
 
     const data = {
       nationality: formData.get("nationality"),
@@ -253,11 +288,12 @@ export default function ContactForm() {
             >
               <div>
                 <label className="block text-white mb-2 font-medium">{t("nationality")}</label>
-                <select name="nationality" required className={inputStyles}>
+                <select name="nationality" required className={`${inputStyles} ${fieldErrors.nationality ? 'border-red-500' : ''}`}>
                   <option value="" className="bg-black">{t("selectNationality")}</option>
                   <option value={t("egyptian")} className="bg-black">{t("egyptian")}</option>
                   <option value={t("nonEgyptian")} className="bg-black">{t("nonEgyptian")}</option>
                 </select>
+                {fieldErrors.nationality && <p className="text-red-500 text-sm mt-1">{fieldErrors.nationality}</p>}
               </div>
 
               <div>
@@ -266,8 +302,9 @@ export default function ContactForm() {
                   name="fullName"
                   required
                   placeholder={t("fullNamePlaceholder")}
-                  className={inputStyles}
+                  className={`${inputStyles} ${fieldErrors.fullName ? 'border-red-500' : ''}`}
                 />
+                {fieldErrors.fullName && <p className="text-red-500 text-sm mt-1">{fieldErrors.fullName}</p>}
               </div>
 
               <div>
@@ -277,9 +314,10 @@ export default function ContactForm() {
                   type="email"
                   required
                   placeholder={t("emailPlaceholder")}
-                  className={inputStyles}
+                  className={`${inputStyles} ${fieldErrors.email ? 'border-red-500' : ''}`}
                   dir="ltr"
                 />
+                {fieldErrors.email && <p className="text-red-500 text-sm mt-1">{fieldErrors.email}</p>}
               </div>
 
               <div>
@@ -289,9 +327,10 @@ export default function ContactForm() {
                   type="tel"
                   required
                   placeholder={t("phonePlaceholder")}
-                  className={inputStyles}
+                  className={`${inputStyles} ${fieldErrors.phone ? 'border-red-500' : ''}`}
                   dir="ltr"
                 />
+                {fieldErrors.phone && <p className="text-red-500 text-sm mt-1">{fieldErrors.phone}</p>}
               </div>
 
               <div>
@@ -310,11 +349,12 @@ export default function ContactForm() {
                     </label>
                   ))}
                 </div>
+                {fieldErrors.tripDate && <p className="text-red-500 text-sm mt-1">{fieldErrors.tripDate}</p>}
               </div>
 
               <div>
                 <label className="block text-white mb-3 font-medium">
-                  {t("comingWith")} <span className="text-gray-500 font-normal">{t("optional")}</span>
+                  {t("comingWith")}
                 </label>
                 <div className="space-y-3">
                   {comingWithOptions.map((option) => (
@@ -330,6 +370,7 @@ export default function ContactForm() {
                     </label>
                   ))}
                 </div>
+                {fieldErrors.comingWith && <p className="text-red-500 text-sm mt-1">{fieldErrors.comingWith}</p>}
               </div>
 
               <div>
@@ -342,7 +383,7 @@ export default function ContactForm() {
                 />
               </div>
 
-              <div className="bg-[rgba(244,122,31,0.1)] rounded-xl p-4 border border-[rgba(244,122,31,0.2)]">
+              <div className={`bg-[rgba(244,122,31,0.1)] rounded-xl p-4 border ${fieldErrors.depositReady ? 'border-red-500' : 'border-[rgba(244,122,31,0.2)]'}`}>
                 <label className="block text-white mb-3 font-medium">
                   {t("depositQuestion")} <span className="text-[#F47A1F]">{t("depositAmount")}</span> {t("afterContact")}
                 </label>
@@ -352,7 +393,7 @@ export default function ContactForm() {
                       type="radio"
                       name="depositReady"
                       value={t("yes")}
-                      defaultChecked
+                      required
                       className={radioStyles}
                     />
                     <span>{t("yes")}</span>
@@ -367,6 +408,7 @@ export default function ContactForm() {
                     <span>{t("needToAsk")}</span>
                   </label>
                 </div>
+                {fieldErrors.depositReady && <p className="text-red-500 text-sm mt-1">{fieldErrors.depositReady}</p>}
               </div>
 
               <motion.button
