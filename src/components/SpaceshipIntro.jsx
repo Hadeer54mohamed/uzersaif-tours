@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Rocket } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-// ألوان موحدة مع ثيم المشروع (Pure Black Theme)
 const INTRO_COLORS = {
   galaxy: {
     space: "#000000",
@@ -14,8 +13,8 @@ const INTRO_COLORS = {
     purple: "#0a0a0a",
   },
   desert: {
-    fire: "#F47A1F",   // برتقالي
-    ember: "#FFB85C",  // ذهبي
+    fire: "#F47A1F",   
+    ember: "#FFB85C", 
   },
   stars: {
     white: "#FFFFFF",
@@ -156,7 +155,6 @@ const SpaceshipIntro = ({ onComplete }) => {
           }}
         />
 
-        {/* زر التخطي - ظاهر من الأول */}
         <button onClick={safeComplete} className="btn-skip-intro">
           {t("skip")}
         </button>
