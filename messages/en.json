@@ -226,7 +226,8 @@
   "mediaSwiper": {
     "image": "Image",
     "video": "Video",
-    "noMedia": "No images or videos in the gallery"
+    "noMedia": "No images or videos in the gallery",
+    "loading": "Loading..."
   },
   "beforeBooking": {
     "title": "Before You Book",
@@ -326,8 +327,7 @@
     "subscribeNow": "Please send your ID photo and transfer screenshot to book the hotel and obtain security permits"
   },
   "contactForm": {
-    "sectionTitle": "Book Your Spot Now",
-    "sectionSubtitle": "Fill in your details and we'll contact you soon",
+    "sectionTitle": "Book Now",
     "nationality": "Nationality",
     "selectNationality": "Select Nationality",
     "egyptian": "Egyptian",

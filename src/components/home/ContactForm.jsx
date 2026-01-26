@@ -232,7 +232,7 @@ export default function ContactForm() {
         {showSuccess && <SuccessModal onClose={handleCloseSuccess} t={t} />}
       </AnimatePresence>
 
-      <section id="contact-form" className="py-20 bg-black">
+      <section id="contact-form" className="py-10 bg-black">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -242,12 +242,9 @@ export default function ContactForm() {
             className="max-w-2xl mx-auto"
           >
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-fire  mb-4">
                 {t("sectionTitle")}
               </h2>
-              <p className="text-gray-400">
-                {t("sectionSubtitle")}
-              </p>
             </div>
 
             <form
@@ -326,7 +323,7 @@ export default function ContactForm() {
                         type="radio"
                         name="comingWith"
                         value={option.value}
-                        defaultChecked={option.default}
+                        required
                         className={radioStyles}
                       />
                       <span>{option.label}</span>

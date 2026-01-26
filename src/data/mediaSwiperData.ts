@@ -1,37 +1,46 @@
-export const afterHeroVideo = {
+type MediaItem = {
+  type: "video" | "image";
+  video?: string;
+  image?: string;
+  poster?: string;
+};
+
+type MediaGallery = {
+  media: MediaItem[];
+};
+
+export const afterHeroVideo: MediaGallery = {
   media: [
     {
       type: "video",
       video: "/real.mp4",
+      poster: "/DesertComparison/1.jpg", // صورة تظهر أثناء تحميل الفيديو
     },
   ],
 };
 
-export const hotelGallery = {
+export const hotelGallery: MediaGallery = {
   media: [
     {
       type: "image",
       image: "/hotel1.jpg",
-      video: "",
     },
     {
       type: "image",
       image: "/hotel2.jpg",
-      video: "",
     },
     {
       type: "image",
       image: "/hotel3.jpg",
-      video: "",
     },
     {
       type: "image",
       image: "/hotel.GIF",
-      video: "",
     },
   ],
 };
-export const DesertComparison = {
+
+export const DesertComparison: MediaGallery = {
   media: [
     {
       type: "image",
@@ -56,11 +65,11 @@ export const DesertComparison = {
     {
       type: "image",
       image: "/DesertComparison/5.jpg",
-    }
-   
+    },
   ],
 };
-export const DesertFeeling = {
+
+export const DesertFeeling: MediaGallery = {
   media: [
     {
       type: "image",
@@ -77,10 +86,11 @@ export const DesertFeeling = {
     {
       type: "image",
       image: "/DesertFeeling/10.jpg",
-    }
+    },
   ],
 };
-export const WhyChooseUs = {
+
+export const WhyChooseUs: MediaGallery = {
   media: [
     {
       type: "image",
@@ -97,10 +107,11 @@ export const WhyChooseUs = {
     {
       type: "image",
       image: "/WhyChooseUs/14.jpg",
-    }
+    },
   ],
 };
-export const Experiences = {
+
+export const Experiences: MediaGallery = {
   media: [
     {
       type: "image",
@@ -118,10 +129,10 @@ export const Experiences = {
       type: "image",
       image: "/Experiences/18.jpg",
     },
-  
   ],
 };
-export const AboutBedouin = {
+
+export const AboutBedouin: MediaGallery = {
   media: [
     {
       type: "image",
@@ -138,6 +149,6 @@ export const AboutBedouin = {
     {
       type: "image",
       image: "/AboutBedouin/22.jpg",
-    }
+    },
   ],
 };

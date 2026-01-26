@@ -20,6 +20,7 @@ import { useTranslations } from "next-intl";
 const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain", onLoadComplete }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
   const t = useTranslations("mediaSwiper");
   // Get image URL helper 
   const getImageUrl = (image) => {
@@ -34,6 +35,16 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain",
     if (item.video) return item.video;
     return null;
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      if (video.readyState >= 3) {
+        setIsVideoLoading(false);
+        onLoadComplete?.();
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -177,42 +188,81 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain",
     // Local video
     return (
       <div className="relative w-full h-full group">
+        {/* Loading Spinner */}
+        {isVideoLoading && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-12 h-12 border-4 border-[#F47A1F]/30 border-t-[#F47A1F] rounded-full animate-spin" />
+              <p className="text-white/70 text-sm">{t("loading")}</p>
+            </div>
+          </div>
+        )}
+        
         <video
-          ref={videoRef}
+          ref={(el) => {
+            videoRef.current = el;
+            if (el && el.readyState >= 3 && isVideoLoading) {
+              setIsVideoLoading(false);
+              onLoadComplete?.();
+            }
+          }}
           src={videoUrl}
-          className={`w-full h-full object-cover`}
+          className={`w-full h-full object-cover ${isVideoLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
           loop
           muted={isMuted}
           playsInline
+          preload="auto"
+          poster={item.poster || ""}
           onClick={handleVideoClick}
-          onLoadedData={() => onLoadComplete?.()}
-          onError={() => onLoadComplete?.()}
+          onLoadedMetadata={() => {
+            if (videoRef.current?.readyState >= 3) {
+              setIsVideoLoading(false);
+              onLoadComplete?.();
+            }
+          }}
+          onCanPlay={() => {
+            setIsVideoLoading(false);
+            onLoadComplete?.();
+          }}
+          onCanPlayThrough={() => {
+            setIsVideoLoading(false);
+            onLoadComplete?.();
+          }}
+          onLoadedData={() => {
+            setIsVideoLoading(false);
+            onLoadComplete?.();
+          }}
+          onError={() => {
+            setIsVideoLoading(false);
+            onLoadComplete?.();
+          }}
         />
         
         {/* Video Controls Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        {!isVideoLoading && (
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleVideoClick}
+              className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white"
+            >
+              {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+            </motion.button>
+          </div>
+        )}
+       
+        {/* Mute Button */}
+        {!isVideoLoading && (
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={handleVideoClick}
-            className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white"
+            onClick={toggleMute}
+            className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"
           >
-            {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
+            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
           </motion.button>
-        </div>
-
-       
-        {/* Mute Button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={toggleMute}
-          className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity"
-        >
-          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-        </motion.button>
-
-       
+        )}
       </div>
     );
   }
@@ -291,7 +341,7 @@ const MediaItem = ({ item, isActive, isMuted, toggleMute, objectFit = "contain",
 
 // Main MediaSwiper Component
 const MediaSwiper = ({ 
-  customMedia = afterHeroVideo,
+  customMedia,
   className = "",
   height = "h-[400px] sm:h-[500px] md:h-[600px]",
   autoPlayDefault = true,
@@ -301,14 +351,15 @@ const MediaSwiper = ({
 }) => {
   const t = useTranslations("mediaSwiper");
   
-  // تحويل البيانات مباشرة
+  const mediaData = customMedia || afterHeroVideo;
+  
   const getGalleryData = () => {
-    if (!customMedia) return null;
-    if (Array.isArray(customMedia)) {
-      return { media: customMedia, autoPlay: autoPlayDefault, autoPlayInterval: intervalDefault };
+    if (!mediaData) return null;
+    if (Array.isArray(mediaData)) {
+      return { media: mediaData, autoPlay: autoPlayDefault, autoPlayInterval: intervalDefault };
     }
     return { 
-      media: customMedia.media, 
+      media: mediaData.media, 
       autoPlay: autoPlayDefault, 
       autoPlayInterval: intervalDefault 
     };
@@ -332,10 +383,9 @@ const MediaSwiper = ({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // تحديث البيانات عند تغييرها
   useEffect(() => {
     setGallery(getGalleryData());
-  }, [customMedia, autoPlayDefault, intervalDefault]);
+  }, [mediaData, autoPlayDefault, intervalDefault]);
 
   useEffect(() => {
     setIsMediaLoaded(false);

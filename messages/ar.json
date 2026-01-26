@@ -227,7 +227,8 @@
   "mediaSwiper": {
     "image": "صورة",
     "video": "فيديو",
-    "noMedia": "لا توجد صور أو فيديوهات في المعرض"
+    "noMedia": "لا توجد صور أو فيديوهات في المعرض",
+    "loading": "جاري التحميل..."
   },
   "beforeBooking": {
     "title": "قبل ما تحجز",
@@ -327,8 +328,7 @@
     "subscribeNow": "يرجى إرسال صورة البطاقة الشخصية وصورة التحويل لحجز الفندق واستخراج التصاريح الأمنية"
   },
   "contactForm": {
-    "sectionTitle": "احجز مكانك الآن",
-    "sectionSubtitle": "املأ البيانات وهنتواصل معاك في أقرب وقت",
+    "sectionTitle": "احجز الآن",
     "nationality": "الجنسية",
     "selectNationality": "اختر الجنسية",
     "egyptian": "مصري",

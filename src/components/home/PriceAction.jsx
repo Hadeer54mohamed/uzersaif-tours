@@ -205,7 +205,7 @@ const PriceAction = () => {
           </motion.div>
 
           {/* Emotional Text */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -221,7 +221,7 @@ const PriceAction = () => {
               <span className="text-[#F47A1F]">{t("notCoincidence")}</span>
             </p>
           </motion.div>
-
+ */}
           {/* Main CTA Button */}
        {/*    <motion.div
             initial={{ opacity: 0, y: 20 }}
