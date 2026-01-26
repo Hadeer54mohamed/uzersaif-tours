@@ -326,6 +326,47 @@
     "askQuestionMessage": "أهلاً Uzer Saif، عندي سؤال قبل ما أحجز الرحلة!",
     "subscribeNow": "يرجى إرسال صورة البطاقة الشخصية وصورة التحويل لحجز الفندق واستخراج التصاريح الأمنية"
   },
+  "contactForm": {
+    "sectionTitle": "احجز مكانك الآن",
+    "sectionSubtitle": "املأ البيانات وهنتواصل معاك في أقرب وقت",
+    "nationality": "الجنسية",
+    "selectNationality": "اختر الجنسية",
+    "egyptian": "مصري",
+    "nonEgyptian": "غير مصري",
+    "fullName": "الاسم بالكامل",
+    "fullNamePlaceholder": "اكتب اسمك هنا",
+    "email": "الإيميل",
+    "emailPlaceholder": "example@email.com",
+    "phone": "رقم الهاتف",
+    "phonePlaceholder": "01xxxxxxxxx",
+    "tripDate": "موعد الرحلة القادمة",
+    "tripDates": {
+      "jan29": "29 يناير",
+      "nov13": "13 نوفمبر",
+      "notDecided": "لسه ما قررتش"
+    },
+    "comingWith": "هتيجي مع مين؟",
+    "optional": "(اختياري)",
+    "comingWithOptions": {
+      "alone": "لوحدي",
+      "withSomeone": "مع شخص",
+      "smallGroup": "مع مجموعة صغيرة",
+      "notSure": "لسه مش محدد"
+    },
+    "notes": "ملاحظات إضافية",
+    "notesPlaceholder": "اكتب أي ملاحظات أو أسئلة...",
+    "depositQuestion": "جاهز تثبّت مكانك",
+    "depositAmount": "بمقدم 25%",
+    "afterContact": "بعد التواصل؟",
+    "yes": "نعم",
+    "needToAsk": "محتاج أستفسر الأول",
+    "submitButton": "إرسل بياناتي",
+    "submitting": "جارٍ الإرسال...",
+    "successTitle": "تم الإرسال بنجاح!",
+    "successMessage": "شكراً لتواصلك معانا، هنرد عليك في أقرب وقت",
+    "successButton": "تمام",
+    "errorMessage": "حصل مشكلة، حاول تاني"
+  },
   "desertTrip": {
     "exploreTitle": "استكشف",
     "exploreHighlight": "مغامراتنا",

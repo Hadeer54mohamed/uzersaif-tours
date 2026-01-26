@@ -223,7 +223,7 @@ const PriceAction = () => {
           </motion.div>
 
           {/* Main CTA Button */}
-          <motion.div
+       {/*    <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -255,7 +255,6 @@ const PriceAction = () => {
               </motion.div>
             </motion.a>
 
-            {/* Secondary Link */}
             <motion.a
               href={askQuestionUrl}
               target="_blank"
@@ -267,7 +266,7 @@ const PriceAction = () => {
                 {t("secondaryLink")}
               </p>
             </motion.a>
-          </motion.div>
+          </motion.div> */}
 
         </div>
       </div>

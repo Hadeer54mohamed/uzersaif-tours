@@ -20,6 +20,7 @@ import DesertFeeling from "@/components/home/DesertFeeling";
 import TripForYou from "@/components/home/TripForYou";
 import PriceAction from "@/components/home/PriceAction";
 import Guarantees from "@/components/home/Guarantees";
+import ContactForm from "@/components/home/ContactForm";
 
 const Home = () => {
   const [showIntro, setShowIntro] = useState(true);
@@ -84,6 +85,8 @@ const Home = () => {
         
         <SectionDivider />
         <PriceAction />
+        <ContactForm />
+
         <ReviewsVideos 
           id="companies-reviews" 
           layout="grid"

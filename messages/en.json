@@ -325,6 +325,47 @@
     "askQuestionMessage": "Hello Uzer Saif, I have a question before booking the trip!",
     "subscribeNow": "Please send your ID photo and transfer screenshot to book the hotel and obtain security permits"
   },
+  "contactForm": {
+    "sectionTitle": "Book Your Spot Now",
+    "sectionSubtitle": "Fill in your details and we'll contact you soon",
+    "nationality": "Nationality",
+    "selectNationality": "Select Nationality",
+    "egyptian": "Egyptian",
+    "nonEgyptian": "Non-Egyptian",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Enter your name here",
+    "email": "Email",
+    "emailPlaceholder": "example@email.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "01xxxxxxxxx",
+    "tripDate": "Upcoming Trip Date",
+    "tripDates": {
+      "jan29": "January 29",
+      "nov13": "November 13",
+      "notDecided": "Haven't decided yet"
+    },
+    "comingWith": "Who are you coming with?",
+    "optional": "(Optional)",
+    "comingWithOptions": {
+      "alone": "Alone",
+      "withSomeone": "With someone",
+      "smallGroup": "With a small group",
+      "notSure": "Not sure yet"
+    },
+    "notes": "Additional Notes",
+    "notesPlaceholder": "Write any notes or questions...",
+    "depositQuestion": "Ready to secure your spot",
+    "depositAmount": "with 25% deposit",
+    "afterContact": "after we contact you?",
+    "yes": "Yes",
+    "needToAsk": "Need to ask first",
+    "submitButton": "Send My Details",
+    "submitting": "Sending...",
+    "successTitle": "Sent Successfully!",
+    "successMessage": "Thank you for contacting us, we'll get back to you soon",
+    "successButton": "Done",
+    "errorMessage": "Something went wrong, please try again"
+  },
   "desertTrip": {
     "exploreTitle": "Explore",
     "exploreHighlight": "Our Adventures",
